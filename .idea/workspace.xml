@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/nuxt-app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuxt-app/.npmrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuxt-app/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuxt-app/app.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuxt-app/nuxt.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuxt-app/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuxt-app/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuxt-app/server/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nuxt-app/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="another text commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +25,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -49,8 +38,16 @@
       <updated>1696086272264</updated>
       <workItem from="1696086273563" duration="149000" />
       <workItem from="1696087170671" duration="105000" />
-      <workItem from="1696087776602" duration="99000" />
+      <workItem from="1696087776602" duration="221000" />
     </task>
+    <task id="LOCAL-00001" summary="another text commit">
+      <created>1696087890002</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696087890003</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -74,5 +71,7 @@
       <path value="$PROJECT_DIR$/jarrodwhitleycom" />
       <path value="$PROJECT_DIR$/nuxt-app" />
     </ignored-roots>
+    <MESSAGE value="another text commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
