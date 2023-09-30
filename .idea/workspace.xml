@@ -2,6 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/nuxt-app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nuxt-app/.npmrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nuxt-app/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nuxt-app/app.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nuxt-app/nuxt.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nuxt-app/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nuxt-app/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nuxt-app/server/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nuxt-app/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +49,7 @@
       <updated>1696086272264</updated>
       <workItem from="1696086273563" duration="149000" />
       <workItem from="1696087170671" duration="105000" />
+      <workItem from="1696087776602" duration="99000" />
     </task>
     <servers />
   </component>
@@ -56,8 +66,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/jarrodwhitleycom" />
+      <path value="$PROJECT_DIR$/nuxt-app" />
+    </ignored-roots>
   </component>
 </project>
