@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/jarrodwhitleycom" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/nuxt-app" vcs="Git" />
   </component>
 </project>
