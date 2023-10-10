@@ -1,0 +1,30 @@
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 2rem;
+    height: 6rem;
+    z-index: 10;
+    display: grid;
+    grid: auto / 1fr 1fr;
+    align-items: center;
+
+    .logo {
+        width: 5rem;
+        height: auto;
+        justify-self: start;
+    }
+
+    .links {
+        align-self: center;
+        display: flex;
+        justify-self: end;
+        font-size: 2rem;
+        color: white;
+
+        svg {
+            color: white;
+        }
+    }
+}

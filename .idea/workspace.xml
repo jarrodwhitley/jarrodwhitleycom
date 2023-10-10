@@ -1,7 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="another text commit" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="another text commit">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.npmrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vite.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/audio/sunset_drive.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/js/all.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_animations.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_colors.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_animated.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_bordered-pulled.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_core.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_fixed-width.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_functions.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_list.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_rotated-flipped.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_screen-reader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_shims.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_sizing.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_stacked.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/brands.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/fontawesome.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/regular.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/solid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fontawesome/v4-shims.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/webfonts/fa-brands-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/webfonts/fa-brands-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/webfonts/fa-regular-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/webfonts/fa-regular-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/webfonts/fa-solid-900.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/webfonts/fa-solid-900.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/webfonts/fa-v4compatibility.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/webfonts/fa-v4compatibility.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/public/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt-app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt-app/.npmrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt-app/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt-app/app.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt-app/nuxt.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt-app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt-app/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt-app/server/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt-app/tsconfig.json" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +66,20 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="local" pattern="file:src/assets/scss/app.scss&amp;&amp;!file[jarrodwhitleycom]:src/assets/scss/_partials/*" />
   </component>
   <component name="ProjectId" id="2W7arWGvDnXA50rxCqrcRz1b5t0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -20,13 +91,37 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="js.ns.project" value="true" />
+    <property name="js.ns.project.flavor" value="JavaScript" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/scss/js" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/scss/js" />
+      <recent name="$PROJECT_DIR$/src/assets/scss/_partials/_font_awesome" />
+      <recent name="$PROJECT_DIR$/src/assets/scss/_partials" />
+      <recent name="$PROJECT_DIR$/src/assets/css" />
+      <recent name="$PROJECT_DIR$/src/assets/js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/assets/scss" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/css" />
+      <recent name="$PROJECT_DIR$/src/assets/scss/_partials" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -38,7 +133,18 @@
       <updated>1696086272264</updated>
       <workItem from="1696086273563" duration="149000" />
       <workItem from="1696087170671" duration="105000" />
-      <workItem from="1696087776602" duration="221000" />
+      <workItem from="1696087776602" duration="29580000" />
+      <workItem from="1696888843575" duration="248000" />
+      <workItem from="1696889102598" duration="33000" />
+      <workItem from="1696889146949" duration="15000" />
+      <workItem from="1696889176550" duration="691000" />
+      <workItem from="1696890049617" duration="30000" />
+      <workItem from="1696890092064" duration="34000" />
+      <workItem from="1696890140817" duration="58000" />
+      <workItem from="1696890216145" duration="129000" />
+      <workItem from="1696890358780" duration="131000" />
+      <workItem from="1696890540406" duration="2538000" />
+      <workItem from="1696893263108" duration="12572000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -47,7 +153,21 @@
       <option name="project" value="LOCAL" />
       <updated>1696087890003</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="another text commit">
+      <created>1696088022084</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696088022084</updated>
+    </task>
+    <task id="LOCAL-00003" summary="another text commit">
+      <created>1696088088099</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696088088099</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
