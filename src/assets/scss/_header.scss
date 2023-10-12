@@ -1,5 +1,5 @@
 header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -9,6 +9,17 @@ header {
     display: grid;
     grid: auto / 1fr 1fr;
     align-items: center;
+    transition: all ease-in-out .2s;
+
+    &.fill {
+        height: 4rem;
+        background: $darkerNight;
+        transition: all ease-in-out .5s;
+
+        .logo {
+            width: 3rem;
+        }
+    }
 
     .logo {
         width: 5rem;
@@ -22,9 +33,33 @@ header {
         justify-self: end;
         font-size: 2rem;
         color: white;
+        gap: 1rem;
+
+        a {
+            &.disabled {
+                pointer-events: none;
+                i {
+                    opacity: .3;
+                }
+            }
+        }
 
         i {
             color: white;
+
+            &:hover {
+                transition: color 0.5s;
+            }
+        }
+
+        .fa-vuejs:hover {
+            color: #41B883;
+        }
+        .fa-react:hover {
+            color: #61DBFB;
+        }
+        .fa-linkedin:hover {
+            color: #0072b1;
         }
     }
 }

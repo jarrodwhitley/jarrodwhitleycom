@@ -25,7 +25,6 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
     display: block;
     overflow-x: hidden;
 }
@@ -68,8 +67,11 @@ body {
                 }
 
                 .page-subtitle {
-                    font-size: 2rem;
                     margin: 0;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                    transform: translateY(-1rem);
                 }
             }
 
@@ -100,7 +102,18 @@ body {
         }
 
         .experience {
-            height: 50rem;
+            width: 100%;
+            max-width: 100%;
+            padding: 2rem;
+            background: $darkestNight;
+            display: grid;
+            grid: auto / 1fr 1fr;
+            grid-column-gap: 2rem;
+
+            h2 {
+                grid-row: 1;
+                justify-self: center;
+            }
         }
     }
 }

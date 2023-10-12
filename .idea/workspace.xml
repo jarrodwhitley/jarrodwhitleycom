@@ -4,44 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="swap to Vue3">
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/all.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/all.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/brands.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/brands.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/fontawesome.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/fontawesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/regular.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/regular.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/solid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/solid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/svg-with-js.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/svg-with-js.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/v4-font-face.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/v4-font-face.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/v4-shims.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/v4-shims.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/v5-font-face.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fontawesome/css/v5-font-face.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/jw-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/vue.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AudioPlayer.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="play button working">
+      <change afterPath="$PROJECT_DIR$/src/components/HobbyChart.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SkillChart.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_colors.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_global.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/scss/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/webfonts/fa-brands-400.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fontawesome/webfonts/fa-brands-400.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/webfonts/fa-brands-400.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fontawesome/webfonts/fa-brands-400.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/webfonts/fa-regular-400.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fontawesome/webfonts/fa-regular-400.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/webfonts/fa-regular-400.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fontawesome/webfonts/fa-regular-400.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/webfonts/fa-solid-900.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fontawesome/webfonts/fa-solid-900.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/webfonts/fa-solid-900.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fontawesome/webfonts/fa-solid-900.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/webfonts/fa-v4compatibility.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fontawesome/webfonts/fa-v4compatibility.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/webfonts/fa-v4compatibility.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fontawesome/webfonts/fa-v4compatibility.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AudioPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AudioPlayer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +56,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.ns.project" value="true" />
     <property name="js.ns.project.flavor" value="JavaScript" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -93,11 +68,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/assets/css" />
       <recent name="$PROJECT_DIR$/src/assets/scss/js" />
       <recent name="$PROJECT_DIR$/src/assets/scss/_partials/_font_awesome" />
       <recent name="$PROJECT_DIR$/src/assets/scss/_partials" />
-      <recent name="$PROJECT_DIR$/src/assets/js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets/fontawesome" />
@@ -128,7 +103,7 @@
       <workItem from="1696890216145" duration="129000" />
       <workItem from="1696890358780" duration="131000" />
       <workItem from="1696890540406" duration="2538000" />
-      <workItem from="1696893263108" duration="13900000" />
+      <workItem from="1696893263108" duration="27268000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -158,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696907345208</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="play button working">
+      <created>1696908642371</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696908642371</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +166,7 @@
     </ignored-roots>
     <MESSAGE value="another text commit" />
     <MESSAGE value="swap to Vue3" />
+    <MESSAGE value="play button working" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

@@ -1,8 +1,8 @@
 <template>
-    <div id="audioPlayer" @click="test" class="audio-player" :class="{'playing': playing}">
+    <div id="audioPlayer" class="audio-player" :class="{'playing': playing, 'scroll-mode': scrollShrink}">
         <!-- <canvas id="waveform" class="h-full w-full"></canvas>-->
-        <i class="fa-solid fa-play" @click="playClick"></i>
-        <i class="fa-solid fa-pause" @click="pauseClick"></i>
+        <i class="fa-solid fa-play" :class="{'active': !playing}" @click="playClick"></i>
+        <i class="fa-solid fa-pause" :class="{'active': playing}" @click="pauseClick"></i>
         <svg id="wave" data-name="Layer 1"
              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 38.05">
             <title>Audio Wave</title>
@@ -25,7 +25,7 @@
             <path id="Line_9" data-name="Line 9"
                   d="M48.91,15l-0.12,0A1,1,0,0,0,48,16v6a1,1,0,1,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H48.91Z"/>
         </svg>
-        <audio style="visibility: hidden">
+        <audio style="visibility: hidden" loop>
             <source src="/src/assets/audio/sunset_drive.mp3" title="Sunset Drive" type="audio/mpeg">
             Your browser is old as dirt. Please upgrade.
         </audio>
@@ -36,22 +36,29 @@
 import { ref } from 'vue'
 const count = ref(0)
 
+var audio = new Audio('/src/assets/audio/sunset_drive.mp3');
+
 export default {
-    setup() {
-        let playing = ref(false);
+    data() {
         return {
-            playing
+            playing: false,
         }
     },
-    props: {
-        msg: String
+    props: ['scrollShrink'],
+    mounted() {
+        document.getElementById('audioPlayer').addEventListener('ended', function(){
+            this.currentTime = 0;
+            console.log('ended');
+        });
     },
     methods: {
         playClick() {
             this.playing = true;
+            audio.play();
         },
         pauseClick() {
             this.playing = false;
+            audio.pause();
         }
     }
 }

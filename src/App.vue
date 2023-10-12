@@ -1,7 +1,9 @@
 <template>
-    <header>
+    <header :class="{'fill': scrolling}">
         <img class="logo" width="80" src="/src/assets/jw-logo.svg" alt="logo"/>
         <div class="links">
+            <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-vuejs"></i></a>
+            <a class="disabled" href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
         </div>
     </header>
@@ -10,8 +12,7 @@
             <div class="text">
                 <h1 class="page-title">I don't <span class="glitch" data-text="hack">hack</span>
                     mainframes</h1>
-                <p class="page-subtitle">But I <em>do</em> listen to synthwave while building web apps</p>
-                <div class="btn">View in style</div>
+                <p class="page-subtitle">But I do listen to synthwave while building web apps</p>
             </div>
             <div class="grid-bg">
                 <div class="grid-lines"></div>
@@ -21,25 +22,41 @@
             <div class="crt-vignette"></div>
         </section>
         <section class="experience" height="500" width="100%">
-            <h2>A little about me</h2>
+            <h2 class="skillset">My Skillset</h2>
+            <SkillChart></SkillChart>
+            <h2 class="hobbies">My Hobbies</h2>
+            <HobbyChart></HobbyChart>
+        </section>
+        <section style="height: 50rem;">
+            New section
         </section>
     </div>
-    <AudioPlayer @playing="hello"/>
+    <AudioPlayer :scroll-shrink="scrolling"/>
 </template>
 
 <script>
-import AudioPlayer from './components/AudioPlayer.vue'
+import AudioPlayer from './components/AudioPlayer.vue';
+import SkillChart from "./components/SkillChart.vue";
+import HobbyChart from "./components/HobbyChart.vue";
 
 export default {
     components: {
-        AudioPlayer
+        AudioPlayer, SkillChart, HobbyChart
     },
-    setup() {
-        return {  }
+    data() {
+        return {
+            scrolling: false
+        }
+    },
+    mounted() {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
-        hello() {
-            alert('hello');
+        handleScroll(event) {
+            this.scrolling = window.scrollY > 0;
         }
     }
 
