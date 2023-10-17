@@ -1,11 +1,15 @@
 @import './assets/fontawesome/css/all.css';
 @import './assets/scss/colors';
+@import './assets/scss/mixins';
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
 @import './assets/scss/animations';
 @import './assets/scss/global';
+@import './assets/scss/buttons';
 @import './assets/scss/header';
 @import './assets/scss/audio_player';
+
+$glowColors: $neon, $andes, $purple, $blue;
 
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -14,7 +18,6 @@
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
-
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -36,12 +39,17 @@ body {
         justify-items: center;
         align-items: center;
 
+        section {
+            padding: 3rem 0
+        }
+
         .intro {
             display: grid;
             grid: auto / 1fr;
             justify-items: center;
             align-items: center;
             position: relative;
+            padding: 0;
 
             .text, .grid-bg {
                 grid-row: 1;
@@ -104,8 +112,8 @@ body {
         .experience {
             width: 100%;
             max-width: 100%;
-            padding: 2rem;
-            background: $darkestNight;
+            padding: 3rem 2rem;
+            background: $darkerNight;
             display: grid;
             grid: auto / 1fr 1fr;
             grid-column-gap: 2rem;
@@ -113,6 +121,161 @@ body {
             h2 {
                 grid-row: 1;
                 justify-self: center;
+            }
+        }
+
+        .data-driven {
+            width: 100%;
+            min-height: 100vh;
+            padding: 7rem 2rem;
+            background: $darkestNight;
+            display: grid;
+            grid: auto auto auto 1fr/ 1fr 1fr;
+
+            &.hood-open {
+                .quotes {
+                    position: relative;
+
+                    &__quote {
+                        //top: 50%;
+                        transition: all ease-in-out .5s;
+
+                        &:nth-child(1) {
+                            transform: translate(230%, -30%);
+                        }
+                        &:nth-child(2) {
+                            transform: translate(140%, 30%);
+                        }
+                        &:nth-child(3) {
+                            transform: translate(50%, 90%);
+                        }
+                        &:nth-child(4) {
+                            transform: translate(-40%, 140%);
+                        }
+                    }
+                }
+
+                .btn {
+                    transform: translateY(5rem);
+                    transition: transform ease-in-out .5s;
+                }
+            }
+
+            .quotes-engine {
+                opacity: 0;
+                position: relative;
+                transition: all ease-out .2s;
+                grid-column: 1;
+                width: fit-content;
+                justify-self: end;
+                align-self: center;
+                grid-row: 3 /span 1;
+
+                &.show {
+                    opacity: 1;
+                    transition: opacity ease-in-out .5s;
+                }
+
+                pre {
+                    width: 40rem;
+                    white-space: pre-wrap;
+                    background: darken($darkestNight, 3%);
+                    padding: 1rem;
+                    color: white;
+                }
+
+                .crt-lines, .crt-vignette {
+                    opacity: 0.7;
+                    height: auto;
+                    top: 1rem;
+                    bottom: 1rem;
+                    background-size: 3px auto;
+                }
+            }
+
+            h2 {
+                grid-row: 1;
+                grid-column: 1 / -1;
+                justify-self: center;
+                margin: 0;
+                font-size: 3rem;
+                align-self: start;
+            }
+
+            .sub-heading {
+                grid-row: 2;
+                grid-column: 1 / -1;
+                justify-self: center;
+                font-size: 1rem;
+                font-weight: 300;
+                margin-bottom: 2rem;
+            }
+
+            .quotes {
+                display: grid;
+                grid: auto/ repeat(4, 1fr);
+                grid-column: 1 / -1;
+                grid-row: 3;
+                width: fit-content;
+                height: fit-content;
+                justify-items: center;
+                align-items: center;
+                justify-self: center;
+                grid-gap: 2rem;
+                margin: 4rem 0;
+
+                .glow-container {
+                    padding: 1rem;
+                    border-radius: 0.19rem;
+                    width: 20rem;
+                    height: 12rem;
+                    background-color: $darkestNight;
+
+                    @for $i from 1 through length($glowColors) {
+                        &:nth-child(#{$i}) {
+                            border: 3px solid nth($glowColors, $i);
+                            box-shadow: 0 0 .5rem 0 nth($glowColors, $i);
+                            background-image: linear-gradient(45deg, rgba(nth($glowColors, $i), .1), $darkestNight);
+                        }
+                    }
+                }
+
+                &__quote {
+                    display: grid;
+                    grid: auto 1fr / 1fr;
+                    position: relative;
+                    transition: all ease-in-out .3s;
+
+                    &.glow-container {
+                        .crt-lines {
+                            background-size: 6px auto;
+                            opacity: 0;
+                        }
+                        &:hover {
+                            .crt-lines {
+                                opacity: .5;
+                            }
+                        }
+                    }
+
+                    &__text {
+                        font-weight: 600;
+                    }
+
+                    &__author {
+                        font-weight: 700;
+                        align-self: end;
+                    }
+                }
+            }
+
+            .btn {
+                margin-top: 2rem;
+                grid-column: 1 / -1;
+                grid-row: 3;
+                align-self: end;
+                justify-self: center;
+                transition: transform ease-in-out .3s;
             }
         }
     }

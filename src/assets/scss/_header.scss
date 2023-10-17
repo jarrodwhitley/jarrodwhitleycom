@@ -15,6 +15,8 @@ header {
         height: 4rem;
         background: $darkerNight;
         transition: all ease-in-out .5s;
+        box-shadow: 1rem 0 3rem 1rem rgba($darkestNight, .5);
+
 
         .logo {
             width: 3rem;
