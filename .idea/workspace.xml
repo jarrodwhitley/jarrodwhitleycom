@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="experience section">
-      <change afterPath="$PROJECT_DIR$/src/assets/scss/_buttons.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/scss/_mixins.scss" afterDir="false" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="quotes section">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/einstein.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/frost.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/github-copilot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/hill.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/scott.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_footer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_animations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_animations.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/jw-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/jw-logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_buttons.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/scss/_global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_global.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/scss/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_header.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
@@ -55,6 +62,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/jw/Sites/jarrodwhitleycom/src/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,18 +75,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/assets/css" />
       <recent name="$PROJECT_DIR$/src/assets/scss/js" />
       <recent name="$PROJECT_DIR$/src/assets/scss/_partials/_font_awesome" />
-      <recent name="$PROJECT_DIR$/src/assets/scss/_partials" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/assets/fontawesome" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/assets/scss" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/public/css" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -104,7 +112,7 @@
       <workItem from="1696890540406" duration="2538000" />
       <workItem from="1696893263108" duration="28227000" />
       <workItem from="1697494519443" duration="196000" />
-      <workItem from="1697494849402" duration="18931000" />
+      <workItem from="1697494849402" duration="33001000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -148,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697080061877</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="quotes section">
+      <option name="closed" value="true" />
+      <created>1697514891280</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697514891280</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +191,7 @@
     <MESSAGE value="swap to Vue3" />
     <MESSAGE value="play button working" />
     <MESSAGE value="experience section" />
+    <MESSAGE value="quotes section" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
