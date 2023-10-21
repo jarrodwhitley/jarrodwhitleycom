@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="quotes section">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/einstein.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/frost.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/github-copilot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/hill.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/overlay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/scott.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/scss/_footer.scss" afterDir="false" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="quotes section / AI section">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/jw-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/jw-logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_buttons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_footer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/scss/_global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_global.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,9 +40,9 @@
     <scope name="local" pattern="file:src/assets/scss/app.scss&amp;&amp;!file[jarrodwhitleycom]:src/assets/scss/_partials/*" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php/8.2.11/bin/php" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2W7arWGvDnXA50rxCqrcRz1b5t0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -68,7 +60,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.webOptions",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "ts.external.directory.path": "/Applications/PhpStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -112,7 +104,8 @@
       <workItem from="1696890540406" duration="2538000" />
       <workItem from="1696893263108" duration="28227000" />
       <workItem from="1697494519443" duration="196000" />
-      <workItem from="1697494849402" duration="33001000" />
+      <workItem from="1697494849402" duration="35722000" />
+      <workItem from="1697901018130" duration="10765000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -164,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697514891280</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="quotes section / AI section">
+      <option name="closed" value="true" />
+      <created>1697687955986</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697687955986</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +193,11 @@
     <MESSAGE value="play button working" />
     <MESSAGE value="experience section" />
     <MESSAGE value="quotes section" />
+    <MESSAGE value="quotes section / AI section" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

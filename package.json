@@ -9,11 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/components": "^10.5.0",
     "animate.css": "^4.1.1",
     "chart.js": "^3.9.1",
     "chartjs-plugin-deferred": "^2.0.0",
     "vue": "^3.3.4",
-    "vue-chart-3": "^3.1.8"
+    "vue-chart-3": "^3.1.8",
+    "vue-observe-visibility": "^2.0.0-alpha.1",
+    "vue-scroll-snap": "^0.1.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

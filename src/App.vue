@@ -7,7 +7,7 @@
             <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
         </div>
     </header>
-    <div id="content">
+    <section id="content">
         <section class="intro">
             <div class="text">
                 <h1 class="page-title">I don't <span class="glitch" data-text="hack">hack</span>
@@ -29,33 +29,44 @@
         </section>
         <section class="data-driven" v-if="quotes" :class="{ 'hood-open': underHood.quotes }">
             <h2>Data-driven Applications</h2>
-            <div class="sub-heading">using the
-                <a class="link"
+            <div class="sub-heading" v-observe-visibility="dataSectionOptions">using the<a class="link"
                    :class="{ 'glitch': isHovering }"
                    @mouseover="isHovering = true"
                    @mouseleave="isHovering = false"
                    data-text="DummyJSON API"
                    href="https://github.com/Ovi/DummyJSON"
                    target="_blank">DummyJSON API</a></div>
+            <div class="data-tabs">
+                <div class="data-tab" v-for="tab in dataTabs"
+                     :class="{ 'glitch': tab.isHovering, 'active': tab.isActive }"
+                     @mouseover="mouseOverHandler(tab)"
+                     @mouseleave="mouseLeaveHandler(tab)"
+                     @click="changeDataTab(tab)"
+                     :data-text="tab.name"
+                     v-text="tab.name"></div>
+            </div>
             <div class="quotes-engine" :class="{ 'show': underHood.quotes }">
                 <div class="crt-vignette"></div>
                 <div class="crt-lines"></div>
                 <pre v-text="createUnderHoodArray(quotes.slice(1, 4))"></pre>
             </div>
-            <div class="quotes" v-if="quotes">
+            <div class="quotes animate__animated" :class="{ 'animate__fadeInUp': dataSectionIsVisible }"
+                 v-if="quotes">
                 <div class="quotes__quote glow-container">
                     <div class="crt-lines"></div>
                     <div class="quotes__quote__text" v-text="sillyQuote.quote"></div>
                     <div class="quotes__quote__author" v-text="'-' + sillyQuote.author"></div>
                     <img class="quotes__quote__author-image animate__animated" src="/src/assets/images/scott.png"/>
                 </div>
-                <div class="quotes__quote glow-container" v-for="(quote, index) in quotes.slice(1, 4)">
+                <div class="quotes__quote glow-container"
+                     v-for="(quote, index) in quotes.slice(1, 4)">
                     <div class="crt-lines"></div>
                     <div class="quotes__quote__text" v-text="quote.quote"></div>
                     <div class="quotes__quote__author" v-text="'-' + quote.author"></div>
                     <img class="quotes__quote__author-image animate__animated" :src="'/src/assets/images/' + fetchAuthorImage(index)"/>
                 </div>
             </div>
+            <div class="next-btn"></div>
             <div class="btn btn-glow--neon" @click="toggleQuotesHood" v-text="underHood.quotes ? 'Close Hood' : 'See Under the Hood'"></div>
         </section>
         <section class="ai-friendly">
@@ -68,19 +79,19 @@
                    data-text="GitHub Copilot"
                    href="https://github.com/features/copilot"
                    target="_blank">GitHub Copilot</a></div>
-            <div class="section-content">
-                <img class="copilot animate__animated" :class="scrollPos > 2400 ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/github-copilot.png" alt="copilot"/>
+            <div class="section-content" v-observe-visibility="(isVisible, entry) => visibilityChanged(isVisible, entry, 'aiSectionIsVisible')">
+                <img class="copilot animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/github-copilot.png" alt="copilot"/>
                 <div class="text">
-                    <p>I consider myself to be an AI enthusiast.</p>
-                    <p>I've dabbled in AI image generation with services like Midjourney and Adobe's new generative fill. Most of my time has been spent working with Github's new AI-pair programming tool, Copilot. It's certainly a mixed bag in terms of what it does well and not so well, but I have high hopes for Copilot.</p>
-                    <p>Most importantly, I believe the furture of programming will be AI-assisted programming. As these tools get better and better over time they will help software engineers to become more efficient.</p>
+                    <h3>I consider myself to be an AI enthusiast.</h3>
+                    <p>I've dabbled in AI image generation with services like Midjourney and Adobe's new generative fill. I've used ChatGPT to create a JSON schema from a block of HTML data. Most of my time has been spent working with Github's new AI-pair programming tool, Copilot. It's certainly a mixed bag in terms of what it does well and not so well, but I have high hopes for Copilot.</p>
+                    <p>Most importantly, I believe the future of programming will be AI-assisted programming. As these tools get better and better over time they will help software engineers to become more efficient.</p>
                 </div>
             </div>
             <div class="circuit-board"></div>
         </section>
-    </div>
+    </section>
     <footer>
-        <h3>Acknowledgements</h3>
+        <h4>Acknowledgements</h4>
         <span>Circuit board animation by<a href="https://codepen.io/Temmer/full/ExjNJog" target="_blank">Temmer Péter</a></span>
         <span>Synthwave Grid by<a href="https://codepen.io/pierredarrieutort/pen/Vwaoqqe" target="_blank">Pierre Darrieutort</a></span>
         <span>Glitch text by<a href="https://codepen.io/lbebber/pen/nqwBKK" target="_blank">Lucas Bebber</a></span>
@@ -92,8 +103,12 @@
 import AudioPlayer from './components/AudioPlayer.vue';
 import SkillChart from "./components/SkillChart.vue";
 import HobbyChart from "./components/HobbyChart.vue";
+import { ObserveVisibility } from "vue-observe-visibility";
 
 export default {
+    directives: {
+        ObserveVisibility
+    },
     components: {
         AudioPlayer, SkillChart, HobbyChart
     },
@@ -115,11 +130,47 @@ export default {
                 comments: false,
                 quotes: false,
                 products: false
-            }
+            },
+            dataTabs: [
+                {
+                    id: 0,
+                    name: 'Quotes',
+                    isActive: true,
+                    data: 'quotes',
+                    isHovering: false
+                },
+                {
+                    id: 1,
+                    name: 'Comments',
+                    isActive: false,
+                    data: 'comments',
+                    isHovering: false
+                },
+                {
+                    id: 2,
+                    name: 'Users',
+                    isActive: false,
+                    data: 'users',
+                    isHovering: false
+                },
+                {
+                    id: 3,
+                    name: 'Products',
+                    isActive: false,
+                    data: 'products',
+                    isHovering: false
+                }
+            ],
+            dataSectionOptions: {
+                callback: (isVisible, entry) => this.visibilityChanged(isVisible, entry, 'dataSectionIsVisible'),
+                once: true,
+            },
+            dataSectionIsVisible: false,
+            aiSectionIsVisible: false,
+            scrolling: false,
         }
     },
-    mounted() {
-        window.addEventListener('scroll', this.handleScroll);
+    created() {
         fetch('https://dummyjson.com/products')
         .then(res => res.json())
         .then(json => this.products = json.products);
@@ -133,10 +184,24 @@ export default {
         .then(res => res.json())
         .then(json => this.quotes = json.quotes);
     },
+    mounted() {
+        window.addEventListener('scroll', this.handleScroll);
+    },
     beforeDestroy() {
         window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
+        mouseOverHandler(tab) {
+            if (tab.isActive) return;
+            this.dataTabs.forEach(t => t.isHovering = false);
+            tab.isHovering = true;
+        },
+        mouseLeaveHandler(tab) {
+            tab.isHovering = false;
+        },
+        visibilityChanged(isVisible, entry, id) {
+            this[id] = isVisible;
+        },
         createUnderHoodArray(array) {
             return JSON.stringify([this.sillyQuote, ...array], null, 2);
         },
@@ -154,9 +219,14 @@ export default {
         },
         handleScroll(event) {
             this.scrollPos = window.scrollY;
+            this.scrolling = this.scrollPos > 10;
         },
         toggleQuotesHood() {
             this.underHood.quotes= !this.underHood.quotes;
+        },
+        changeDataTab(tab) {
+            this.dataTabs.forEach(t => t.isActive = false);
+            tab.isActive = true;
         }
     },
 
