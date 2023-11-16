@@ -24,9 +24,13 @@ header {
     }
 
     .logo {
-        width: 5rem;
+        width: 3rem;
         height: auto;
         justify-self: start;
+
+        @include breakpoint(lg) {
+            width: 5rem;
+        }
     }
 
     .links {

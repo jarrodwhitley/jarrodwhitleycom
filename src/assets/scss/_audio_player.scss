@@ -3,7 +3,7 @@
     bottom: 1rem;
     right: 2rem;
     background-color: $darkerNight;
-    display: grid;
+    display: none;
     grid: auto / auto auto 1fr;
     align-items: center;
     justify-items: center;
@@ -15,6 +15,10 @@
     border: .2rem solid $purple;
     z-index: 5;
     transition: all 0s;
+
+    @include breakpoint(md) {
+        display: grid;
+    }
 
     &.playing {
         animation: glowPulse 2s infinite;
