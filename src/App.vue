@@ -5,9 +5,10 @@
             <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-vuejs"></i></a>
             <a class="disabled" href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i>></a>
         </div>
     </header>
-    <section id="content">
+    <section id="content" :class="{ 'no-animations': isLoading }">
         <section class="intro">
             <div class="text">
                 <h1 class="page-title">I don't <span class="glitch" data-text="hack">hack</span>
@@ -38,6 +39,7 @@
 <!--                   target="_blank">DummyJSON API</a></div>-->
             <div class="data-tabs" v-observe-visibility="dataSectionOptions">
                 <div class="data-tab" v-for="tab in dataTabs"
+                     :id="tab.data"
                      :class="{ 'glitch': tab.isHovering, 'active': tab.isActive }"
                      @mouseover="mouseOverHandler(tab)"
                      @mouseleave="mouseLeaveHandler(tab)"
@@ -45,7 +47,65 @@
                      :data-text="tab.name"
                      v-text="tab.name"></div>
             </div>
-            <div class="chat carousel-item animate__animated" :class="dataCarouselClasses('Chat')">
+            <div class="birdle carousel-item animate__animated" :class="dataCarouselClasses('birdle')">
+                <div id="birdleApp" @click="birdleFocus">
+                    <div class="birdle-grid animate__animated" :class="{ 'fade': birdle.modal.show }">
+                        <div class="attempt row animate__animated"
+                             :class="{ 'animate__heartBeat': attempt === birdle.bird }"
+                             v-for="(attempt, index) in birdle.attempts"
+                             :key="index">
+                            <div class="letter"
+                                 :class="letterCheck(letter, index)"
+                                 v-for="(letter, index) in attempt.split('')"
+                                 :key="index"
+                                 v-text="letter"></div>
+                        </div>
+                        <div class="guess row" v-if="remainingGuesses">
+                            <div class="guess letter animate__animated animate__faster"
+                                 :class="{ 'animate__pulse': letter }"
+                                 v-for="(letter, index) in guessLettersArray" v-text="letter"></div>
+                        </div>
+                        <div class="empty row"
+                             v-if="remainingGuesses"
+                             v-for="guess in (remainingGuesses - 1)">
+                            <div class="empty letter" v-for="letter in 5"></div>
+                        </div>
+                    </div>
+                    <div class="birdle-modal animate__animated" :class="this.birdle.modal.show ? 'animate__bounceIn' : 'animate__bounceOut'">
+                        <div class="birdle-modal__container" >
+                            <div class="birdle-modal__title" v-text="modalHeading"></div>
+                            <div class="birdle-modal__content" v-text="modalContent"></div>
+                            <div v-if="birdle.gameWon" class="share-link-btn" :class="{ 'copied': birdle.linkCopied }" @click="copyShareLink" v-text="birdle.linkCopied ? 'Link Copied!' : 'Copy Share Link'"></div>
+                            <em v-if="birdle.gameLost">The answer was "{{ birdle.bird }}"</em>
+                        </div>
+                        <div class="modal-close" @click="closeBirdleModal">
+                            <i class="fa-solid fa-times"></i>
+                        </div>
+                    </div>
+                    <div class="legend-row">
+                        <div class="legend-item">
+                            <div class="legend-item__color correct-position"></div>
+                            <div class="legend-item__text">Correct Position</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-item__color correct-letter"></div>
+                            <div class="legend-item__text">Correct Letter</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-item__color wrong-letter"></div>
+                            <div class="legend-item__text">Wrong Letter</div>
+                        </div>
+                    </div>
+                    <div class="input" v-if="!birdle.gameOver" onkeydown="return /[a-z]/i.test(event.key)">
+                        <input v-model="birdle.guess" ref="birdleInput" maxlength="5" type="text" @keydown.enter.prevent="enterPress"/>
+                        <button @click="checkWord">Submit</button>
+                    </div>
+                    <div class="restart button" v-if="birdle.gameOver">
+                        <div @click="birdleReset">Play Again</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat carousel-item animate__animated" :class="dataCarouselClasses('chat')">
                 <div class="chat-container">
                     <div class="chat-container__header">
                         <div class="chat-container__header__avatar">
@@ -69,7 +129,7 @@
                             <div class="chat-container__body__message__text" v-text="chat.message"></div>
                         </div>
                     </div>
-                    <svg class="chat-container__loading-dots animate__animated" :class="botThinking ? 'animate__fadeIn' : 'animate__fadeOut'" id="dots" width="4rem" height="1rem" viewBox="0 0 132 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                    <svg class="chat-container__loading-dots animate__animated" :class="botThinking ? 'animate__fadeIn' : 'animate__fadeOut'" id="dots" width="4rem" height="1rem" viewBox="0 0 132 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
                             <g id="dots" sketch:type="MSArtboardGroup" fill="#A3A3A3">
                                 <circle id="dot1" sketch:type="MSShapeGroup" cx="25" cy="30" r="13"></circle>
@@ -84,58 +144,9 @@
                     </div>
                 </div>
             </div>
-            <div class="birdle carousel-item animate__animated" :class="dataCarouselClasses('Birdle')">
-                <div id="birdleApp" @click="birdleFocus">
-                    <div class="birdle-grid animate__animated" :class="birdle.gameLost ? 'animate__hinge' : 'animate__fadeIn'">
-                        <div class="attempt row" v-for="(attempt, index) in birdle.attempts" :key="index">
-                            <div class="letter" :class="letterCheck(letter, index)" v-for="(letter, index) in attempt.split('')" :key="index" v-text="letter"></div>
-                        </div>
-                        <div class="guess row" v-if="remainingGuesses">
-                            <div class="guess letter" v-for="(letter, index) in guessLettersArray" v-text="letter"></div>
-                        </div>
-                        <div class="empty row" v-if="remainingGuesses" v-for="guess in (remainingGuesses - 1)">
-                            <div class="empty letter" v-for="letter in 5"></div>
-                        </div>
-                    </div>
-                    <div class="legend-row">
-                        <div class="legend-item">
-                            <div class="legend-item__color correct-position"></div>
-                            <div class="legend-item__text">Correct Position</div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-item__color correct-letter"></div>
-                            <div class="legend-item__text">Correct Letter</div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-item__color wrong-letter"></div>
-                            <div class="legend-item__text">Wrong Letter</div>
-                        </div>
-                    </div>
-                    <div class="input" v-if="!birdle.gameOver" onkeydown="return /[a-z]/i.test(event.key)">
-                        <input v-model="birdle.guess" ref="birdleInput" maxlength="5" type="text" @keyup.enter="makeGuess"/>
-                        <button @click="makeGuess">Submit</button>
-                    </div>
-                    <div class="restart button" v-if="birdle.gameOver">
-                        <div @click="birdleReset">Play Again</div>
-                    </div>
-                </div>
+            <div class="bamazon carousel-item animate__animated" :class="dataCarouselClasses('bamazon')">
+
             </div>
-            <div class="quotes carousel-item animate__animated" :class="dataCarouselClasses('Quotes')" v-if="quotes">
-                <div class="quotes__quote glow-container">
-                    <div class="crt-lines"></div>
-                    <div class="quotes__quote__text" v-text="sillyQuote.quote"></div>
-                    <div class="quotes__quote__author" v-text="'-' + sillyQuote.author"></div>
-                    <img class="quotes__quote__author-image animate__animated" src="/src/assets/images/scott.png"/>
-                </div>
-                <div class="quotes__quote glow-container"
-                     v-for="(quote, index) in quotes.slice(1, 4)">
-                    <div class="crt-lines"></div>
-                    <div class="quotes__quote__text" v-text="quote.quote"></div>
-                    <div class="quotes__quote__author" v-text="'-' + quote.author"></div>
-                    <img class="quotes__quote__author-image animate__animated" :src="'/src/assets/images/' + fetchAuthorImage(index)" alt=""/>
-                </div>
-            </div>
-            <div class="products carousel-item animate__animated" :class="dataCarouselClasses('Products')">lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </div>
             <div class="next-btn"></div>
 <!--            <div class="btn btn-glow&#45;&#45;neon" @click="toggleQuotesHood" v-text="hoodOpen ? 'Close Hood' : 'See Under the Hood'"></div>-->
         </section>
@@ -150,9 +161,13 @@
                    href="https://github.com/features/copilot"
                    target="_blank">GitHub Copilot</a></div>
             <div class="section-content" v-observe-visibility="(isVisible, entry) => visibilityChanged(isVisible, entry, 'aiSectionIsVisible')">
-                <img class="copilot animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/github-copilot.png" alt="copilot"/>
+                <div class="icons">
+                    <img class="copilot animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/github-copilot.png" alt="copilot"/>
+                    <img class="chatgpt animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/chatgpt.jpg" alt="chatgpt"/>
+                    <img class="midjourney animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/midjourney.png" alt="midjourney"/>
+                </div>
                 <div class="text">
-                    <h3>I consider myself to be an AI enthusiast.</h3>
+                    <h3>I consider myself to be an AI enthusiast</h3>
                     <p>I've dabbled in AI image generation with services like Midjourney and Adobe's new generative fill. I've used ChatGPT to create a JSON schema from a block of HTML data. Most of my time has been spent working with Github's new AI-pair programming tool, Copilot. It's certainly a mixed bag in terms of what it does well and not so well, but I have high hopes for Copilot.</p>
                     <p>Most importantly, I believe the future of programming will be AI-assisted programming. As these tools get better and better over time they will help software engineers to become more efficient.</p>
                 </div>
@@ -184,6 +199,7 @@ export default {
     },
     data() {
         return {
+            isLoading: true,
             isHovering: false,
             scrollPos: 0,
             quotes: undefined,
@@ -227,30 +243,23 @@ export default {
             dataTabs: [
                 {
                     id: 0,
-                    name: 'Chat',
-                    isActive: false,
-                    data: 'chat',
-                    isHovering: false
-                },
-                {
-                    id: 1,
                     name: 'Birdle',
-                    isActive: true,
+                    isActive: false,
                     data: 'birdle',
                     isHovering: false
                 },
                 {
-                    id: 2,
-                    name: 'Quotes',
-                    isActive: false,
-                    data: 'quotes',
+                    id: 1,
+                    name: '8 Ball Chat',
+                    isActive: true,
+                    data: 'chat',
                     isHovering: false
                 },
                 {
-                    id: 3,
-                    name: 'Products',
+                    id: 2,
+                    name: 'BAMazon',
                     isActive: false,
-                    data: 'products',
+                    data: 'bamazon',
                     isHovering: false
                 }
             ],
@@ -263,17 +272,29 @@ export default {
             scrolling: false,
             birdle: {
                 bird: '',
-                wordBank: ['heron','eagle', 'finch', 'robin'],
+                wordBank: ['heron', 'eagle', 'finch', 'robin', 'crane', 'goose', 'swift'],
                 guess: "",
                 attempts: [],
-                gameWon: false,
+                modal: {
+                    show: false,
+                    notAWord: false,
+                    guessRepeat: false,
+                    minLetters: false,
+                    gameOver: false,
+                    gameLost: false,
+                    gameWon: false,
+                },
+                linkCopied: false,
             },
+            bamazon: {
+                products: [],
+            }
         }
     },
     created() {
         fetch('https://dummyjson.com/products')
         .then(res => res.json())
-        .then(json => this.products = json.products);
+        .then(json => this.bamazon.products = json.products);
         fetch('https://dummyjson.com/users')
         .then(res => res.json())
         .then(json => this.users = json.users);
@@ -285,10 +306,16 @@ export default {
         .then(json => this.quotes = json.quotes);
     },
     mounted() {
+        window.addEventListener('load', () => {
+            this.isLoading = false;
+        });
         window.addEventListener('scroll', this.handleScroll);
-        document.addEventListener('keypress', (event) => {
+        document.addEventListener('keydown', (event) => {
             if (event.keyCode === 13 && this.$refs.chatInput === document.activeElement ) {
                 this.createUserMessage();
+            }
+            if (this.birdle.modal.show) {
+                this.closeBirdleModal();
             }
         });
         this.birdle.bird = this.birdle.wordBank[Math.floor(Math.random() * this.birdle.wordBank.length)];
@@ -297,8 +324,39 @@ export default {
         window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
+        copyShareLink() {
+            navigator.clipboard.writeText('Check out this strangely niche and much worse version of Wordle! ' + window.location.href);
+            this.birdle.linkCopied = true;
+        },
+        checkWord() {
+            let guess = this.birdle.guess;
+            this.axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`)
+            .then(response => {
+                if (response.data[0].word === guess) this.makeGuess(guess);
+            }).catch(error => {
+                this.birdle.modal.notAWord = true;
+                this.birdle.modal.show = true;
+            });
+        },
+        enterPress() {
+            if (!this.birdle.modal.show) {
+                this.checkWord();
+            } else {
+                this.closeBirdleModal();
+                return false;
+            }
+        },
+        closeBirdleModal() {
+            this.birdle.modal.show = false;
+            setTimeout(() => {
+                this.birdle.modal.show = false;
+                this.birdle.modal.notAWord = false;
+                this.birdle.modal.guessRepeat = false;
+                this.birdle.modal.minLetters = false;
+            }, 1000);
+        },
         birdleFocus() {
-            this.$refs.birdleInput.focus();
+            if (!this.birdle.gameOver) this.$refs.birdleInput.focus();
         },
         letterCheck(letter, index) {
             if (letter === this.birdle.bird[index]) {
@@ -312,42 +370,56 @@ export default {
         makeGuess() {
             // Make sure the user has entered a 5-letter word
             if (this.birdle.guess.length !== 5) {
-                alert("You must guess a 5 letter word!");
+                this.birdle.modal.minLetters = true;
+                this.birdle.modal.show = true;
                 return;
             }
             // Make sure the user hasn't already guessed this word
             if (this.birdle.attempts.includes(this.birdle.guess)) {
-                alert("You've already guessed that word!");
+                this.birdle.modal.guessRepeat = true;
+                this.birdle.modal.show = true;
                 return;
             }
             // Add the guess to the attempts array
             this.birdle.attempts.push(this.birdle.guess);
             // Check if the user has won, lost, or still playing
             if (this.birdle.guess === this.birdle.bird) {
+                this.birdle.gameWon = true;
                 this.birdle.gameOver = true;
+                this.birdle.modal.show = true;
             } else if (this.remainingGuesses === 0) {
+                this.birdle.gameLost = true;
                 this.birdle.gameOver = true;
-            } else {
-                console.log('guess again');
+                this.birdle.modal.show = true;
             }
             this.birdle.guess = "";
         },
         birdleReset() {
-            this.birdle.bird = this.birdle.wordBank[Math.floor(Math.random() * this.birdle.wordBank.length)];
+            // Reset the game but don't use the same word twice in a row
+            let newWord = this.birdle.wordBank[Math.floor(Math.random() * this.birdle.wordBank.length)];
+            console.log('currentWord', this.birdle.bird);
+            console.log('newWord', newWord);
+            while (newWord === this.birdle.bird) {
+                newWord = this.birdle.wordBank[Math.floor(Math.random() * this.birdle.wordBank.length)];
+            }
+            this.birdle.bird = newWord;
             this.birdle.guess = "";
             this.birdle.attempts = [];
             this.birdle.gameOver = false;
-            this.birdle.gameLost = false;
             this.birdle.gameWon = false;
+            this.birdle.gameLost = false;
+            this.birdle.linkCopied = false;
         },
-        dataCarouselClasses(name) {
-            let classArray = [];
-            if (this.dataTabs.find(t => t.isActive).name === name || (this.dataSectionIsVisible && this.dataTabs.find(t => t.isActive).name === name)) {
-                classArray.push('animate__fadeIn');
-            }if (this.dataTabs.find(t => t.isActive).name !== name) {
-                classArray.push('animate__fadeOut animate__faster');
+        dataCarouselClasses(data) {
+            if (!this.isLoading) {
+                let classArray = [];
+                if (this.dataTabs.find(t => t.isActive).data === data) {
+                    classArray.push('animate__fadeIn');
+                } else {
+                    classArray.push('animate__fadeOut animate__faster');
+                }
+                return classArray;
             }
-            return classArray;
         },
         mouseOverHandler(tab) {
             if (tab.isActive) return;
@@ -413,15 +485,59 @@ export default {
         },
     },
     computed: {
+        activeDataTab() {
+            return this.dataTabs.find(t => t.isActive);
+        },
         guessLettersArray() {
             if (this.remainingGuesses > 0) return this.birdle.guess.split('').concat(Array(5 - this.birdle.guess.length).fill(''));
         },
         remainingGuesses() {
             return 5 - this.birdle.attempts.length;
         },
-        birdleGameWon() {
-            return this.birdle.attempts.length === 5 || this.birdle.gameWon;
+        modalHeading() {
+            if (this.birdle.modal.guessRepeat) {
+                return 'Oops!';
+            } else if (this.birdle.modal.notAWord) {
+                return 'Sorry!';
+            } else if (this.birdle.modal.minLetters) {
+                return 'Keep Typing!';
+            } else if (this.birdle.gameLost) {
+                return 'You lost!!';
+            } else if (this.birdle.gameWon && this.remainingGuesses === 4) {
+                return 'You...won?';
+            } else if (this.birdle.gameWon) {
+                return 'You won!!';
+            } else {
+                return 'Keep Typing!';
+            }
+        },
+        modalContent() {
+            if (this.birdle.modal.guessRepeat) {
+                return 'You\'ve already tried that word';
+            } else if (this.birdle.modal.notAWord) {
+                return 'That\'s not a word';
+            } else if (this.birdle.modal.minLetters) {
+                return 'Your guess must be a five letter word!';
+            } else if (this.birdle.gameLost) {
+                return 'Tip: Try harder!';
+            } else if (this.birdle.gameWon && this.remainingGuesses === 4) {
+                return 'Wow, first try! Did you cheat? Tell your friends about your amazing luck!';
+            } else if (this.birdle.gameWon) {
+                return 'Be sure to brag to your friends!';
+            } else {
+                return '';
+            }
         }
+    },
+    watch: {
+        // if this.birdle.linkCopied is true, set it to false after 5 seconds
+        // 'birdle.linkCopied': function (val) {
+        //     if (val) {
+        //         setTimeout(() => {
+        //             this.birdle.linkCopied = false;
+        //         }, 2000);
+        //     }
+        // }
     }
 }
 </script>
