@@ -5,7 +5,7 @@
             <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-vuejs"></i></a>
             <a class="disabled" href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i>></a>
+            <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
         </div>
     </header>
     <section id="content" :class="{ 'no-animations': isLoading }">
@@ -144,9 +144,13 @@
                     </div>
                 </div>
             </div>
-            <div class="bamazon carousel-item animate__animated" :class="dataCarouselClasses('bamazon')">
+<!--            <div class="bamazon carousel-item animate__animated" :class="bamazon.show ? 'fadeInUp' : 'fadeOutDown'">-->
+<!--            <div class="bamazon__header">-->
+<!--                <img class="logo" src="/src/assets/images/bamazon.png" alt="bamazon"/>-->
+<!--                <i class="fas fa-times" @click="closeBamazon"></i>-->
+<!--            </div>-->
 
-            </div>
+<!--            </div>-->
             <div class="next-btn"></div>
 <!--            <div class="btn btn-glow&#45;&#45;neon" @click="toggleQuotesHood" v-text="hoodOpen ? 'Close Hood' : 'See Under the Hood'"></div>-->
         </section>
@@ -244,14 +248,14 @@ export default {
                 {
                     id: 0,
                     name: 'Birdle',
-                    isActive: false,
+                    isActive: true,
                     data: 'birdle',
                     isHovering: false
                 },
                 {
                     id: 1,
                     name: '8 Ball Chat',
-                    isActive: true,
+                    isActive: false,
                     data: 'chat',
                     isHovering: false
                 },
@@ -287,6 +291,7 @@ export default {
                 linkCopied: false,
             },
             bamazon: {
+                show: false,
                 products: [],
             }
         }
@@ -483,6 +488,10 @@ export default {
             }, 2000);
 
         },
+        closeBamazon() {
+            console.log('closing bamazon');
+            this.bamazon.show = false;
+        }
     },
     computed: {
         activeDataTab() {
@@ -540,4 +549,10 @@ export default {
         // }
     }
 }
+// on keypress if key is "s" alert("s")
+document.addEventListener('keydown', (event) => {
+    if (event.keyCode === 83) {
+        alert('s');
+    }
+});
 </script>
