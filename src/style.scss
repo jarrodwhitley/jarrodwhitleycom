@@ -58,6 +58,29 @@ input {
             transition: none !important;
         }
 
+        .card-grid {
+            .card {
+                background-color: $darkNight;
+                padding: 10px;
+                border-radius: 5px;
+                .card__item {
+                    display: grid;
+                    grid: auto / 30px 1fr;
+                    grid-gap: 10px;
+                    align-items: center;
+                    justify-items: center;
+                    margin-top: 10px;
+                
+                    i {
+                        font-size: 30px;
+                    }
+                    span {
+                        justify-self: start;
+                    }
+                }
+            }
+        }
+
         section {
             padding: 3rem 0;
             width: 100%;
