@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="fixed app.vue">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SkillChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillChart.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Options API Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="967c8de1c5464d9d42a96db3e500000dd8f85e93" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jarrodwhitley&quot;
+  }
+}</component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1730838086" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jarrodwhitley/jarrodwhitleycom&quot;,
+    &quot;accountId&quot;: &quot;afb5c5e4-d920-4bb5-a126-ee5c712460db&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="local" pattern="file:src/assets/scss/app.scss&amp;&amp;!file[jarrodwhitleycom]:src/assets/scss/_partials/*" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php/8.2.11/bin/php" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2W7arWGvDnXA50rxCqrcRz1b5t0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ToolWindowGit.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jw/Sites/jarrodwhitleycom/src/assets/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/PhpStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Options API Component&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/images" />
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src/assets/css" />
+      <recent name="$PROJECT_DIR$/src/assets/scss/js" />
+      <recent name="$PROJECT_DIR$/src/assets/scss/_partials/_font_awesome" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/images" />
+      <recent name="$PROJECT_DIR$/src/assets/fontawesome" />
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/assets/scss" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PS-241.18034.69" />
+        <option value="bundled-php-predefined-ba97393d7c68-48a1a656d44e-com.jetbrains.php.sharedIndexes-PS-241.18034.69" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="" />
+      <created>1696086272264</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696086272264</updated>
+      <workItem from="1696086273563" duration="149000" />
+      <workItem from="1696087170671" duration="105000" />
+      <workItem from="1696087776602" duration="29580000" />
+      <workItem from="1696888843575" duration="248000" />
+      <workItem from="1696889102598" duration="33000" />
+      <workItem from="1696889146949" duration="15000" />
+      <workItem from="1696889176550" duration="691000" />
+      <workItem from="1696890049617" duration="30000" />
+      <workItem from="1696890092064" duration="34000" />
+      <workItem from="1696890140817" duration="58000" />
+      <workItem from="1696890216145" duration="129000" />
+      <workItem from="1696890358780" duration="131000" />
+      <workItem from="1696890540406" duration="2538000" />
+      <workItem from="1696893263108" duration="28227000" />
+      <workItem from="1697494519443" duration="196000" />
+      <workItem from="1697494849402" duration="35722000" />
+      <workItem from="1697901018130" duration="11543000" />
+      <workItem from="1698096119762" duration="723000" />
+      <workItem from="1698096932351" duration="14776000" />
+      <workItem from="1698278755356" duration="17000" />
+      <workItem from="1698278785148" duration="1936000" />
+      <workItem from="1698709551110" duration="11963000" />
+      <workItem from="1698884494035" duration="4863000" />
+      <workItem from="1699312913392" duration="10073000" />
+      <workItem from="1700093438414" duration="220000" />
+      <workItem from="1700093669558" duration="10547000" />
+      <workItem from="1700189148176" duration="125000" />
+      <workItem from="1700277574327" duration="41000" />
+      <workItem from="1700277623554" duration="11442000" />
+      <workItem from="1700496925963" duration="18905000" />
+      <workItem from="1701734014153" duration="105000" />
+      <workItem from="1701734144163" duration="14069000" />
+      <workItem from="1706307495112" duration="465000" />
+      <workItem from="1730918356290" duration="599000" />
+      <workItem from="1730994074912" duration="598000" />
+      <workItem from="1730999356948" duration="2456000" />
+    </task>
+    <task id="LOCAL-00001" summary="another text commit">
+      <created>1696087890002</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696087890003</updated>
+    </task>
+    <task id="LOCAL-00002" summary="another text commit">
+      <created>1696088022084</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696088022084</updated>
+    </task>
+    <task id="LOCAL-00003" summary="another text commit">
+      <created>1696088088099</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696088088099</updated>
+    </task>
+    <task id="LOCAL-00004" summary="swap to Vue3">
+      <created>1696907345208</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696907345208</updated>
+    </task>
+    <task id="LOCAL-00005" summary="play button working">
+      <created>1696908642371</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696908642371</updated>
+    </task>
+    <task id="LOCAL-00006" summary="experience section">
+      <created>1697080061877</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1697080061877</updated>
+    </task>
+    <task id="LOCAL-00007" summary="quotes section">
+      <option name="closed" value="true" />
+      <created>1697514891280</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697514891280</updated>
+    </task>
+    <task id="LOCAL-00008" summary="quotes section / AI section">
+      <option name="closed" value="true" />
+      <created>1697687955986</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697687955986</updated>
+    </task>
+    <task id="LOCAL-00009" summary="data section">
+      <option name="closed" value="true" />
+      <created>1697911967216</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1697911967216</updated>
+    </task>
+    <task id="LOCAL-00010" summary="birdle app working">
+      <option name="closed" value="true" />
+      <created>1700104570881</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700104570881</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixed data tabs">
+      <option name="closed" value="true" />
+      <created>1701822434093</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701822434093</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fixed app.vue">
+      <option name="closed" value="true" />
+      <created>1730838115921</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1730838115921</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/jarrodwhitleycom" />
+      <path value="$PROJECT_DIR$/nuxt-app" />
+    </ignored-roots>
+    <MESSAGE value="another text commit" />
+    <MESSAGE value="swap to Vue3" />
+    <MESSAGE value="play button working" />
+    <MESSAGE value="experience section" />
+    <MESSAGE value="quotes section" />
+    <MESSAGE value="quotes section / AI section" />
+    <MESSAGE value="data section" />
+    <MESSAGE value="birdle app working" />
+    <MESSAGE value="error modals" />
+    <MESSAGE value="fixed data tabs" />
+    <MESSAGE value="fixed app.vue" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
