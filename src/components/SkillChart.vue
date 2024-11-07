@@ -17,11 +17,11 @@ export default {
     data() {
         return {
             chartData: {
-                labels: ['HTML5', 'CSS3', 'SCSS', 'JS', 'jQuery', 'Vue', 'React', 'Nuxt', 'PHP'],
+                labels: ['Vue', 'JS', 'SCSS', 'jQuery', 'Nativescript-vue', 'React', 'Adobe XD'],
                 datasets: [
                     {
-                        data: [100, 90, 50, 70, 90, 80, 10, 5, 20],
-                        backgroundColor: ['#3A3A59', '#401e45', '#642F6C', '#58A7AF', '#71DBD4', '#C724B1'],
+                        data: [100, 90, 50, 70, 90, 50, 60],
+                        backgroundColor: ['#71DBD4', '#C724B1', '#3A3A59', '#58A7AF', '#401e45', '#642F6C'],
                     },
                 ]
             },

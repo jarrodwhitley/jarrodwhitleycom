@@ -2,10 +2,10 @@
     <header :class="{'fill': scrolling}">
         <img class="logo" width="80" src="/src/assets/images/jw-logo.svg" alt="logo"/>
         <div class="links">
-            <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-vuejs"></i></a>
-            <a class="disabled" href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-react"></i></a>
+            <a href="https://linkedin.com/jarrodwhitley" title="Display page in Vue"><i class="fa-brands fa-vuejs"></i></a>
+            <a class="disabled" href="https://linkedin.com/jarrodwhitley" title="Display page in React"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i>></a>
+            <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
         </div>
     </header>
     <section id="content" :class="{ 'no-animations': isLoading }">
@@ -244,14 +244,14 @@ export default {
                 {
                     id: 0,
                     name: 'Birdle',
-                    isActive: false,
+                    isActive: true,
                     data: 'birdle',
                     isHovering: false
                 },
                 {
                     id: 1,
                     name: '8 Ball Chat',
-                    isActive: true,
+                    isActive: false,
                     data: 'chat',
                     isHovering: false
                 },

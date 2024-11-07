@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="fixed data tabs">
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="fixed app.vue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SkillChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillChart.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +28,19 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="967c8de1c5464d9d42a96db3e500000dd8f85e93" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jarrodwhitley&quot;
+  }
+}</component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -38,7 +51,32 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1730838086" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jarrodwhitley/jarrodwhitleycom&quot;,
+    &quot;accountId&quot;: &quot;afb5c5e4-d920-4bb5-a126-ee5c712460db&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -69,7 +107,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/PhpStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/PhpStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -93,6 +131,14 @@
       <recent name="$PROJECT_DIR$/src/assets/scss" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PS-241.18034.69" />
+        <option value="bundled-php-predefined-ba97393d7c68-48a1a656d44e-com.jetbrains.php.sharedIndexes-PS-241.18034.69" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -135,6 +181,9 @@
       <workItem from="1701734014153" duration="105000" />
       <workItem from="1701734144163" duration="14069000" />
       <workItem from="1706307495112" duration="465000" />
+      <workItem from="1730918356290" duration="599000" />
+      <workItem from="1730994074912" duration="598000" />
+      <workItem from="1730999356948" duration="2456000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -218,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701822434093</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fixed app.vue">
+      <option name="closed" value="true" />
+      <created>1730838115921</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1730838115921</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +308,7 @@
     <MESSAGE value="birdle app working" />
     <MESSAGE value="error modals" />
     <MESSAGE value="fixed data tabs" />
+    <MESSAGE value="fixed app.vue" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
