@@ -1,26 +1,38 @@
 <template>
-    <header :class="{'fill': scrolling}">
+    <header :class="[{'fill': scrolling}, {'professional-mode': !radMode}]">
         <img class="logo" width="80" src="/src/assets/images/jw-logo.svg" alt="logo"/>
         <div class="links">
-            <a href="https://linkedin.com/jarrodwhitley" title="Display page in Vue"><i class="fa-brands fa-vuejs"></i></a>
-            <a class="disabled" href="https://linkedin.com/jarrodwhitley" title="Display page in React"><i class="fa-brands fa-react"></i></a>
+            <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio"><i class="fa-solid fa-palette"></i></a>
+            <span class="divider">|</span>
+            <a title="Display page in Vue"><i class="fa-brands fa-vuejs"></i></a>
+            <a class="disabled" href="#" title="Display page in React (Under Construction)"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
+<!--            <span class="divider">|</span>-->
+<!--            <a class="mode&#45;&#45;fun" title="Rad Mode!" v-if="!radMode" @click="toggleRadMode">-->
+<!--                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="" height="40px" width="40px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve">-->
+<!--                <g>-->
+<!--                        <path d="M483.983,167.477c-32.82-35.047-84-35.047-108.599-35.047c-0.02,0-0.042,0-0.062,0H136.619c-0.001,0-0.002,0-0.003,0    c-24.596,0-75.776,0-108.596,35.047c-21.01,22.435-30.28,54.841-27.555,96.319c2.226,33.874,14.411,62.702,35.241,83.37    c21.364,21.199,50.394,32.405,83.95,32.405c34.529,0,69.87-17.448,99.513-49.13c15.052-16.088,27.626-34.818,36.831-54.048    c9.205,19.231,21.779,37.96,36.831,54.048c29.643,31.682,64.984,49.13,99.513,49.13c33.555,0,62.586-11.205,83.95-32.405    c20.83-20.668,33.014-49.498,35.241-83.37C514.261,222.317,504.992,189.912,483.983,167.477z M136.619,165.822    c12.154,0,43.181,0.904,68.747,9.271c8.192,2.681,14.924,5.807,20.185,9.36H58.757C82.135,165.833,117.06,165.822,136.619,165.822    z M119.657,346.179c-21.066,0-39.426-5.797-53.677-16.822h103.571C153.195,340.335,136.107,346.179,119.657,346.179z     M204.766,295.965H41.292c-2.78-6.898-4.828-14.383-6.128-22.365h184.662C215.405,281.307,210.351,288.843,204.766,295.965z     M234.567,240.208H33.722c0.542-8.14,1.791-15.594,3.724-22.365h201.789C238.546,224.953,236.955,232.488,234.567,240.208z     M306.636,175.092c25.566-8.367,56.592-9.271,68.749-9.271c19.555,0,54.48,0.011,77.859,18.63H286.451    C291.711,180.899,298.444,177.774,306.636,175.092z M392.345,346.179c-16.451,0-33.539-5.844-49.894-16.822h103.571    C431.771,340.382,413.411,346.179,392.345,346.179z M470.71,295.965H307.235c-5.585-7.122-10.64-14.658-15.059-22.365h184.662    C475.539,281.582,473.491,289.067,470.71,295.965z M277.435,240.208c-2.389-7.72-3.979-15.256-4.668-22.365h201.789    c1.933,6.771,3.182,14.225,3.724,22.365H277.435z"/>-->
+<!--                    </g>-->
+<!--                </svg>-->
+<!--            </a>-->
+<!--            <a class="mode&#45;&#45;professional" title="Professional Mode" v-else @click="toggleRadMode"><i class="fa-solid fa-user-tie"></i></a>-->
         </div>
     </header>
-    <section id="content" :class="{ 'no-animations': isLoading }">
+    <div id="content" :class="[{ 'no-animations': isLoading }, {'professional-mode': !radMode}]">
         <section class="intro">
             <div class="text">
-                <h1 class="page-title">I don't <span class="glitch" data-text="hack">hack</span>
-                                       mainframes</h1>
-                <p class="page-subtitle">But I do listen to synthwave while building web apps</p>
+                <h1 v-if="radMode" class="page-title">I don't <span class="glitch" data-text="hack">hack</span>mainframes</h1>
+                <h1 v-else class="page-title--pro">Cool things said here</h1>
+                <p v-if="radMode" class="page-subtitle">But I <em>do</em> listen to synthwave while building web apps</p>
+                <p v-else class="page-subtitle--pro">subtitley thing here</p>
             </div>
             <div class="grid-bg">
                 <div class="grid-lines"></div>
             </div>
-            <div class="crt-lines"></div>
-            <div class="crt-darken"></div>
-            <div class="crt-vignette"></div>
+            <div class="crt-lines" v-show="!radTextHide"></div>
+            <div class="crt-darken" v-show="!radTextHide"></div>
+            <div class="crt-vignette" v-show="!radTextHide"></div>
         </section>
         <section class="experience">
             <h2 class="skillset">My Skillset</h2>
@@ -72,7 +84,7 @@
                         </div>
                     </div>
                     <div class="birdle-modal animate__animated" :class="this.birdle.modal.show ? 'animate__bounceIn' : 'animate__bounceOut'">
-                        <div class="birdle-modal__container" >
+                        <div class="birdle-modal__container">
                             <div class="birdle-modal__title" v-text="modalHeading"></div>
                             <div class="birdle-modal__content" v-text="modalContent"></div>
                             <div v-if="birdle.gameWon" class="share-link-btn" :class="{ 'copied': birdle.linkCopied }" @click="copyShareLink" v-text="birdle.linkCopied ? 'Link Copied!' : 'Copy Share Link'"></div>
@@ -174,21 +186,66 @@
             </div>
             <div class="circuit-board"></div>
         </section>
-    </section>
+        <div v-show="showPortfolioModal" id="portfolioModal" class="mos9">
+            <div class="mos9-window">
+                <div class="mos9-window__header">
+                    <div class="mos9-window__tools">
+                        <a href="#" @click="togglePortfolioModal()" class="mos9-window__close mos9-button"></a>
+                    </div>
+                    <div class="mos9-window__title">Mac OS</div>
+                    <div class="mos9-window__tools">
+                        <a href="#" @click="togglePortfolioModal()" class="mos9-window__tool--1 mos9-button"></a>
+                        <a href="#" @click="togglePortfolioModal()" class="mos9-window__tool--2 mos9-button"></a>
+                    </div>
+                </div>
+                <div class="mos9-window__content">
+                    <h2>UI/UX Portfolio Coming Soon!</h2>
+                    <div class="mos9-window__content__img-container">
+                        <img src="/src/assets/images/no-image-icon.png" alt="Coming Soon"/>
+                    </div>
+                    <div class="mos9-window__content__img-container">
+                        <img src="/src/assets/images/no-image-icon.png" alt="Coming Soon"/>
+                    </div>
+                    <div class="mos9-window__content__img-container">
+                        <img src="/src/assets/images/no-image-icon.png" alt="Coming Soon"/>
+                    </div>
+                    <div class="mos9-window__content__img-container">
+                        <img src="/src/assets/images/no-image-icon.png" alt="Coming Soon"/>
+                    </div>
+                    <div class="mos9-window__content__img-container">
+                        <img src="/src/assets/images/no-image-icon.png" alt="Coming Soon"/>
+                    </div>
+                    <div class="mos9-window__content__img-container">
+                        <img src="/src/assets/images/no-image-icon.png" alt="Coming Soon"/>
+                    </div>
+                    <div class="mos9-window__content__img-container">
+                        <img src="/src/assets/images/no-image-icon.png" alt="Coming Soon"/>
+                    </div>
+                    <div class="mos9-window__content__img-container">
+                        <img src="/src/assets/images/no-image-icon.png" alt="Coming Soon"/>
+                    </div>
+                    <div class="mos9-window__content__img-container">
+                        <img src="/src/assets/images/no-image-icon.png" alt="Coming Soon"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <h4>Acknowledgements</h4>
+        <span>Mac OS 9 window by<a href="https://codepen.io/perragnar/pen/wrJzqO" target="_blank">Per Ragnar Edin</a></span>
         <span>Circuit board animation by<a href="https://codepen.io/Temmer/full/ExjNJog" target="_blank">Temmer Péter</a></span>
         <span>Synthwave Grid by<a href="https://codepen.io/pierredarrieutort/pen/Vwaoqqe" target="_blank">Pierre Darrieutort</a></span>
         <span>Glitch text by<a href="https://codepen.io/lbebber/pen/nqwBKK" target="_blank">Lucas Bebber</a></span>
     </footer>
-    <AudioPlayer :scroll-shrink="scrollPos > 10"/>
+    <AudioPlayer v-if="radMode" :scroll-shrink="scrollPos > 10"/>
 </template>
 
 <script>
 import AudioPlayer from './components/AudioPlayer.vue';
 import SkillChart from "./components/SkillChart.vue";
 import HobbyChart from "./components/HobbyChart.vue";
-import { ObserveVisibility } from "vue-observe-visibility";
+import {ObserveVisibility} from "vue-observe-visibility";
 
 export default {
     directives: {
@@ -200,6 +257,8 @@ export default {
     data() {
         return {
             isLoading: true,
+            radMode: true,
+            showPortfolioModal: false,
             isHovering: false,
             scrollPos: 0,
             quotes: undefined,
@@ -272,7 +331,13 @@ export default {
             scrolling: false,
             birdle: {
                 bird: '',
-                wordBank: ['heron', 'eagle', 'finch', 'robin', 'crane', 'goose', 'swift'],
+                wordBank: [
+                    "eagle", "heron", "robin", "crane", "swift", "finch", "stork", "lark",
+                    "tern", "kite", "dove", "egret", "wren", "snipe", "quail", "scaup",
+                    "skua", "goose", "coot", "trogon", "pewee", "merle", "swan", "ouzel",
+                    "vireo", "knot", "ibis", "condor", "piper", "macaw", "puffin", "grebe",
+                    "junco", "heron", "eider", "saker", "finch", "serin", "corre", "owlet"
+                ],
                 guess: "",
                 attempts: [],
                 modal: {
@@ -288,7 +353,8 @@ export default {
             },
             bamazon: {
                 products: [],
-            }
+            },
+            radTextHide: false,
         }
     },
     created() {
@@ -311,7 +377,7 @@ export default {
         });
         window.addEventListener('scroll', this.handleScroll);
         document.addEventListener('keydown', (event) => {
-            if (event.keyCode === 13 && this.$refs.chatInput === document.activeElement ) {
+            if (event.keyCode === 13 && this.$refs.chatInput === document.activeElement) {
                 this.createUserMessage();
             }
             if (this.birdle.modal.show) {
@@ -324,6 +390,12 @@ export default {
         window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
+        togglePortfolioModal() {
+            this.showPortfolioModal = !this.showPortfolioModal;
+        },
+        toggleRadMode() {
+            this.radMode = !this.radMode;
+        },
         copyShareLink() {
             navigator.clipboard.writeText('Check out this strangely niche and much worse version of Wordle! ' + window.location.href);
             this.birdle.linkCopied = true;
@@ -479,7 +551,7 @@ export default {
                         user: false,
                         message: this.botResponses[Math.floor(Math.random() * this.botResponses.length)]
                     });
-                },500);
+                }, 500);
             }, 2000);
 
         },
@@ -519,7 +591,7 @@ export default {
             } else if (this.birdle.modal.minLetters) {
                 return 'Your guess must be a five letter word!';
             } else if (this.birdle.gameLost) {
-                return 'Tip: Try harder!';
+                return 'Tip: Try harder';
             } else if (this.birdle.gameWon && this.remainingGuesses === 4) {
                 return 'Wow, first try! Did you cheat? Tell your friends about your amazing luck!';
             } else if (this.birdle.gameWon) {

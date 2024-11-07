@@ -22,57 +22,113 @@ header {
             width: 3rem;
         }
     }
+}
 
-    .logo {
-        width: 3rem;
-        height: auto;
-        justify-self: start;
+.logo {
+    width: 3rem;
+    height: auto;
+    justify-self: start;
 
-        @include breakpoint(lg) {
-            width: 5rem;
+    @include breakpoint(lg) {
+        width: 5rem;
+    }
+}
+
+.links {
+    align-self: center;
+    display: flex;
+    justify-self: end;
+    font-size: 2rem;
+    color: white;
+    gap: 1rem;
+
+
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &.disabled {
+            pointer-events: none;
+
+            i {
+                opacity: .3;
+            }
+        }
+
+        &:hover {
+            -webkit-text-stroke: 0 transparent;
+        }
+
+        &.portfolio {
+            i {
+                font-size: 26px;
+            }
+            &:hover {
+                i {
+                    color: $neon;
+                }
+            }
+        }
+
+        &[class^="mode--"] {
+            width: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i, svg {
+                font-size: 24px;
+                color: gray;
+                fill: white
+            }
+
+            &.mode--fun {
+                svg:hover {
+                    fill: $neon;
+                }
+            }
+            &.mode--professional:hover {
+                i:hover {
+                    color: dodgerblue;
+                }
+            }
         }
     }
 
-    .links {
-        align-self: center;
-        display: flex;
-        justify-self: end;
-        font-size: 2rem;
+    .divider {
+        color: gray;
+        opacity: 0.2;
+        cursor: default;
+    }
+
+    i {
         color: white;
-        gap: 1rem;
 
-        a {
-            &.disabled {
-                pointer-events: none;
-                i {
-                    opacity: .3;
-                }
-            }
-
-            &:hover {
-                -webkit-text-stroke: 0 transparent;
-            }
+        .professional-mode & {
+            color: $darkNight;
         }
 
-        i {
-            color: white;
+        &:hover {
+            transition: color 0.5s;
+        }
+    }
 
-            &:hover {
-                transition: color 0.5s;
-            }
-        }
+    .fa-vuejs:hover {
+        color: #41B883;
+    }
 
-        .fa-vuejs:hover {
-            color: #41B883;
-        }
-        .fa-react:hover {
-            color: #61DBFB;
-        }
-        .fa-linkedin:hover {
-            color: #0072b1;
-        }
-        .fa-github:hover {
-            color: gray;
-        }
+    .fa-react:hover {
+        color: #61DBFB;
+    }
+
+    .fa-linkedin:hover {
+        color: #0072b1;
+    }
+
+    .fa-github:hover {
+        color: gray;
     }
 }
