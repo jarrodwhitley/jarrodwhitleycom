@@ -2,11 +2,13 @@
     <header :class="[{'fill': scrolling}, {'professional-mode': !radMode}]">
         <img class="logo" width="80" src="/src/assets/images/jw-logo.svg" alt="logo"/>
         <div class="links">
-            <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio"><i class="fa-solid fa-palette"></i></a>
+            <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio">
+                <i class="fa-brands fa-sketch"></i>
+            </a>
             <span class="divider">|</span>
             <a title="Display page in Vue"><i class="fa-brands fa-vuejs"></i></a>
             <a class="disabled" href="#" title="Display page in React (Under Construction)"><i class="fa-brands fa-react"></i></a>
-            <a href="https://linkedin.com/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
 <!--            <span class="divider">|</span>-->
 <!--            <a class="mode&#45;&#45;fun" title="Rad Mode!" v-if="!radMode" @click="toggleRadMode">-->
@@ -314,13 +316,13 @@ export default {
                     data: 'chat',
                     isHovering: false
                 },
-                {
-                    id: 2,
-                    name: 'BAMazon',
-                    isActive: false,
-                    data: 'bamazon',
-                    isHovering: false
-                }
+                // {
+                //     id: 2,
+                //     name: 'BAMazon',
+                //     isActive: false,
+                //     data: 'bamazon',
+                //     isHovering: false
+                // }
             ],
             dataSectionOptions: {
                 callback: (isVisible, entry) => this.visibilityChanged(isVisible, entry, 'dataSectionIsVisible'),

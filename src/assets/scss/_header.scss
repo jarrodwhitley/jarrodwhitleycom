@@ -42,8 +42,6 @@ header {
     color: white;
     gap: 1rem;
 
-
-
     a {
         display: flex;
         align-items: center;
@@ -60,17 +58,6 @@ header {
 
         &:hover {
             -webkit-text-stroke: 0 transparent;
-        }
-
-        &.portfolio {
-            i {
-                font-size: 26px;
-            }
-            &:hover {
-                i {
-                    color: $neon;
-                }
-            }
         }
 
         &[class^="mode--"] {
@@ -113,6 +100,13 @@ header {
 
         &:hover {
             transition: color 0.5s;
+        }
+    }
+
+    .fa-sketch {
+        font-size: 30px;
+        &:hover {
+            color: #F7B500;
         }
     }
 

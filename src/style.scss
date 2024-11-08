@@ -7,6 +7,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@100;300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import './assets/scss/fonts';
 @import './assets/scss/breakpoints';
 @import './assets/scss/animations';
 @import './assets/scss/global';
@@ -14,11 +15,6 @@
 @import './assets/scss/header';
 @import './assets/scss/footer';
 @import './assets/scss/audio_player';
-
-@font-face {
-    font-family: Chicago;
-    src: url('https://dl.dropbox.com/s/ueoh9twyvz4bwkr/ChicagoFLF.ttf?dl=0');
-}
 
 $glowColors: $neon, $andes, $purple, $blue;
 
@@ -151,7 +147,7 @@ h3 {
         align-items: center;
 
         .page-title {
-            font-size: 2.3rem;
+            font-size: 5rem;
             margin: 0;
             font-family: 'VT323', monospace;
             display: flex;
@@ -159,10 +155,14 @@ h3 {
             justify-items: center;
             align-items: center;
             width: fit-content;
+            flex-direction: column;
+            line-height: .9;
 
             @include breakpoint(lg) {
                 display: grid;
                 font-size: 6rem;
+                flex-direction: row;
+                line-height: 1;
             }
 
             .glitch {
@@ -175,10 +175,10 @@ h3 {
         }
 
         .page-subtitle {
-            margin: 1rem 2rem;
-            //text-transform: uppercase;
+            margin: 2rem 3rem;
+            text-align: center;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 1.5rem;
             line-height: 1.2;
             transform: translateY(-1rem);
 
@@ -253,14 +253,25 @@ h3 {
     padding: 3rem 2rem;
     background-color: $darkerNight;
     background-image: linear-gradient(45deg, $darkestNight, rgba($purple, .2) 60%, darken($purple, 20%));
-    display: grid;
-    grid: auto / 1fr 1fr;
+    grid: auto / 1fr;
     grid-gap: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(lg) {
+        display: grid;
+        grid: auto / 1fr 1fr;
+    }
 
     h2 {
         grid-row: 1;
         justify-self: center;
         font-size: 2rem;
+        margin: 0 auto;
+
+        @include breakpoint(lg) {
+
+        }
 
         &.skillset {
             grid-column: 1;
@@ -352,10 +363,12 @@ h3 {
         grid-row: 1;
         grid-column: 1 / -1;
         justify-self: center;
-        margin: 0;
+        margin: 2rem 0;
         font-size: 3rem;
         align-self: start;
         position: relative;
+        line-height: 1;
+        text-align: center;
 
         &::after {
             content: 'Reactive';
@@ -364,9 +377,19 @@ h3 {
             position: absolute;
             font-size: 4rem;
             top: -3rem;
-            left: -4rem;
+            left: 1rem;
             transform: rotate(-15deg);
             text-shadow: 0 0 1rem $neon;
+
+            @include breakpoint(lg){
+                font-size: 5rem;
+                top: -4rem;
+                left: 5rem;
+            }
+        }
+
+        @include breakpoint(lg) {
+            margin: 0;
         }
     }
 
@@ -400,7 +423,17 @@ h3 {
                 }
 
                 &.glitch {
-                    display: none;
+                    &::before {
+                        display: none;
+                    }
+                    &::after {
+                        animation: none;
+                        top: 1.7rem;
+                    }
+
+                    @include breakpoint(lg) {
+                        display: none;
+                    }
                 }
             }
         }

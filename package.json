@@ -7,7 +7,7 @@
         "dev": "vite --host",
         "build": "vite build",
         "preview": "vite preview",
-        "deploy": "rm -rf node_modules/.cache/gh-pages && vite build && gh-pages -d dist"
+        "deploy": "gh-pages -d build"
     },
     "dependencies": {
         "@vueuse/components": "^10.5.0",
