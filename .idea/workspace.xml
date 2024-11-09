@@ -4,19 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="more updates!">
-      <change afterPath="$PROJECT_DIR$/build/assets/index-326c9fa0.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/assets/index-de711e87.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Birdle.vue" afterDir="false" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="ignore cname">
+      <change afterPath="$PROJECT_DIR$/build/assets/index-d094da21.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/assets/index-f0cc4666.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarrodwhitleycom.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarrodwhitleycom.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/assets/index-231ede42.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/assets/index-e64c86ae.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/assets/index-c382cdf0.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/assets/index-c93c87e8.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_animations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_animations.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Birdle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Birdle.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +100,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ToolWindowGit.ShowToolbar": "false",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
@@ -190,7 +188,7 @@
       <workItem from="1730918356290" duration="599000" />
       <workItem from="1730994074912" duration="598000" />
       <workItem from="1730999356948" duration="2703000" />
-      <workItem from="1731002599037" duration="36096000" />
+      <workItem from="1731002599037" duration="37653000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -306,7 +304,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731096203654</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="vite build changes">
+      <option name="closed" value="true" />
+      <created>1731184971530</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1731184971530</updated>
+    </task>
+    <task id="LOCAL-00017" summary="ignore cname">
+      <option name="closed" value="true" />
+      <created>1731185122539</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1731185122539</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,6 +357,8 @@
     <MESSAGE value="layout updates" />
     <MESSAGE value="lots of style updates" />
     <MESSAGE value="more updates!" />
+    <MESSAGE value="vite build changes" />
+    <MESSAGE value="ignore cname" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
