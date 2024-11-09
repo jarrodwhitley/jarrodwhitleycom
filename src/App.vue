@@ -10,23 +10,25 @@
             <a class="disabled" href="#" title="Display page in React (Under Construction)"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
-<!--            <span class="divider">|</span>-->
-<!--            <a class="mode&#45;&#45;fun" title="Rad Mode!" v-if="!radMode" @click="toggleRadMode">-->
-<!--                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="" height="40px" width="40px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve">-->
-<!--                <g>-->
-<!--                        <path d="M483.983,167.477c-32.82-35.047-84-35.047-108.599-35.047c-0.02,0-0.042,0-0.062,0H136.619c-0.001,0-0.002,0-0.003,0    c-24.596,0-75.776,0-108.596,35.047c-21.01,22.435-30.28,54.841-27.555,96.319c2.226,33.874,14.411,62.702,35.241,83.37    c21.364,21.199,50.394,32.405,83.95,32.405c34.529,0,69.87-17.448,99.513-49.13c15.052-16.088,27.626-34.818,36.831-54.048    c9.205,19.231,21.779,37.96,36.831,54.048c29.643,31.682,64.984,49.13,99.513,49.13c33.555,0,62.586-11.205,83.95-32.405    c20.83-20.668,33.014-49.498,35.241-83.37C514.261,222.317,504.992,189.912,483.983,167.477z M136.619,165.822    c12.154,0,43.181,0.904,68.747,9.271c8.192,2.681,14.924,5.807,20.185,9.36H58.757C82.135,165.833,117.06,165.822,136.619,165.822    z M119.657,346.179c-21.066,0-39.426-5.797-53.677-16.822h103.571C153.195,340.335,136.107,346.179,119.657,346.179z     M204.766,295.965H41.292c-2.78-6.898-4.828-14.383-6.128-22.365h184.662C215.405,281.307,210.351,288.843,204.766,295.965z     M234.567,240.208H33.722c0.542-8.14,1.791-15.594,3.724-22.365h201.789C238.546,224.953,236.955,232.488,234.567,240.208z     M306.636,175.092c25.566-8.367,56.592-9.271,68.749-9.271c19.555,0,54.48,0.011,77.859,18.63H286.451    C291.711,180.899,298.444,177.774,306.636,175.092z M392.345,346.179c-16.451,0-33.539-5.844-49.894-16.822h103.571    C431.771,340.382,413.411,346.179,392.345,346.179z M470.71,295.965H307.235c-5.585-7.122-10.64-14.658-15.059-22.365h184.662    C475.539,281.582,473.491,289.067,470.71,295.965z M277.435,240.208c-2.389-7.72-3.979-15.256-4.668-22.365h201.789    c1.933,6.771,3.182,14.225,3.724,22.365H277.435z"/>-->
-<!--                    </g>-->
-<!--                </svg>-->
-<!--            </a>-->
-<!--            <a class="mode&#45;&#45;professional" title="Professional Mode" v-else @click="toggleRadMode"><i class="fa-solid fa-user-tie"></i></a>-->
+            <!--            <span class="divider">|</span>-->
+            <!--            <a class="mode&#45;&#45;fun" title="Rad Mode!" v-if="!radMode" @click="toggleRadMode">-->
+            <!--                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="" height="40px" width="40px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve">-->
+            <!--                <g>-->
+            <!--                        <path d="M483.983,167.477c-32.82-35.047-84-35.047-108.599-35.047c-0.02,0-0.042,0-0.062,0H136.619c-0.001,0-0.002,0-0.003,0    c-24.596,0-75.776,0-108.596,35.047c-21.01,22.435-30.28,54.841-27.555,96.319c2.226,33.874,14.411,62.702,35.241,83.37    c21.364,21.199,50.394,32.405,83.95,32.405c34.529,0,69.87-17.448,99.513-49.13c15.052-16.088,27.626-34.818,36.831-54.048    c9.205,19.231,21.779,37.96,36.831,54.048c29.643,31.682,64.984,49.13,99.513,49.13c33.555,0,62.586-11.205,83.95-32.405    c20.83-20.668,33.014-49.498,35.241-83.37C514.261,222.317,504.992,189.912,483.983,167.477z M136.619,165.822    c12.154,0,43.181,0.904,68.747,9.271c8.192,2.681,14.924,5.807,20.185,9.36H58.757C82.135,165.833,117.06,165.822,136.619,165.822    z M119.657,346.179c-21.066,0-39.426-5.797-53.677-16.822h103.571C153.195,340.335,136.107,346.179,119.657,346.179z     M204.766,295.965H41.292c-2.78-6.898-4.828-14.383-6.128-22.365h184.662C215.405,281.307,210.351,288.843,204.766,295.965z     M234.567,240.208H33.722c0.542-8.14,1.791-15.594,3.724-22.365h201.789C238.546,224.953,236.955,232.488,234.567,240.208z     M306.636,175.092c25.566-8.367,56.592-9.271,68.749-9.271c19.555,0,54.48,0.011,77.859,18.63H286.451    C291.711,180.899,298.444,177.774,306.636,175.092z M392.345,346.179c-16.451,0-33.539-5.844-49.894-16.822h103.571    C431.771,340.382,413.411,346.179,392.345,346.179z M470.71,295.965H307.235c-5.585-7.122-10.64-14.658-15.059-22.365h184.662    C475.539,281.582,473.491,289.067,470.71,295.965z M277.435,240.208c-2.389-7.72-3.979-15.256-4.668-22.365h201.789    c1.933,6.771,3.182,14.225,3.724,22.365H277.435z"/>-->
+            <!--                    </g>-->
+            <!--                </svg>-->
+            <!--            </a>-->
+            <!--            <a class="mode&#45;&#45;professional" title="Professional Mode" v-else @click="toggleRadMode"><i class="fa-solid fa-user-tie"></i></a>-->
         </div>
     </header>
     <div id="content" :class="[{ 'no-animations': isLoading }, {'professional-mode': !radMode}]">
         <section class="intro">
             <div class="text">
-                <h1 v-if="radMode" class="page-title">I don't <span class="glitch" data-text="hack">hack</span>mainframes</h1>
+                <h1 v-if="radMode" class="page-title">I don't <span class="glitch" data-text="hack">hack</span>mainframes
+                </h1>
                 <h1 v-else class="page-title--pro">Cool things said here</h1>
-                <p v-if="radMode" class="page-subtitle">But I <em>do</em> listen to synthwave while building web apps</p>
+                <p v-if="radMode" class="page-subtitle">But I <em>do</em> listen to synthwave while building web apps
+                </p>
                 <p v-else class="page-subtitle--pro">subtitley thing here</p>
             </div>
             <div class="grid-bg">
@@ -62,62 +64,7 @@
                      v-text="tab.name"></div>
             </div>
             <div class="birdle carousel-item animate__animated" :class="dataCarouselClasses('birdle')">
-                <div id="birdleApp" @click="birdleFocus">
-                    <div class="birdle-grid animate__animated" :class="{ 'fade': birdle.modal.show }">
-                        <div class="attempt row animate__animated"
-                             :class="{ 'animate__heartBeat': attempt === birdle.bird }"
-                             v-for="(attempt, index) in birdle.attempts"
-                             :key="index">
-                            <div class="letter"
-                                 :class="letterCheck(letter, index)"
-                                 v-for="(letter, index) in attempt.split('')"
-                                 :key="index"
-                                 v-text="letter"></div>
-                        </div>
-                        <div class="guess row" v-if="remainingGuesses">
-                            <div class="guess letter animate__animated animate__faster"
-                                 :class="{ 'animate__pulse': letter }"
-                                 v-for="(letter, index) in guessLettersArray" v-text="letter"></div>
-                        </div>
-                        <div class="empty row"
-                             v-if="remainingGuesses"
-                             v-for="guess in (remainingGuesses - 1)">
-                            <div class="empty letter" v-for="letter in 5"></div>
-                        </div>
-                    </div>
-                    <div class="birdle-modal animate__animated" :class="this.birdle.modal.show ? 'animate__bounceIn' : 'animate__bounceOut'">
-                        <div class="birdle-modal__container">
-                            <div class="birdle-modal__title" v-text="modalHeading"></div>
-                            <div class="birdle-modal__content" v-text="modalContent"></div>
-                            <div v-if="birdle.gameWon" class="share-link-btn" :class="{ 'copied': birdle.linkCopied }" @click="copyShareLink" v-text="birdle.linkCopied ? 'Link Copied!' : 'Copy Share Link'"></div>
-                            <em v-if="birdle.gameLost">The answer was "{{ birdle.bird }}"</em>
-                        </div>
-                        <div class="modal-close" @click="closeBirdleModal">
-                            <i class="fa-solid fa-times"></i>
-                        </div>
-                    </div>
-                    <div class="legend-row">
-                        <div class="legend-item">
-                            <div class="legend-item__color correct-position"></div>
-                            <div class="legend-item__text">Correct Position</div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-item__color correct-letter"></div>
-                            <div class="legend-item__text">Correct Letter</div>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-item__color wrong-letter"></div>
-                            <div class="legend-item__text">Wrong Letter</div>
-                        </div>
-                    </div>
-                    <div class="input" v-if="!birdle.gameOver" onkeydown="return /[a-z]/i.test(event.key)">
-                        <input v-model="birdle.guess" ref="birdleInput" maxlength="5" type="text" @keydown.enter.prevent="enterPress"/>
-                        <button @click="checkWord">Submit</button>
-                    </div>
-                    <div class="restart button" v-if="birdle.gameOver">
-                        <div @click="birdleReset">Play Again</div>
-                    </div>
-                </div>
+                <Birdle :word-bank="wordBank"/>
             </div>
             <div class="chat carousel-item animate__animated" :class="dataCarouselClasses('chat')">
                 <div class="chat-container">
@@ -247,6 +194,7 @@
 import AudioPlayer from './components/AudioPlayer.vue';
 import SkillChart from "./components/SkillChart.vue";
 import HobbyChart from "./components/HobbyChart.vue";
+import Birdle from "./components/Birdle.vue";
 import {ObserveVisibility} from "vue-observe-visibility";
 
 export default {
@@ -254,7 +202,7 @@ export default {
         ObserveVisibility
     },
     components: {
-        AudioPlayer, SkillChart, HobbyChart
+        AudioPlayer, SkillChart, HobbyChart, Birdle
     },
     data() {
         return {
@@ -331,28 +279,6 @@ export default {
             dataSectionIsVisible: false,
             aiSectionIsVisible: false,
             scrolling: false,
-            birdle: {
-                bird: '',
-                wordBank: [
-                    "eagle", "heron", "robin", "crane", "swift", "finch", "stork", "lark",
-                    "tern", "kite", "dove", "egret", "wren", "snipe", "quail", "scaup",
-                    "skua", "goose", "coot", "trogon", "pewee", "merle", "swan", "ouzel",
-                    "vireo", "knot", "ibis", "condor", "piper", "macaw", "puffin", "grebe",
-                    "junco", "heron", "eider", "saker", "finch", "serin", "corre", "owlet"
-                ],
-                guess: "",
-                attempts: [],
-                modal: {
-                    show: false,
-                    notAWord: false,
-                    guessRepeat: false,
-                    minLetters: false,
-                    gameOver: false,
-                    gameLost: false,
-                    gameWon: false,
-                },
-                linkCopied: false,
-            },
             bamazon: {
                 products: [],
             },
