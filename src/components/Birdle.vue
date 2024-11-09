@@ -52,8 +52,17 @@
             <input v-model="this.guess" ref="birdleInput" maxlength="5" type="text" @keydown.enter.prevent="enterPress"/>
             <button @click="checkWord">Submit</button>
         </div>
+
         <div class="restart button" v-if="this.modal.gameOver">
             <div @click="birdleReset">Play Again</div>
+        </div>
+
+        <div class="keyboard">
+            <div class="keyboard-row" v-for="row in keyboardLayout" :key="row">
+                <button v-for="key in row" :key="key" @click="handleKeyPress(key)" :class="keyClass(key)">
+                    {{ key }}
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -83,6 +92,12 @@ export default {
                 "vireo", "knot", "ibis", "condor", "piper", "macaw", "puffin", "grebe",
                 "junco", "heron", "eider", "saker", "finch", "serin", "corre", "owlet"
             ],
+            keyboardLayout: [
+                ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+                ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+                ['Z', 'X', 'C', 'V', 'B', 'N', 'M']
+            ],
+            guessedLetters: {}
         }
     },
     mounted() {
@@ -102,13 +117,16 @@ export default {
             this.linkCopied = true;
         },
         checkWord() {
-            let guess = this.guess;
+            console.log('checking word');
+            let guess = this.guess.toLowerCase();
+            console.log('guess', guess);
             this.axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`)
                 .then(response => {
                     if (response.data[0].word === guess) this.makeGuess(guess);
                 }).catch(error => {
-                this.modal.notAWord = true;
-                this.modal.show = true;
+                    console.log('error', error);
+                    this.modal.notAWord = true;
+                    this.modal.show = true;
             });
         },
         enterPress() {
@@ -140,7 +158,24 @@ export default {
                 return 'wrong-letter';
             }
         },
+        handleKeyPress(key) {
+            if (this.guess.length < 5) {
+                this.guess += key;
+            }
+        },
+        keyClass(key) {
+            if (this.guessedLetters[key] === 'correct-position') {
+                return 'correct-position';
+            } else if (this.guessedLetters[key] === 'correct-letter') {
+                return 'correct-letter';
+            } else if (this.guessedLetters[key] === 'wrong-letter') {
+                return 'wrong-letter';
+            } else {
+                return '';
+            }
+        },
         makeGuess() {
+            console.log('making guess');
             // Make sure the user has entered a 5-letter word
             if (this.guess.length !== 5) {
                 this.modal.minLetters = true;
@@ -166,6 +201,16 @@ export default {
                 this.modal.show = true;
             }
             this.guess = "";
+
+            this.guess.split('').forEach((letter, index) => {
+                if (letter === this.bird[index]) {
+                    this.$set(this.guessedLetters, letter, 'correct-position');
+                } else if (this.bird.includes(letter)) {
+                    this.$set(this.guessedLetters, letter, 'correct-letter');
+                } else {
+                    this.$set(this.guessedLetters, letter, 'wrong-letter');
+                }
+            });
         },
         birdleReset() {
             // Reset the game but don't use the same word twice in a row

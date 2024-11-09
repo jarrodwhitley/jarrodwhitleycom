@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="ignore cname">
-      <change afterPath="$PROJECT_DIR$/build/assets/index-d094da21.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/assets/index-f0cc4666.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarrodwhitleycom.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarrodwhitleycom.iml" afterDir="false" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="fixed birdle keyboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/assets/index-c382cdf0.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/assets/index-c93c87e8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/assets/index-d094da21.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/assets/index-f0cc4666.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Birdle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Birdle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +185,7 @@
       <workItem from="1730918356290" duration="599000" />
       <workItem from="1730994074912" duration="598000" />
       <workItem from="1730999356948" duration="2703000" />
-      <workItem from="1731002599037" duration="37653000" />
+      <workItem from="1731002599037" duration="38763000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -320,7 +317,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731185122539</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="birdle component fully broken out">
+      <option name="closed" value="true" />
+      <created>1731186432440</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1731186432440</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +364,9 @@
     <MESSAGE value="more updates!" />
     <MESSAGE value="vite build changes" />
     <MESSAGE value="ignore cname" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="birdle component fully broken out" />
+    <MESSAGE value="fixed birdle keyboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed birdle keyboard" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

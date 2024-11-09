@@ -4,12 +4,11 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
+        "postbuild": "cp CNAME build/",
         "dev": "vite --host",
-        "build:dev": "vite build --mode development",
         "build:prod": "vite build --mode production",
         "preview": "vite preview",
-        "deploy:dev": "rm -rf node_modules/.cache/gh-pages && npm run build:dev && gh-pages -d build",
-        "deploy:prod": "rm -rf node_modules/.cache/gh-pages && npm run build:prod && gh-pages -d build"
+        "deploy": "rm -rf node_modules/.cache/gh-pages && npm run build:prod && npm run postbuild && gh-pages -d build"
     },
     "dependencies": {
         "@vueuse/components": "^10.5.0",
