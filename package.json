@@ -20,6 +20,7 @@
         "vue-axios": "^3.5.2",
         "vue-chart-3": "^3.1.8",
         "vue-observe-visibility": "^2.0.0-alpha.1",
+        "vue-router": "^4.4.5",
         "vue-scroll-snap": "^0.1.11"
     },
     "devDependencies": {

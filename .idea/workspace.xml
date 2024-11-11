@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="fixed birdle keyboard">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/assets/index-d094da21.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/assets/index-f0cc4666.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Birdle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Birdle.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
     </list>
@@ -185,7 +186,7 @@
       <workItem from="1730918356290" duration="599000" />
       <workItem from="1730994074912" duration="598000" />
       <workItem from="1730999356948" duration="2703000" />
-      <workItem from="1731002599037" duration="38763000" />
+      <workItem from="1731002599037" duration="48661000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -325,7 +326,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731186432440</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fixed birdle keyboard">
+      <option name="closed" value="true" />
+      <created>1731187620402</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1731187620402</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,6 +352,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/jarrodwhitleycom" />
@@ -366,7 +377,7 @@
     <MESSAGE value="ignore cname" />
     <MESSAGE value="birdle component fully broken out" />
     <MESSAGE value="fixed birdle keyboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed birdle keyboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

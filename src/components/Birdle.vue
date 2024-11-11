@@ -1,5 +1,8 @@
 <template>
-    <div id="birdleApp" @click="birdleFocus">
+    <div id="birdleApp" v-show="showApp" @click="birdleFocus" class="animate__animated" :class="[
+        { 'animate__animated': isMobile },
+        { 'show': showApp }
+        ]">
         <div class="birdle-grid animate__animated" :class="{ 'fade': this.modal.show }">
             <div class="attempt row animate__animated"
                  :class="{ 'animate__heartBeat': attempt === this.bird }"
@@ -52,11 +55,9 @@
             <input v-model="this.guess" ref="birdleInput" maxlength="5" type="text" @keydown.enter.prevent="enterPress"/>
             <button @click="checkWord">Submit</button>
         </div>
-
         <div class="restart button" v-if="this.modal.gameOver">
             <div @click="birdleReset">Play Again</div>
         </div>
-
         <div class="keyboard">
             <div class="keyboard-row" v-for="row in keyboardLayout" :key="row">
                 <button v-for="key in row" :key="key" @click="handleKeyPress(key)" :class="keyClass(key)">
@@ -72,6 +73,8 @@ export default {
     name: "Birdle",
     data() {
         return {
+            isMobile: window.innerWidth < 768,
+            showApp: true,
             bird: '',
             guess: "",
             attempts: [],
@@ -101,6 +104,9 @@ export default {
         }
     },
     mounted() {
+        if (window.innerWidth < 768) {
+            // this.showApp = false;
+        }
         document.addEventListener('keydown', (event) => {
             if (event.keyCode === 13 && this.$refs.chatInput === document.activeElement) {
                 this.createUserMessage();
@@ -274,6 +280,266 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+    @import "../assets/scss/breakpoints.scss";
+    @import "../assets/scss/colors.scss";
 
+    #birdleApp {
+        width: 100%;
+        justify-self: center;
+        display: grid;
+        background-color: $darkestNight;
+        z-index: 10;
+
+        &.show {
+            animation: bounceIn .5s;
+        }
+
+        @include breakpoint(lg) {
+            position: relative;
+            width: 25rem;
+        }
+
+        .birdle-grid {
+            display: grid;
+            grid: repeat(5, 1fr) / 1fr;
+            grid-gap: .5rem;
+            margin-top: 1rem;
+            grid-row: 1 / -1;
+            grid-column: 1 / -1;
+            padding: 2rem;
+
+            @include breakpoint(lg) {
+                padding: 0;
+            }
+
+            &.fade {
+                opacity: .2;
+                transition: opacity .4s;
+            }
+
+            .row {
+                //height: 5rem;
+                display: grid;
+                grid: auto / repeat(5, 1fr);
+                grid-gap: .5rem;
+                justify-items: center;
+                align-items: center;
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 2rem;
+
+                .letter {
+                    border: 2px solid gray;
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    aspect-ratio: 1/1;
+
+                    &.correct-position {
+                        background: $purple;
+                        color: $white;
+                    }
+
+                    &.correct-letter {
+                        background: $blue;
+                        color: $white;
+                    }
+
+                    &.wrong-letter {
+                        background: $darkNight;
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        .birdle-modal {
+            background: $darkNight;
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+            height: 50%;
+            align-self: center;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem;
+            border-radius: 3px;
+            border: 3px solid $purple;
+
+            &__container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: .5rem;
+                padding: 1rem;
+
+                .share-link-btn {
+                    background: $purple;
+                    color: $white;
+                    border-radius: .19rem;
+                    width: fit-content;
+                    padding: .5rem 1rem;
+                    font-size: .8rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    margin-top: .5rem;
+
+                    &.copied {
+                        background: darken($gray, 20%);
+                        color: $gray;
+                    }
+                }
+            }
+
+            &__title {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+
+            .modal-close {
+                pointer-events: all;
+                cursor: pointer;
+                position: absolute;
+                top: .3rem;
+                right: .5rem;
+            }
+        }
+
+        .legend-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 1rem;
+
+            .legend-item {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: start;
+
+                &__color {
+                    height: .5rem;
+                    width: .5rem;
+
+                    &.correct-position {
+                        background: $purple;
+                    }
+
+                    &.correct-letter {
+                        background: $blue;
+                    }
+
+                    &.wrong-letter {
+                        background: $darkNight;
+                    }
+                }
+
+                &__text {
+                    font-size: .7rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    margin-left: .5rem;
+                }
+            }
+        }
+
+        .input {
+            display: flex;
+            gap: 1rem;
+
+            input {
+                margin-top: 3rem;
+                background: transparent;
+                border: none;
+                border-bottom: 2px solid $neon;
+                border-radius: 0;
+                width: 100%;
+                height: 5rem;
+                font-size: 2rem;
+                outline: none;
+                text-transform: uppercase;
+                letter-spacing: 1rem;
+                font-weight: 400;
+
+                &:focus {
+                    border-bottom: 2px solid $white;
+                }
+            }
+
+            button {
+                margin-top: 3rem;
+                background: transparent;
+                border: 2px solid $neon;
+                color: $neon;
+                height: fit-content;
+                align-self: end;
+                border-radius: .19rem;
+                width: fit-content;
+                padding: .5rem 1rem;
+                font-size: .8rem;
+                font-weight: 600;
+                cursor: pointer;
+
+                &:hover {
+                    color: $white;
+                    border-color: $white;
+                    transition: .4s;
+                }
+            }
+        }
+
+        .restart {
+            margin-top: 3rem;
+            background: transparent;
+            border: 2px solid $neon;
+            color: $neon;
+            height: fit-content;
+            align-self: end;
+            border-radius: .19rem;
+            width: fit-content;
+            padding: .5rem 1rem;
+            font-size: .8rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 1rem auto;
+
+            &:hover {
+                color: $white;
+                border-color: $white;
+                transition: .4s;
+            }
+        }
+
+        .keyboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .keyboard-row button {
+            margin: 0 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .correct-position {
+            background-color: green;
+        }
+        .correct-letter {
+            background-color: yellow;
+        }
+        .wrong-letter {
+            background-color: gray;
+        }
+    }
 </style>

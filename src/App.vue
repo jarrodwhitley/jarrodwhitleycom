@@ -64,7 +64,7 @@
                      v-text="tab.name"></div>
             </div>
             <div class="birdle carousel-item animate__animated" :class="dataCarouselClasses('birdle')">
-                <Birdle/>
+                <figure><img src="./assets/images/no-image-icon.png" alt="Birdle preview image"/></figure>
             </div>
             <div class="chat carousel-item animate__animated" :class="dataCarouselClasses('chat')">
                 <div class="chat-container">
