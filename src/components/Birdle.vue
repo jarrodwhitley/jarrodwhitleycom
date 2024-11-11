@@ -70,7 +70,6 @@
 
 <script>
 export default {
-    name: "Birdle",
     data() {
         return {
             isMobile: window.innerWidth < 768,
@@ -233,7 +232,13 @@ export default {
             this.modal.gameWon = false;
             this.modal.gameLost = false;
             this.linkCopied = false;
-        }
+        },
+        goToHome() {
+            this.$router.push('/');
+        },
+        goToBirdle() {
+            this.$router.push('/birdle');
+        },
     },
     computed: {
         guessLettersArray() {

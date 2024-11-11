@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="fixed birdle keyboard">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="created birdle component">
+      <change afterPath="$PROJECT_DIR$/src/components/Home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_nav.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Birdle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Birdle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="967c8de1c5464d9d42a96db3e500000dd8f85e93" />
+        <entry key="$PROJECT_DIR$" value="feature/nuxt" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,7 +63,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1730838086" />
+                    <option name="lastUsedInstant" value="1731343470" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/nuxt" />
+                    <option name="lastUsedInstant" value="1731342435" />
                   </RecentBranch>
                 </list>
               </option>
@@ -127,11 +133,11 @@
       <recent name="$PROJECT_DIR$/src/assets/scss/_partials/_font_awesome" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/assets/fontawesome" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/assets/scss" />
-      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -186,7 +192,7 @@
       <workItem from="1730918356290" duration="599000" />
       <workItem from="1730994074912" duration="598000" />
       <workItem from="1730999356948" duration="2703000" />
-      <workItem from="1731002599037" duration="48661000" />
+      <workItem from="1731002599037" duration="53587000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -334,7 +340,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731187620402</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="created birdle component">
+      <option name="closed" value="true" />
+      <created>1731342402112</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1731342402112</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,6 +391,7 @@
     <MESSAGE value="ignore cname" />
     <MESSAGE value="birdle component fully broken out" />
     <MESSAGE value="fixed birdle keyboard" />
+    <MESSAGE value="created birdle component" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

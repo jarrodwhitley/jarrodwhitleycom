@@ -12,6 +12,6 @@ export default defineConfig(({mode}) => {
         build: {
             outDir: 'build'
         },
-        base: mode === 'production' ? '/' : '/jarrodwhitleycom/'
+        // base: mode === 'production' ? '/' : '/jarrodwhitleycom/'
     }
 })
