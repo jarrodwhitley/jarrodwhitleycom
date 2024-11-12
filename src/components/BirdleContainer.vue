@@ -33,7 +33,7 @@ export default {
         align-items: start;
 
         @include breakpoint(lg) {
-            margin-top: 3rem;
+            padding-top: 6rem;
         }
     }
 </style>

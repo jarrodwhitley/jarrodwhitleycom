@@ -40,7 +40,7 @@ nav {
         box-shadow: 0 0 9px $neon;
     }
 
-    &.fill {
+    &.fill:not(.birdle) {
         @include breakpoint(md) {
             height: 4rem;
             background: $darkerNight;
@@ -89,6 +89,12 @@ a {
     font-size: 2rem;
     color: white;
     gap: 1rem;
+
+
+    @include breakpoint(lg) {
+        grid-row: 1;
+        grid-column: 2;
+    }
 
     a {
         display: flex;

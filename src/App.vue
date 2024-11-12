@@ -69,6 +69,7 @@
     <main>
         <RouterView/>
     </main>
+    <AudioPlayer v-if="radMode" :scroll-shrink="scrollPos > 10"/>
     <footer v-if="isHomeRoute">
         <h4>Acknowledgements</h4>
         <span>Mac OS 9 window by<a href="https://codepen.io/perragnar/pen/wrJzqO" target="_blank">Per Ragnar Edin</a></span>
@@ -80,23 +81,16 @@
 
 <script>
 import {useRoute} from 'vue-router';
+import AudioPlayer from "./components/AudioPlayer.vue";
 
 export default {
+    components: {AudioPlayer},
     data() {
         return {
             radMode: true,
             scrolling: false,
             showPortfolioModal: false,
-        }
-    },
-    computed: {
-        isHomeRoute() {
-            const route = useRoute();
-            return route.path === '/';
-        },
-        isBirdleRoute() {
-            const route = useRoute();
-            return route.path === '/birdle';
+            scrollPos: 0
         }
     },
     mounted() {
@@ -109,6 +103,16 @@ export default {
         },
         togglePortfolioModal() {
             this.showPortfolioModal = !this.showPortfolioModal;
+        }
+    },
+    computed: {
+        isHomeRoute() {
+            const route = useRoute();
+            return route.path === '/';
+        },
+        isBirdleRoute() {
+            const route = useRoute();
+            return route.path === '/birdle';
         }
     }
 }

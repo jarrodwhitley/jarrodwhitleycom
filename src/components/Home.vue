@@ -111,11 +111,9 @@
             <div class="circuit-board"></div>
         </section>
     </div>
-    <AudioPlayer v-if="radMode" :scroll-shrink="scrollPos > 10"/>
 </template>
 
 <script>
-    import AudioPlayer from '../components/AudioPlayer.vue';
     import SkillChart from "../components/SkillChart.vue";
     import HobbyChart from "../components/HobbyChart.vue";
     import {ObserveVisibility} from "vue-observe-visibility";
@@ -125,7 +123,7 @@
             ObserveVisibility
         },
         components: {
-            AudioPlayer, SkillChart, HobbyChart
+            SkillChart, HobbyChart
         },
         data() {
             return {

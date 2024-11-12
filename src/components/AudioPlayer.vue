@@ -33,15 +33,13 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-const count = ref(0)
-
-var audio = new Audio('/src/assets/audio/sunset_drive.mp3');
+const audio = new Audio('/src/assets/audio/sunset_drive.mp3');
 
 export default {
     data() {
         return {
             playing: false,
+            currentTime: 0
         }
     },
     props: ['scrollShrink'],
