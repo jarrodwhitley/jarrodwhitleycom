@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="birdle mobile fixed">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/birdle_screenshot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_colors.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/scss/_nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_nav.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AudioPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AudioPlayer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Birdle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Birdle.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/BirdleContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BirdleContainer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +116,8 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "settings.editor.splitter.proportion": "0.28818738",
     "ts.external.directory.path": "/Applications/PhpStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   },

@@ -40,13 +40,22 @@ nav {
         box-shadow: 0 0 9px $neon;
     }
 
-    &.fill:not(.birdle) {
+    &.fill {
+
         @include breakpoint(md) {
             height: 4rem;
             background: $darkerNight;
             transition: all ease-in-out .5s;
             box-shadow: 1rem 0 3rem 1rem rgba($darkestNight, .5);
         }
+
+        .logo {
+            width: 3rem;
+        }
+    }
+
+    .fullscreen & {
+        height: 4rem;
 
         .logo {
             width: 3rem;
@@ -80,6 +89,14 @@ a {
     @include breakpoint(lg) {
         width: 5rem;
     }
+}
+
+.exit-fullscreen {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 .links {

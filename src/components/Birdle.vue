@@ -1,8 +1,9 @@
 <template>
-    <div id="birdleApp" ref="birdleApp" @keydown="handleKeyPress" tabindex="0" class="animate__animated" :class="[
-        { 'animate__animated': isMobile },
-        { 'game-over': this.modal.gameOver }
-        ]">
+    <div id="birdleApp"
+         ref="birdleApp"
+         tabindex="0"
+         class="animate__animated"
+         :class="{ 'game-over': this.modal.gameOver }">
         <div class="birdle-grid animate__animated" :class="{ 'fade': this.modal.show }">
             <div class="attempt row animate__animated"
                  :class="{ 'animate__heartBeat': attempt === this.bird }"
@@ -61,12 +62,6 @@
                 <div class="legend-item__text">Wrong Letter</div>
             </div>
         </div>
-<!--        <div class="input" v-if="!this.modal.gameOver">-->
-<!--            <button @click="checkWord">Submit</button>-->
-<!--        </div>-->
-<!--        <div class="restart button" v-if="this.modal.gameOver">-->
-<!--            <div @click="birdleReset">Play Again</div>-->
-<!--        </div>-->
         <div class="keyboard">
             <div class="keyboard-row" v-for="row in keyboardLayout" :key="row">
                 <button v-for="key in row" :key="key" @click="handleScreenPress(key)" :class="keyClass(key)">
@@ -125,6 +120,8 @@ export default {
             this.$refs.birdleApp.focus();
         });
         console.log('bird', this.bird);
+
+        document.addEventListener('keydown', this.handleKeyPress);
     },
     methods: {
         copyShareLink() {
@@ -351,11 +348,6 @@ export default {
     background-color: $darkestNight;
     z-index: 10;
     outline: 0;
-    //position: fixed;
-    //top: 10px;
-    //bottom: 0;
-    //left: 0;
-    //right: 0;
 
     &.show {
         animation: bounceIn .5s;
@@ -620,7 +612,7 @@ export default {
 
             &:hover {
                 background: $neon;
-                color: $neon;
+                color: white;
             }
         }
 

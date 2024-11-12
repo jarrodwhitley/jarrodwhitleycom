@@ -5,10 +5,7 @@ export default {
         Birdle
     },
     mounted() {
-        document.body.classList.add('fullscreen');
-    },
-    beforeDestroy() {
-        document.body.classList.remove('fullscreen');
+        this.$emit('fullscreen');
     }
 }
 </script>
@@ -31,6 +28,12 @@ export default {
         grid: auto 1fr / 1fr;
         justify-items: center;
         align-items: start;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
 
         @include breakpoint(lg) {
             padding-top: 6rem;

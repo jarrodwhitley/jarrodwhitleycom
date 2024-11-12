@@ -1,17 +1,12 @@
 <template>
-    <nav :class="[
-        {'fill': scrolling},
-        {'professional-mode': !radMode},
-        {'home': isHomeRoute},
-        {'birdle': isBirdleRoute}
-        ]">
-        <RouterLink to="/">
+    <nav :class="[{'fill': scrolling && !showBirdle},{'professional-mode': !radMode}]">
+        <a @click="exitFullscreen">
             <div class="logo">
                 <img src="/src/assets/images/jw-logo.svg" alt="Jarrod Whitley"/>
             </div>
-        </RouterLink>
-        <div class="nav-title" v-text="isBirdleRoute ? 'Birdle' : ''"></div>
-        <div class="links" v-if="isHomeRoute">
+        </a>
+        <div class="nav-title" v-text="navHeaderText"></div>
+        <div class="links animate__animated" :class="fullscreen ? 'animate__fadeOut': 'animate__fadeIn'">
             <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio">
                 <i class="fa-brands fa-sketch"></i>
             </a>
@@ -20,6 +15,12 @@
             <a class="disabled" href="#" title="Display page in React (Under Construction)"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <div @click="exitFullscreen"
+             class="exit-fullscreen animate__animated"
+             :class="fullscreen ? 'animate__fadeIn': 'animate__fadeOut'"
+             v-if="fullscreen">
+            <i class="fa-solid fa-times"></i>
         </div>
         <div v-show="showPortfolioModal" id="portfolioModal" class="mos9">
             <div class="mos9-window">
@@ -67,10 +68,11 @@
         </div>
     </nav>
     <main>
-        <RouterView/>
+        <Home @show-birdle="toggleShowBirdle" />
+        <BirdleContainer v-if="showBirdle" @fullscreen="fullscreen = true"/>
     </main>
     <AudioPlayer v-if="radMode" :scroll-shrink="scrollPos > 10"/>
-    <footer v-if="isHomeRoute">
+    <footer>
         <h4>Acknowledgements</h4>
         <span>Mac OS 9 window by<a href="https://codepen.io/perragnar/pen/wrJzqO" target="_blank">Per Ragnar Edin</a></span>
         <span>Circuit board animation by<a href="https://codepen.io/Temmer/full/ExjNJog" target="_blank">Temmer Péter</a></span>
@@ -80,39 +82,44 @@
 </template>
 
 <script>
-import {useRoute} from 'vue-router';
+import Home from "./components/Home.vue";
 import AudioPlayer from "./components/AudioPlayer.vue";
+import BirdleContainer from "./components/BirdleContainer.vue";
 
 export default {
-    components: {AudioPlayer},
+    components: {BirdleContainer, Home, AudioPlayer},
     data() {
         return {
             radMode: true,
             scrolling: false,
             showPortfolioModal: false,
-            scrollPos: 0
+            scrollPos: 0,
+            showBirdle: false,
+            fullscreen: false
         }
     },
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
     },
     methods: {
+        exitFullscreen() {
+            this.fullscreen = false;
+            this.showBirdle = false;
+        },
         handleScroll(event) {
             this.scrollPos = window.scrollY;
             this.scrolling = this.scrollPos > 10;
         },
         togglePortfolioModal() {
             this.showPortfolioModal = !this.showPortfolioModal;
+        },
+        toggleShowBirdle() {
+            this.showBirdle = !this.showBirdle;
         }
     },
     computed: {
-        isHomeRoute() {
-            const route = useRoute();
-            return route.path === '/';
-        },
-        isBirdleRoute() {
-            const route = useRoute();
-            return route.path === '/birdle';
+        navHeaderText() {
+            return this.showBirdle ? 'Birdle' : '';
         }
     }
 }
