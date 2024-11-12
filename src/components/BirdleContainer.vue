@@ -5,7 +5,7 @@ export default {
         Birdle
     },
     mounted() {
-        this.$emit('fullscreen');
+        this.$emit('fullscreen', true);
     }
 }
 </script>

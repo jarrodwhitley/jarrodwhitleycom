@@ -24,8 +24,8 @@
         </section>
         <section class="data-driven">
             <h2>Data-driven Applications</h2>
-            <div class="app-scroll-container" @click="showBirdle()">
-                <div class="app-wrap-container birdle">
+            <div class="app-scroll-container">
+                <div class="app-wrap-container birdle" @click="showBirdle()">
                     <h3>Birdle</h3>
                     <div class="figure-wrap">
                         <figure class="app-wrap">
@@ -427,7 +427,7 @@ h3 {
             transform: translateY(-1rem);
 
             @include breakpoint(lg) {
-                margin: 0;
+                margin-top: 1rem;
                 font-size: 1.5rem;
             }
         }
@@ -494,7 +494,7 @@ h3 {
 
 .experience {
     max-width: 100%;
-    padding: 3rem 2rem;
+    padding: 3rem 1rem;
     background-color: $darkerNight;
     background-image: linear-gradient(45deg, $darkestNight, rgba($purple, .2) 60%, darken($purple, 20%));
     grid: auto / 1fr;
@@ -505,6 +505,7 @@ h3 {
     @include breakpoint(lg) {
         display: grid;
         grid: auto / 1fr 1fr;
+        padding: 3rem 2rem;
     }
 
     h2 {
@@ -663,9 +664,19 @@ h3 {
 
         .figure-wrap {
             position: relative;
+            margin: .5rem;
+            padding: .5rem;
+            border-radius: 5px;
+            border: 1px solid transparent;
+            cursor: pointer;
 
             &.birdle {
                 justify-self: end;
+            }
+
+            &:hover {
+                border: 1px solid $neon;
+                box-shadow: 0 0 3px 2px $neon;
             }
 
             &:hover::after {
@@ -1029,11 +1040,6 @@ h3 {
             left: -2rem;
             transform: rotate(-25deg);
             text-shadow: 0 0 1rem $neon;
-
-            @include breakpoint(lg) {
-                top: -2.8rem;
-                left: -3rem;
-            }
         }
     }
 
@@ -1041,7 +1047,7 @@ h3 {
         margin: 1rem;
 
         @include breakpoint(md) {
-            margin-top: 1rem;
+            margin: 0;
         }
     }
 
@@ -1068,6 +1074,11 @@ h3 {
             justify-items: center;
             height: fit-content;
             position: relative;
+            margin-top: 1rem;
+
+            @include breakpoint(lg) {
+                margin-top: 0;
+            }
 
             .copilot {
                 width: 7rem;
