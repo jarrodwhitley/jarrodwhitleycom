@@ -1,5 +1,5 @@
 <template>
-    <nav :class="[{'mobile': isMobile},{'fill': scrolling},{'professional-mode': !radMode}]">
+    <nav :class="[{'mobile': isMobile},{'fill': scrolling && !fullscreen},{'professional-mode': !radMode}]">
         <div class="logo" @click="exitFullscreen">
             <img src="/src/assets/images/jw-logo.svg" alt="Jarrod Whitley"/>
         </div>
@@ -14,7 +14,8 @@
             <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
         </div>
-        <div class="mobile-menu-btn" @click="toggleMobileMenu" v-if="isMobile">
+        <div class="uc-message">🚧 Under Construction 🚧</div>
+        <div class="mobile-menu-btn" @click="toggleMobileMenu" v-if="isMobile && !fullscreen">
             <i v-if="!showMobileMenu" class="fa-solid fa-bars"></i>
             <i v-else class="fa-solid fa-times"></i>
         </div>

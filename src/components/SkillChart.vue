@@ -3,7 +3,6 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
 import {BarChart} from 'vue-chart-3';
 import {Chart, registerables} from "chart.js";
 import ChartDeferred from 'chartjs-plugin-deferred';
