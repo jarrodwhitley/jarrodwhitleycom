@@ -47,6 +47,7 @@ export default {
     name: "ChatContainer",
     data() {
         return {
+            isMobile: window.innerWidth < 768,
             userInput: '',
             botThinking: false,
             botResponses: [
@@ -105,10 +106,12 @@ export default {
     mounted() {
         this.$emit('fullscreen', true);
         document.addEventListener('keydown', this.handleKeyPress);
-        window.visualViewport.addEventListener('resize', () => {
-            // set chatContainer height to visualViewport height
-            this.$refs.chatContainer.style.height = `${window.visualViewport.height}px`;
-        })
+        if (this.isMobile) {
+            window.visualViewport.addEventListener('resize', () => {
+                this.$refs.chatContainer.style.height = `${window.visualViewport.height}px`;
+            })
+        }
+
     },
     beforeDestroy() {
         document.removeEventListener('keydown', this.handleKeyPress);
@@ -360,6 +363,7 @@ export default {
                 margin: 0;
                 font-size: 1rem;
                 text-indent: 0.5rem;
+                color: white;
             }
 
             &__send {

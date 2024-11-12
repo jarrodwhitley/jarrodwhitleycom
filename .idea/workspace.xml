@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="updated app section and AI section">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/sweaty-speedrunner.gif" afterDir="false" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="more mobile updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_audio_player.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_nav.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AudioPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AudioPlayer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BirdleContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BirdleContainer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ChatContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ChatContainer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -397,7 +390,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731434358831</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="more mobile updates">
+      <option name="closed" value="true" />
+      <created>1731442799111</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1731442799111</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,7 +424,6 @@
       <path value="$PROJECT_DIR$/nuxt-app" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="another text commit" />
     <MESSAGE value="swap to Vue3" />
     <MESSAGE value="play button working" />
     <MESSAGE value="experience section" />
@@ -448,6 +448,7 @@
     <MESSAGE value="mobile menu added" />
     <MESSAGE value="fixed under construction message" />
     <MESSAGE value="updated app section and AI section" />
+    <MESSAGE value="more mobile updates" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
