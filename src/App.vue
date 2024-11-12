@@ -71,16 +71,25 @@
         </div>
     </nav>
     <main>
-        <Home @show-birdle="toggleShowBirdle" @scrolling="scrolling = true"/>
+        <Home @show-birdle="toggleShowBirdle" @show-chat="toggleShowChat" @scrolling="scrolling = true"/>
         <BirdleContainer v-if="showBirdle" @fullscreen="fullscreen = true" @remove-hash="removeHash"/>
+        <ChatContainer v-if="showChat" @fullscreen="fullscreen = true" @remove-hash="removeHash"/>
     </main>
     <AudioPlayer v-if="radMode" :scroll-shrink="scrollPos > 10"/>
     <footer>
-        <h4>Acknowledgements</h4>
-        <span>Mac OS 9 window by<a href="https://codepen.io/perragnar/pen/wrJzqO" target="_blank">Per Ragnar Edin</a></span>
-        <span>Circuit board animation by<a href="https://codepen.io/Temmer/full/ExjNJog" target="_blank">Temmer Péter</a></span>
-        <span>Synthwave Grid by<a href="https://codepen.io/pierredarrieutort/pen/Vwaoqqe" target="_blank">Pierre Darrieutort</a></span>
-        <span>Glitch text by<a href="https://codepen.io/lbebber/pen/nqwBKK" target="_blank">Lucas Bebber</a></span>
+        <div class="footer__left">
+            <h4>Acknowledgements</h4>
+            <span>Mac OS 9 window by<a href="https://codepen.io/perragnar/pen/wrJzqO" target="_blank">Per Ragnar Edin</a></span>
+            <span>Circuit board animation by<a href="https://codepen.io/Temmer/full/ExjNJog" target="_blank">Temmer Péter</a></span>
+            <span>Synthwave Grid by<a href="https://codepen.io/pierredarrieutort/pen/Vwaoqqe" target="_blank">Pierre Darrieutort</a></span>
+            <span>Glitch text by<a href="https://codepen.io/lbebber/pen/nqwBKK" target="_blank">Lucas Bebber</a></span>
+        </div>
+        <div class="footer__right">
+            <h4>Contact</h4>
+            <a href="mailto:hello@jarrodwhitley"><i class="fa-solid fa-envelope"></i>hello@jarrodwhitley</a>
+            <span>For free web development work click <a href="https://youtu.be/oHg5SJYRHA0?feature=shared" target="_blank">here</a></span>
+            <span>© 2024 Jarrod Whitley</span>
+        </div>
     </footer>
 </template>
 
@@ -88,9 +97,10 @@
 import Home from "./components/Home.vue";
 import AudioPlayer from "./components/AudioPlayer.vue";
 import BirdleContainer from "./components/BirdleContainer.vue";
+import ChatContainer from "./components/ChatContainer.vue";
 
 export default {
-    components: {BirdleContainer, Home, AudioPlayer},
+    components: {BirdleContainer, Home, AudioPlayer, ChatContainer},
     data() {
         return {
             isMobile: window.innerWidth < 768,
@@ -100,6 +110,7 @@ export default {
             showPortfolioModal: false,
             scrollPos: 0,
             showBirdle: false,
+            showChat: false,
             fullscreen: false
         }
     },
@@ -113,6 +124,7 @@ export default {
         exitFullscreen() {
             this.fullscreen = false;
             this.showBirdle = false;
+            this.showChat = false;
             this.removeHash();
         },
         removeHash() {
@@ -121,7 +133,6 @@ export default {
             }
         },
         handleScroll(event) {
-            console.log('scrolling', event);
             this.scrollPos = window.scrollY;
             this.scrolling = this.scrollPos > 10;
         },
@@ -130,6 +141,9 @@ export default {
         },
         toggleShowBirdle() {
             this.showBirdle = !this.showBirdle;
+        },
+        toggleShowChat() {
+            this.showChat = !this.showChat;
         }
     },
     computed: {

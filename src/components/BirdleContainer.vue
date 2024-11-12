@@ -33,7 +33,7 @@ export default {
         bottom: 0;
         left: 0;
         right: 0;
-        z-index: 2;
+        z-index: 5;
 
         @include breakpoint(lg) {
             padding-top: 6rem;
