@@ -4,7 +4,6 @@
 @import './assets/fontawesome/css/solid.css';
 @import './assets/scss/colors';
 @import './assets/scss/mixins';
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@100;300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import './assets/scss/fonts';
@@ -45,9 +44,9 @@ img {
     width: 100%;
 }
 
-input {
-    font-family: 'Inter', sans-serif;
-}
+//input {
+//    font-family: 'Inter', sans-serif;
+//}
 
 #app {
     overflow-x: hidden;
@@ -918,149 +917,4 @@ h3 {
         -o-background-size: 75rem 50rem;
         background-size: 75rem 50rem;
     }
-}
-
-.mos9 {
-    background-color: #62639B;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Chicago, sans-serif;
-    font-size: 15px;
-}
-
-.mos9-window {
-    display: flex;
-    flex-direction: column;
-    background-color: #cecece;
-    position: fixed;
-    top: 10%;
-    left: auto;
-    right: auto;
-    bottom: 10%;
-    z-index: 5;
-    border: solid 1px #000000;
-    box-shadow: 2px 2px 0 #000000;
-    min-width: 300px;
-    min-height: 200px;
-    border: {
-        top: solid 1px #ffffff;
-        left: solid 1px #ffffff;
-        right: solid 1px #B5B5B5;
-        bottom: solid 1px #B5B5B5;
-    }
-
-    .mos9-window__header {
-        display: flex;
-        justify-content: space-between;
-
-        .mos9-window__title {
-            flex: 1;
-            display: flex;
-            padding: 2px;
-
-            &:before, &:after {
-                background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAYAAAB8OZQwAAAAGUlEQVQYV2P8////fwY0wFhcXIwpOERUAgBPkx+vDNl9TQAAAABJRU5ErkJggg==');
-                content: '';
-                flex: 1;
-            }
-
-            &:before {
-                margin-right: 10px;
-            }
-
-            &:after {
-                margin-left: 10px;
-            }
-        }
-
-        .mos9-window__tools {
-            display: flex;
-            padding: 2px;
-
-            .mos9-window__tool--1,
-            .mos9-window__tool--2, {
-                &:after {
-                    content: '';
-                    display: block;
-                    border-bottom: solid 1px #000000;
-                }
-            }
-
-            .mos9-window__tool--1 {
-                &:after {
-                    width: 5px;
-                    height: 5px;
-                    border-right: solid 1px #000000;
-                }
-            }
-
-            .mos9-window__tool--2 {
-                &:after {
-                    width: 100%;
-                    height: 1px;
-                    margin-top: 3px;
-                    border-top: solid 1px #000000;
-                }
-            }
-        }
-    }
-
-    .mos9-window__content {
-        display: grid;
-        grid: auto / repeat(3, 1fr);
-        grid-gap: 20px;
-        justify-items: center;
-        align-items: center;
-        width: fit-content;
-        height: 100%;
-        margin: 0 2px 2px;
-        padding: 30px 20px;
-        background-color: #ffffff;
-        box-shadow: inset 0 0 1px 1px #000000;
-        border: {
-            top: solid 1px #B5B5B5;
-            left: solid 1px #B5B5B5;
-            right: solid 1px #ffffff;
-            bottom: solid 1px #ffffff;
-        }
-        overflow-y: scroll;
-        scrollbar-color: #fafafa gray;
-        scrollbar-width: thin;
-
-        h2 {
-            color: $darkNight;
-            font-size: 20px;
-        }
-
-        .mos9-window__content__img-container {
-            color: gray;
-            font-size: 30px;
-            background-color: #ececec;
-            height: 350px;
-            width: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 5px;
-
-            img {
-                width: 50px;
-                opacity: .2;
-            }
-        }
-    }
-}
-
-.mos9-button {
-    display: block;
-    width: 10px;
-    height: 10px;
-    margin: 2px;
-    border: solid 1px #000000;
-    box-shadow: inset 1px 1px #cecece, inset -1px -1px #8c8c8c, 1px 1px #ffffff, -1px -1px #8c8c8c;
-    background-color: rgba(156, 156, 156, 1);
-    background: linear-gradient(135deg, rgba(156, 156, 156, 1) 0%, rgba(173, 173, 173, 1) 25%, rgba(206, 206, 206, 1) 50%, rgba(222, 222, 222, 1) 75%, rgba(255, 255, 255, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9c9c9c', endColorstr='#ffffff', GradientType=1);
 }
