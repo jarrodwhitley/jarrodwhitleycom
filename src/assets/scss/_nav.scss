@@ -41,13 +41,10 @@ nav {
     }
 
     &.fill {
-
-        @include breakpoint(md) {
-            height: 4rem;
-            background: $darkerNight;
-            transition: all ease-in-out .5s;
-            box-shadow: 1rem 0 3rem 1rem rgba($darkestNight, .5);
-        }
+        height: 4rem;
+        background: $darkerNight;
+        transition: all ease-in-out .5s;
+        box-shadow: 1rem 0 3rem 1rem rgba($darkestNight, .5);
 
         .logo {
             width: 3rem;
@@ -59,6 +56,24 @@ nav {
 
         .logo {
             width: 3rem;
+        }
+    }
+
+    &.mobile {
+        padding: 0 1rem;
+
+        .mobile-menu-btn {
+            grid-row: 1;
+            grid-column: 2;
+            justify-self: end;
+            font-size: 2rem;
+            z-index: 2;
+
+            .fa-times {
+                font-size: 2rem;
+                z-index: 2;
+                width: 1.7rem;
+            }
         }
     }
 }
@@ -75,14 +90,10 @@ nav {
     }
 }
 
-// logo link wrapper
-a {
+.logo {
     grid-row: 1;
     grid-column: 1;
-}
-
-.logo {
-    width: 2rem;
+    width: 3rem;
     height: auto;
     justify-self: start;
 
@@ -107,6 +118,31 @@ a {
     color: white;
     gap: 1rem;
 
+    .mobile & {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: auto;
+        right: 0;
+        height: 100%;
+        padding-top: 5.5rem;
+        display: flex;
+        gap: 2rem;
+        flex-direction: column;
+        width: 4rem;
+        background-color: rgba($darkestNight, .8);
+        transition: all ease-in-out .2s;
+        transform: translateX(100%);
+
+        &.show {
+            transform: translateX(0);
+            transition: all ease-in .4s;
+        }
+
+        a {
+            font-size: 2.5rem;
+        }
+    }
 
     @include breakpoint(lg) {
         grid-row: 1;
@@ -165,6 +201,10 @@ a {
         color: gray;
         opacity: 0.2;
         cursor: default;
+
+        .mobile & {
+            display: none;
+        }
     }
 
     i {
@@ -316,6 +356,27 @@ a {
         overflow-y: scroll;
         scrollbar-color: #fafafa gray;
         scrollbar-width: thin;
+
+        .mobile & {
+            display: inline-grid;
+            grid: 1fr / auto;
+            scroll-snap-type: x mandatory;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            width: 100vw;
+
+            h2 {
+                grid-row: 1;
+                grid-column: 1 / -1;
+                justify-self: center;
+                position: absolute;
+            }
+
+            .mos9-window__content__img-container {
+                grid-row: 2;
+                scroll-snap-align: center;
+            }
+        }
 
         h2 {
             color: $darkNight;

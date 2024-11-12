@@ -78,9 +78,9 @@
                     </div>
                 </div>
             </div>
-<!--            <div class="bamazon carousel-item animate__animated" :class="dataCarouselClasses('bamazon')">-->
+            <!--            <div class="bamazon carousel-item animate__animated" :class="dataCarouselClasses('bamazon')">-->
 
-<!--            </div>-->
+            <!--            </div>-->
             <div class="next-btn"></div>
             <!--            <div class="btn btn-glow&#45;&#45;neon" @click="toggleQuotesHood" v-text="hoodOpen ? 'Close Hood' : 'See Under the Hood'"></div>-->
         </section>
@@ -112,219 +112,222 @@
 </template>
 
 <script>
-    import SkillChart from "../components/SkillChart.vue";
-    import HobbyChart from "../components/HobbyChart.vue";
-    import {ObserveVisibility} from "vue-observe-visibility";
+import SkillChart from "../components/SkillChart.vue";
+import HobbyChart from "../components/HobbyChart.vue";
+import {ObserveVisibility} from "vue-observe-visibility";
 
-    export default {
-        directives: {
-            ObserveVisibility
-        },
-        components: {
-            SkillChart, HobbyChart
-        },
-        data() {
-            return {
-                isLoading: true,
-                radMode: true,
-                showPortfolioModal: false,
-                isHovering: false,
-                scrollPos: 0,
-                quotes: undefined,
-                products: undefined,
-                sillyQuote: {
-                    "id": 0,
-                    "quote": "You miss 100% of the shots you don't take. - Wayne Gretzky",
-                    "author": "Michael Scott"
+export default {
+    directives: {
+        ObserveVisibility
+    },
+    components: {
+        SkillChart, HobbyChart
+    },
+    data() {
+        return {
+            isLoading: true,
+            radMode: true,
+            showPortfolioModal: false,
+            isHovering: false,
+            scrollPos: 0,
+            quotes: undefined,
+            products: undefined,
+            sillyQuote: {
+                "id": 0,
+                "quote": "You miss 100% of the shots you don't take. - Wayne Gretzky",
+                "author": "Michael Scott"
+            },
+            hoodOpen: false,
+            userInput: '',
+            botThinking: false,
+            botResponses: [
+                'It is certain.',
+                'It is decidedly so.',
+                'Without a doubt.',
+                'Yes - definitely.',
+                'You may rely on it.',
+                'As I see it, yes.',
+                'Most likely.',
+                'Outlook good.',
+                'Yes.',
+                'Signs point to yes.',
+                'Reply hazy, try again.',
+                'Ask again later.',
+                'Better not tell you now.',
+                'Cannot predict now.',
+                'Concentrate and ask again.',
+                "Don't count on it.",
+                'My reply is no.',
+                'My sources say no.',
+                'Outlook not so good.',
+                'Very doubtful.'
+            ],
+            chatLog: [
+                {
+                    user: false,
+                    message: 'Ask me anything!'
                 },
-                hoodOpen: false,
-                userInput: '',
-                botThinking: false,
-                botResponses: [
-                    'It is certain.',
-                    'It is decidedly so.',
-                    'Without a doubt.',
-                    'Yes - definitely.',
-                    'You may rely on it.',
-                    'As I see it, yes.',
-                    'Most likely.',
-                    'Outlook good.',
-                    'Yes.',
-                    'Signs point to yes.',
-                    'Reply hazy, try again.',
-                    'Ask again later.',
-                    'Better not tell you now.',
-                    'Cannot predict now.',
-                    'Concentrate and ask again.',
-                    "Don't count on it.",
-                    'My reply is no.',
-                    'My sources say no.',
-                    'Outlook not so good.',
-                    'Very doubtful.'
-                ],
-                chatLog: [
-                    {
-                        user: false,
-                        message: 'Ask me anything!'
-                    },
-                ],
-                dataTabs: [
-                    {
-                        id: 0,
-                        name: 'Birdle',
-                        isActive: true,
-                        data: 'birdle',
-                        isHovering: false
-                    },
-                    {
-                        id: 1,
-                        name: '8 Ball Chat',
-                        isActive: false,
-                        data: 'chat',
-                        isHovering: false
-                    },
-                    // {
-                    //     id: 2,
-                    //     name: 'BAMazon',
-                    //     isActive: false,
-                    //     data: 'bamazon',
-                    //     isHovering: false
-                    // }
-                ],
-                dataSectionOptions: {
-                    callback: (isVisible, entry) => this.visibilityChanged(isVisible, entry, 'dataSectionIsVisible'),
-                    once: true,
+            ],
+            dataTabs: [
+                {
+                    id: 0,
+                    name: 'Birdle',
+                    isActive: true,
+                    data: 'birdle',
+                    isHovering: false
                 },
-                dataSectionIsVisible: false,
-                aiSectionIsVisible: false,
-                scrolling: false,
-                bamazon: {
-                    products: [],
+                {
+                    id: 1,
+                    name: '8 Ball Chat',
+                    isActive: false,
+                    data: 'chat',
+                    isHovering: false
                 },
-                radTextHide: false,
-            }
-        },
-        created() {
-            // fetch('https://dummyjson.com/products')
-            //     .then(res => res.json())
-            //     .then(json => this.bamazon.products = json.products);
-            // fetch('https://dummyjson.com/users')
-            //     .then(res => res.json())
-            //     .then(json => this.users = json.users);
-            // fetch('https://dummyjson.com/comments')
-            //     .then(res => res.json())
-            //     .then(json => this.comments = json.comments);
-            // fetch('https://dummyjson.com/quotes')
-            //     .then(res => res.json())
-            //     .then(json => this.quotes = json.quotes);
-        },
-        mounted() {
-            window.addEventListener('load', () => {
-                this.isLoading = false;
-            });
-            window.addEventListener('scroll', this.handleScroll);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    this.createUserMessage();
-                }
-            });
-            // when the page loads if the url contains "#birdle" then show the birdle
-            if (window.location.hash === '#birdle') {
-                this.showBirdle();
-            }
-        },
-        beforeDestroy() {
-            window.removeEventListener('scroll', this.handleScroll);
-        },
-        methods: {
-            dataCarouselClasses(data) {
-                if (!this.isLoading) {
-                    let classArray = [];
-                    if (this.dataTabs.find(t => t.isActive).data === data) {
-                        classArray.push('animate__fadeIn');
-                    } else {
-                        classArray.push('animate__fadeOut animate__faster');
-                    }
-                    return classArray;
-                }
+                // {
+                //     id: 2,
+                //     name: 'BAMazon',
+                //     isActive: false,
+                //     data: 'bamazon',
+                //     isHovering: false
+                // }
+            ],
+            dataSectionOptions: {
+                callback: (isVisible, entry) => this.visibilityChanged(isVisible, entry, 'dataSectionIsVisible'),
+                once: true,
             },
-            mouseOverHandler(tab) {
-                if (tab.isActive) return;
-                this.dataTabs.forEach(t => t.isHovering = false);
-                tab.isHovering = true;
+            dataSectionIsVisible: false,
+            aiSectionIsVisible: false,
+            scrolling: false,
+            bamazon: {
+                products: [],
             },
-            mouseLeaveHandler(tab) {
-                tab.isHovering = false;
-            },
-            visibilityChanged(isVisible, entry, id) {
-                this[id] = isVisible;
-            },
-            fetchAuthorImage(index) {
-                switch (index) {
-                    case 0:
-                        return 'hill.png';
-                    case 1:
-                        return 'einstein.png';
-                    case 2:
-                        return 'frost.png';
-                    default:
-                        return '';
-                }
-            },
-            handleScroll(event) {
-                this.scrollPos = window.scrollY;
-                this.scrolling = this.scrollPos > 10;
-            },
-            toggleQuotesHood() {
-                this.hoodOpen = !this.hoodOpen;
-            },
-            changeDataTab(tab) {
-                this.dataTabs.forEach(t => t.isActive = false);
-                tab.isActive = true;
-            },
-            createBotMessage() {
-                this.botThinking = true;
-                setTimeout(() => {
-                    this.botThinking = false;
-                    setTimeout(() => {
-                        this.chatLog.push({
-                            user: false,
-                            message: this.botResponses[Math.floor(Math.random() * this.botResponses.length)]
-                        });
-                    }, 500);
-                }, 2000);
-
-            },
-            createUserMessage() {
-                if (this.userInput) {
-                    this.chatLog.push({
-                        user: true,
-                        message: this.userInput
-                    });
-                    this.userInput = '';
-                    this.createBotMessage();
-                } else {
-                    this.chatLog.push({
-                        user: false,
-                        message: 'You need to type something first...'
-                    });
-                }
-            },
-            showBirdle() {
-                this.$emit('show-birdle');
-            },
-        },
-        computed: {
-            activeDataTab() {
-                return this.dataTabs.find(t => t.isActive);
-            },
+            radTextHide: false,
         }
+    },
+    created() {
+        // fetch('https://dummyjson.com/products')
+        //     .then(res => res.json())
+        //     .then(json => this.bamazon.products = json.products);
+        // fetch('https://dummyjson.com/users')
+        //     .then(res => res.json())
+        //     .then(json => this.users = json.users);
+        // fetch('https://dummyjson.com/comments')
+        //     .then(res => res.json())
+        //     .then(json => this.comments = json.comments);
+        // fetch('https://dummyjson.com/quotes')
+        //     .then(res => res.json())
+        //     .then(json => this.quotes = json.quotes);
+    },
+    mounted() {
+        window.addEventListener('load', () => {
+            this.isLoading = false;
+        });
+        window.addEventListener('scroll', this.handleScroll);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                this.createUserMessage();
+            }
+        });
+        if (window.location.hash === '#birdle') {
+            this.showBirdle();
+        }
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+        dataCarouselClasses(data) {
+            if (!this.isLoading) {
+                let classArray = [];
+                if (this.dataTabs.find(t => t.isActive).data === data) {
+                    classArray.push('animate__fadeIn');
+                } else {
+                    classArray.push('animate__fadeOut animate__faster');
+                }
+                return classArray;
+            }
+        },
+        mouseOverHandler(tab) {
+            if (tab.isActive) return;
+            this.dataTabs.forEach(t => t.isHovering = false);
+            tab.isHovering = true;
+        },
+        mouseLeaveHandler(tab) {
+            tab.isHovering = false;
+        },
+        visibilityChanged(isVisible, entry, id) {
+            this[id] = isVisible;
+        },
+        fetchAuthorImage(index) {
+            switch (index) {
+                case 0:
+                    return 'hill.png';
+                case 1:
+                    return 'einstein.png';
+                case 2:
+                    return 'frost.png';
+                default:
+                    return '';
+            }
+        },
+        handleScroll(event) {
+            this.scrollPos = window.scrollY;
+            this.scrolling = this.scrollPos > 10;
+            if (this.scrolling) {
+                this.$emit('scrolling');
+            }
+        },
+        toggleQuotesHood() {
+            this.hoodOpen = !this.hoodOpen;
+        },
+        changeDataTab(tab) {
+            this.dataTabs.forEach(t => t.isActive = false);
+            tab.isActive = true;
+        },
+        createBotMessage() {
+            this.botThinking = true;
+            setTimeout(() => {
+                this.botThinking = false;
+                setTimeout(() => {
+                    this.chatLog.push({
+                        user: false,
+                        message: this.botResponses[Math.floor(Math.random() * this.botResponses.length)]
+                    });
+                }, 500);
+            }, 2000);
+
+        },
+        createUserMessage() {
+            if (this.userInput) {
+                this.chatLog.push({
+                    user: true,
+                    message: this.userInput
+                });
+                this.userInput = '';
+                this.createBotMessage();
+            } else {
+                this.chatLog.push({
+                    user: false,
+                    message: 'You need to type something first...'
+                });
+            }
+        },
+        showBirdle() {
+            this.$emit('show-birdle');
+        },
+    },
+    computed: {
+        activeDataTab() {
+            return this.dataTabs.find(t => t.isActive);
+        },
     }
+}
 </script>
 
 <style lang="scss">
-    @import '../assets/scss/colors';
-    @import '../assets/scss/breakpoints';
+@import '../assets/scss/colors';
+@import '../assets/scss/breakpoints';
+
 #content {
     display: grid;
     grid: auto / 1fr;
@@ -652,7 +655,7 @@ h3 {
             transform: rotate(-15deg);
             text-shadow: 0 0 1rem $neon;
 
-            @include breakpoint(lg){
+            @include breakpoint(lg) {
                 font-size: 5rem;
                 top: -4rem;
                 left: -3rem;
@@ -697,6 +700,7 @@ h3 {
                     &::before {
                         display: none;
                     }
+
                     &::after {
                         animation: none;
                         top: 1.7rem;

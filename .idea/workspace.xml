@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="birdle mobile fixed">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/birdle_screenshot.png" afterDir="false" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="fixed fullscreen stuff and bot chat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_colors.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/scss/_nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_nav.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Birdle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Birdle.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BirdleContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BirdleContainer.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -367,7 +360,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731380248486</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fixed fullscreen stuff and bot chat">
+      <option name="closed" value="true" />
+      <created>1731387651442</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1731387651442</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,6 +415,7 @@
     <MESSAGE value="created birdle component" />
     <MESSAGE value="vue router working" />
     <MESSAGE value="birdle mobile fixed" />
+    <MESSAGE value="fixed fullscreen stuff and bot chat" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

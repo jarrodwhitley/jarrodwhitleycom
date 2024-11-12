@@ -1,12 +1,10 @@
 <template>
-    <nav :class="[{'fill': scrolling && !showBirdle},{'professional-mode': !radMode}]">
-        <a @click="exitFullscreen">
-            <div class="logo">
-                <img src="/src/assets/images/jw-logo.svg" alt="Jarrod Whitley"/>
-            </div>
-        </a>
+    <nav :class="[{'mobile': isMobile},{'fill': scrolling},{'professional-mode': !radMode}]">
+        <div class="logo" @click="exitFullscreen">
+            <img src="/src/assets/images/jw-logo.svg" alt="Jarrod Whitley"/>
+        </div>
         <div class="nav-title" v-text="navHeaderText"></div>
-        <div class="links animate__animated" :class="fullscreen ? 'animate__fadeOut': 'animate__fadeIn'">
+        <div class="links animate__animated" :class="{'show': showMobileMenu}" v-if="!fullscreen">
             <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio">
                 <i class="fa-brands fa-sketch"></i>
             </a>
@@ -15,6 +13,10 @@
             <a class="disabled" href="#" title="Display page in React (Under Construction)"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <div class="mobile-menu-btn" @click="toggleMobileMenu" v-if="isMobile">
+            <i v-if="!showMobileMenu" class="fa-solid fa-bars"></i>
+            <i v-else class="fa-solid fa-times"></i>
         </div>
         <div @click="exitFullscreen"
              class="exit-fullscreen animate__animated"
@@ -68,8 +70,8 @@
         </div>
     </nav>
     <main>
-        <Home @show-birdle="toggleShowBirdle" />
-        <BirdleContainer v-if="showBirdle" @fullscreen="fullscreen = true"/>
+        <Home @show-birdle="toggleShowBirdle" @scrolling="scrolling = true"/>
+        <BirdleContainer v-if="showBirdle" @fullscreen="fullscreen = true" @remove-hash="removeHash"/>
     </main>
     <AudioPlayer v-if="radMode" :scroll-shrink="scrollPos > 10"/>
     <footer>
@@ -90,6 +92,8 @@ export default {
     components: {BirdleContainer, Home, AudioPlayer},
     data() {
         return {
+            isMobile: window.innerWidth < 768,
+            showMobileMenu: false,
             radMode: true,
             scrolling: false,
             showPortfolioModal: false,
@@ -102,11 +106,21 @@ export default {
         window.addEventListener('scroll', this.handleScroll);
     },
     methods: {
+        toggleMobileMenu() {
+            this.showMobileMenu = !this.showMobileMenu;
+        },
         exitFullscreen() {
             this.fullscreen = false;
             this.showBirdle = false;
+            this.removeHash();
+        },
+        removeHash() {
+            if (window.location.hash) {
+                history.replaceState(null, null, window.location.pathname);
+            }
         },
         handleScroll(event) {
+            console.log('scrolling', event);
             this.scrollPos = window.scrollY;
             this.scrolling = this.scrollPos > 10;
         },
