@@ -43,30 +43,30 @@
                 </div>
             </div>
         </section>
-        <section class="ai-friendly">
-            <h2>Pair Programming</h2>
-            <div class="sub-heading">with
-                <a class="link"
-                   :class="{ 'glitch': isHovering }"
-                   @mouseover="isHovering = true"
-                   @mouseleave="isHovering = false"
-                   data-text="GitHub Copilot"
-                   href="https://github.com/features/copilot"
-                   target="_blank">GitHub Copilot</a></div>
-            <div class="section-content" v-observe-visibility="(isVisible, entry) => visibilityChanged(isVisible, entry, 'aiSectionIsVisible')">
-                <div class="icons">
-                    <img class="copilot animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/github-copilot.png" alt="copilot"/>
-                    <img class="chatgpt animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/chatgpt.jpg" alt="chatgpt"/>
-                    <img class="midjourney animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/midjourney.png" alt="midjourney"/>
-                </div>
-                <div class="text">
-                    <h3>I consider myself to be an AI enthusiast</h3>
-                    <p>I've dabbled in AI image generation with services like Midjourney and Adobe's new generative fill. I've used ChatGPT to create a JSON schema from a block of HTML data. Most of my time has been spent working with Github's new AI-pair programming tool, Copilot. It's certainly a mixed bag in terms of what it does well and not so well, but I have high hopes for Copilot.</p>
-                    <p>Most importantly, I believe the future of programming will be AI-assisted programming. As these tools get better and better over time they will help software engineers to become more efficient.</p>
-                </div>
-            </div>
-            <div class="circuit-board"></div>
-        </section>
+<!--        <section class="ai-friendly">-->
+<!--            <h2>Pair Programming</h2>-->
+<!--            <div class="sub-heading">with-->
+<!--                <a class="link"-->
+<!--                   :class="{ 'glitch': isHovering }"-->
+<!--                   @mouseover="isHovering = true"-->
+<!--                   @mouseleave="isHovering = false"-->
+<!--                   data-text="GitHub Copilot"-->
+<!--                   href="https://github.com/features/copilot"-->
+<!--                   target="_blank">GitHub Copilot</a></div>-->
+<!--            <div class="section-content" v-observe-visibility="(isVisible, entry) => visibilityChanged(isVisible, entry, 'aiSectionIsVisible')">-->
+<!--                <div class="icons">-->
+<!--                    <img class="copilot animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/github-copilot.png" alt="copilot"/>-->
+<!--                    <img class="chatgpt animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/chatgpt.jpg" alt="chatgpt"/>-->
+<!--                    <img class="midjourney animate__animated" :class="aiSectionIsVisible ? 'animate__fadeInUp' : 'animate__fadeOutDown'" src="/src/assets/images/midjourney.png" alt="midjourney"/>-->
+<!--                </div>-->
+<!--                <div class="text">-->
+<!--                    <h3>I consider myself to be an AI enthusiast</h3>-->
+<!--                    <p>I've dabbled in AI image generation with services like Midjourney and Adobe's new generative fill. I've used ChatGPT to create a JSON schema from a block of HTML data. Most of my time has been spent working with Github's new AI-pair programming tool, Copilot. It's certainly a mixed bag in terms of what it does well and not so well, but I have high hopes for Copilot.</p>-->
+<!--                    <p>Most importantly, I believe the future of programming will be AI-assisted programming. As these tools get better and better over time they will help software engineers to become more efficient.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="circuit-board"></div>-->
+<!--        </section>-->
     </div>
 </template>
 
@@ -625,8 +625,8 @@ h3 {
             text-shadow: 0 0 1rem $neon;
 
             @include breakpoint(lg) {
-                font-size: 5rem;
-                top: -4rem;
+                font-size: 4rem;
+                top: -3rem;
                 left: -3rem;
             }
         }
@@ -1040,6 +1040,11 @@ h3 {
             left: -2rem;
             transform: rotate(-25deg);
             text-shadow: 0 0 1rem $neon;
+
+            @include breakpoint(lg) {
+                font-size: 4rem;
+                top: -2.5rem;
+            }
         }
     }
 
