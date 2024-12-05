@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "postbuild": "cp CNAME build/",
+        "postbuild": "cp CNAME build/ && cp src/assets/jarrod_whitley_resume_2024.pdf build/",
         "dev": "vite --host",
         "build:prod": "vite build --mode production",
         "preview": "vite preview",

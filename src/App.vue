@@ -10,9 +10,10 @@
             </a>
             <span class="divider">|</span>
             <a title="Display page in Vue"><i class="fa-brands fa-vuejs"></i></a>
-            <a class="disabled" href="#" title="Display page in React (Under Construction)"><i class="fa-brands fa-react"></i></a>
+            <a href="https://bamazon.jarrodwhitley.com" title="Visit react project"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
+            <a href="/jarrod_whitley_resume_2024.pdf" title="Download my resume"><i class="fa-solid fa-file-arrow-down"></i></a>
         </div>
         <div class="uc-message" @click="toggleNoneSense">
             <span>🚧 Under Construction 🚧</span>

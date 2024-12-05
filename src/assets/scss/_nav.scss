@@ -274,7 +274,7 @@ nav {
     }
 
     .fa-react:hover {
-        //color: #61DBFB;
+        color: #61DBFB;
     }
 
     .fa-linkedin:hover {
@@ -283,6 +283,14 @@ nav {
 
     .fa-github:hover {
         color: gray;
+    }
+
+    .fa-file-arrow-down {
+        font-size: 30px;
+
+        &:hover {
+            color: $neon;
+        }
     }
 }
 
