@@ -4,7 +4,14 @@
             <div class="text">
                 <h1 v-if="radMode" class="page-title">Frontend{{!isMobile ? '&nbsp;' : ''}}<span class="glitch" data-text="Hacker">Hacker</span></h1>
                 <h1 v-else class="page-title--pro">Cool things said here</h1>
-                <p v-if="radMode" class="page-subtitle">Creative Developer <span v-if="!isMobile">|</span> Rapid Prototyper <span v-if="!isMobile">|</span> Problem Solver</p>
+                <p v-if="radMode" class="page-subtitle">
+                    Creative Developer
+                    <span v-if="!isMobile">|</span>
+                    <br v-else/>
+                    Rapid Prototyper
+                    <span v-if="!isMobile">|</span>
+                    <br v-else/>
+                    Problem Solver</p>
                 <p v-else class="page-subtitle--pro">&&&&&</p>
             </div>
             <div class="grid-bg">
