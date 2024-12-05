@@ -9,7 +9,7 @@
                 <i class="fa-brands fa-sketch"></i>
             </a>
             <span class="divider">|</span>
-            <a title="Display page in Vue"><i class="fa-brands fa-vuejs"></i></a>
+            <a title="This app is built with Vue3!"><i class="fa-brands fa-vuejs"></i></a>
             <a href="https://bamazon.jarrodwhitley.com" title="Visit react project"><i class="fa-brands fa-react"></i></a>
             <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>

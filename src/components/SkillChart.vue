@@ -19,7 +19,7 @@ export default {
                 labels: ['Vue', 'JS', 'SCSS', 'jQuery', 'Nativescript-vue', 'React', 'Adobe XD'],
                 datasets: [
                     {
-                        data: [100, 80, 90, 80, 20, 10, 50],
+                        data: [100, 80, 90, 80, 20, 50, 70],
                         backgroundColor: ['#71DBD4', '#C724B1', '#3A3A59', '#58A7AF', '#401e45', '#642F6C'],
                     },
                 ]

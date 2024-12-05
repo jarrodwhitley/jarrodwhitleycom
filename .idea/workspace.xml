@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="">
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="updated headline">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SkillChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillChart.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +195,7 @@
       <workItem from="1731949856105" duration="1483000" />
       <workItem from="1732058788324" duration="2976000" />
       <workItem from="1733358396383" duration="529000" />
-      <workItem from="1733427474390" duration="909000" />
+      <workItem from="1733427474390" duration="1114000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -422,7 +423,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733358821749</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="updated headline">
+      <option name="closed" value="true" />
+      <created>1733428398241</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1733428398241</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,7 +457,6 @@
       <path value="$PROJECT_DIR$/nuxt-app" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="experience section" />
     <MESSAGE value="quotes section" />
     <MESSAGE value="quotes section / AI section" />
     <MESSAGE value="data section" />
@@ -473,6 +481,7 @@
     <MESSAGE value="more mobile updates" />
     <MESSAGE value="bug fixes" />
     <MESSAGE value="fixed resume link" />
+    <MESSAGE value="updated headline" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
