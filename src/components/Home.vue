@@ -2,12 +2,10 @@
     <div id="content" :class="[{ 'no-animations': isLoading }, {'professional-mode': !radMode}]">
         <section class="intro">
             <div class="text">
-                <h1 v-if="radMode" class="page-title">I don't <span class="glitch" data-text="hack">hack</span>mainframes
-                </h1>
+                <h1 v-if="radMode" class="page-title">Frontend{{!isMobile ? '&nbsp;' : ''}}<span class="glitch" data-text="Hacker">Hacker</span></h1>
                 <h1 v-else class="page-title--pro">Cool things said here</h1>
-                <p v-if="radMode" class="page-subtitle">But I <em>do</em> listen to synthwave while building web apps
-                </p>
-                <p v-else class="page-subtitle--pro">subtitley thing here</p>
+                <p v-if="radMode" class="page-subtitle">Creative Developer <span v-if="!isMobile">|</span> Rapid Prototyper <span v-if="!isMobile">|</span> Problem Solver</p>
+                <p v-else class="page-subtitle--pro">&&&&&</p>
             </div>
             <div class="grid-bg">
                 <div class="grid-lines"></div>
@@ -84,6 +82,7 @@ export default {
     },
     data() {
         return {
+            isMobile: window.innerWidth < 768,
             isLoading: true,
             radMode: true,
             showPortfolioModal: false,
