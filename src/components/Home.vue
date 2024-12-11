@@ -46,6 +46,14 @@
                     </figure>
                     </div>
                 </div>
+                <a class="app-wrap-container bamazon" href="https://bamazon.jarrodwhitley.com">
+                    <h3>BAMazon</h3>
+                    <div class="figure-wrap">
+                        <figure class="app-wrap">
+                        <img src="../assets/images/bamazon_screenshot.png" alt="Bamazon preview image"/>
+                    </figure>
+                    </div>
+                </a>
             </div>
         </section>
 <!--        <section class="ai-friendly">-->
@@ -163,9 +171,6 @@ export default {
             dataSectionIsVisible: false,
             aiSectionIsVisible: false,
             scrolling: false,
-            bamazon: {
-                products: [],
-            },
             radTextHide: false,
         }
     },
