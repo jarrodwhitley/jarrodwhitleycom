@@ -23,9 +23,13 @@
         </section>
         <section class="experience">
             <h2 class="skillset">My Skillset</h2>
-            <SkillChart></SkillChart>
+            <div class="skill-chart-wrapper">
+                <SkillChart></SkillChart>
+            </div>
             <h2 class="hobbies">My Hobbies</h2>
-            <HobbyChart></HobbyChart>
+            <div class="hobby-chart-wrapper">
+                <HobbyChart></HobbyChart>
+            </div>
         </section>
         <section class="data-driven">
             <h2>Data-driven Applications</h2>
@@ -536,6 +540,14 @@ h3 {
         &.hobbies {
             grid-column: 2;
         }
+    }
+
+    .skill-chart-wrapper {
+        padding: 1rem 1rem 2rem 0;
+    }
+
+    .hobby-chart-wrapper {
+        padding: 1rem 3rem;
     }
 }
 

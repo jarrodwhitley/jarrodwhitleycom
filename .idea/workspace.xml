@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/bamazon_screenshot.png" afterDir="false" />
+    <list default="true" id="d989d2e8-24a0-438c-8717-b332c3432e1f" name="Changes" comment="added bamazon app to carousel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,7 +198,7 @@
       <workItem from="1733439790659" duration="1532000" />
       <workItem from="1733767476369" duration="1256000" />
       <workItem from="1733800462165" duration="598000" />
-      <workItem from="1733953770248" duration="457000" />
+      <workItem from="1733953770248" duration="923000" />
     </task>
     <task id="LOCAL-00001" summary="another text commit">
       <created>1696087890002</created>
@@ -460,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733767831050</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="added bamazon app to carousel">
+      <option name="closed" value="true" />
+      <created>1733954284850</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1733954284850</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,7 +492,6 @@
       <path value="$PROJECT_DIR$/nuxt-app" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="birdle app working" />
     <MESSAGE value="error modals" />
     <MESSAGE value="fixed data tabs" />
     <MESSAGE value="fixed app.vue" />
@@ -511,6 +516,7 @@
     <MESSAGE value="jus a wee lil update" />
     <MESSAGE value="fixed a goof" />
     <MESSAGE value="added favicon" />
+    <MESSAGE value="added bamazon app to carousel" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
