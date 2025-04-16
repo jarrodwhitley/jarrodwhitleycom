@@ -28,8 +28,8 @@
                 <LanguageCard :icon="'react'" :text="'React'"></LanguageCard>
                 <LanguageCard :icon="'flutter'" :text="'Flutter/Dart'"></LanguageCard>
                 <LanguageCard :icon="'node'" :text="'Node.js'"></LanguageCard>
-                <LanguageCard image="/src/assets/images/nativescript-vue.png" :text="'Nativescript'"></LanguageCard>
-                <LanguageCard image="/src/assets/images/rails.png" :text="'Ruby on Rails'"></LanguageCard>
+                <LanguageCard image="../assets/images/nativescript-vue.png" :text="'Nativescript'"></LanguageCard>
+                <LanguageCard image="../assets/images/rails.png" :text="'Ruby on Rails'"></LanguageCard>
             </div>
             <!-- 
             <div class="skill-chart-wrapper">
