@@ -23,13 +23,22 @@
         </section>
         <section class="experience">
             <h2 class="skillset">My Skillset</h2>
+            <div class="language-card-wrapper">
+                <LanguageCard :icon="'vuejs'" :text="'Vue'"></LanguageCard>
+                <LanguageCard :icon="'react'" :text="'React'"></LanguageCard>
+                <LanguageCard :icon="'flutter'" :text="'Flutter/Dart'"></LanguageCard>
+                <LanguageCard :icon="'node'" :text="'Node.js'"></LanguageCard>
+                <LanguageCard image="/src/assets/images/nativescript-vue.png" :text="'Nativescript'"></LanguageCard>
+                <LanguageCard image="/src/assets/images/rails.png" :text="'Ruby on Rails'"></LanguageCard>
+            </div>
+            <!-- 
             <div class="skill-chart-wrapper">
                 <SkillChart></SkillChart>
             </div>
             <h2 class="hobbies">My Hobbies</h2>
             <div class="hobby-chart-wrapper">
                 <HobbyChart></HobbyChart>
-            </div>
+            </div> -->
         </section>
         <section class="data-driven">
             <h2>Data-driven Applications</h2>
@@ -91,13 +100,14 @@
 import SkillChart from "../components/SkillChart.vue";
 import HobbyChart from "../components/HobbyChart.vue";
 import {ObserveVisibility} from "vue-observe-visibility";
+import LanguageCard from "./LanguageCard.vue"
 
 export default {
     directives: {
         ObserveVisibility
     },
     components: {
-        SkillChart, HobbyChart
+        SkillChart, HobbyChart, LanguageCard
     },
     data() {
         return {
@@ -512,15 +522,23 @@ h3 {
     padding: 3rem 1rem;
     background-color: $darkerNight;
     background-image: linear-gradient(45deg, $darkestNight, rgba($purple, .2) 60%, darken($purple, 20%));
-    grid: auto / 1fr;
-    grid-gap: 2rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    @include breakpoint(lg) {
+    .language-card-wrapper {
+        grid: auto / repeat(1, 2fr);
+        grid-gap: 2rem;
         display: grid;
-        grid: auto / 1fr 1fr;
-        padding: 3rem 2rem;
+        width: fit-content;
+        padding: 3rem 0;
+
+        @include breakpoint(lg) {
+            display: grid;
+            grid: auto / repeat(3, 1fr);
+            padding: 3rem 2rem;
+        }
     }
 
     h2 {
@@ -919,11 +937,11 @@ h3 {
             opacity: 1;
             z-index: 15;
 
-            .content {
-                .modal-close {
+            // .content {
+            //     .modal-close {
 
-                }
-            }
+            //     }
+            // }
         }
     }
 
@@ -1191,7 +1209,7 @@ h3 {
             height: 100%;
             image-rendering: pixelated;
             -ms-interpolation-mode: nearest-neighbor;
-            interpolation-mode: nearest-neighbor;
+            // interpolation-mode: nearest-neighbor;
             overflow: hidden;
             -webkit-contain: strict;
             -moz-contain: strict;
