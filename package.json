@@ -8,7 +8,8 @@
         "dev": "vite --host",
         "build:prod": "vite build --mode production",
         "preview": "vite preview",
-        "deploy": "rm -rf node_modules/.cache/gh-pages && npm run build:prod && npm run postbuild && gh-pages -d build"
+        "deploy": "rm -rf node_modules/.cache/gh-pages && npm run build:prod && npm run postbuild && gh-pages -d build",
+        "gh-pages-deploy": "npm run deploy"
     },
     "dependencies": {
         "@vueuse/components": "^10.5.0",
