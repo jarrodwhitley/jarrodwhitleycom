@@ -83,7 +83,7 @@
         <Home @show-birdle="toggleShowBirdle" @show-chat="toggleShowChat" @scrolling="scrolling = true"/>
         <BirdleContainer v-if="showBirdle" @fullscreen="handleFullscreen" @remove-hash="removeHash"/>
         <ChatContainer v-if="showChat" @fullscreen="handleFullscreen" @remove-hash="removeHash"/>
-        <AudioPlayer v-if="radMode" :audio-scroll-stop="audioScrollStop" :scroll-shrink="scrollPos > 10"/>
+        <!-- <AudioPlayer v-if="radMode" :audio-scroll-stop="audioScrollStop" :scroll-shrink="scrollPos > 10"/> -->
     </main>
     <footer>
         <div class="footer__left">
