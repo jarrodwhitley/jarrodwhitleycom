@@ -293,6 +293,12 @@ nav {
             color: $neon;
         }
     }
+
+    .rad-mode, .nerd-mode {
+        height: 2rem;
+        margin: auto;
+        cursor: pointer;
+    }
 }
 
 .mos9 {

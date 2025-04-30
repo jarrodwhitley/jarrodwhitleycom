@@ -7,14 +7,18 @@
         <div class="links animate__animated" :class="{'show': showMobileMenu}" v-if="!fullscreen">
             <!-- <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio">
                 <i class="fa-brands fa-sketch"></i>
-            </a>
-            <span class="divider">|</span> -->
+            </a>-->
             <a title="This app is built with Vue3!"><i class="fa-brands fa-vuejs"></i></a>
             <a href="https://bamazon.jarrodwhitley.com" title="Visit react project"><i class="fa-brands fa-react"></i></a>
             <a href="https://ruby.jarrodwhitley.com" title="Visit Ruby Projects"><i class="fa-brands fa-sketch"></i></a>
             <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
             <a href="/assets/jarrod_whitley_resume_2025.pdf" title="Download my resume"><i class="fa-solid fa-file-arrow-down"></i></a>
+            <span class="divider">|</span> 
+            <img v-if="radMode" @click="radMode = !radMode" class="nerd-mode" src="/assets/images/nerd-mode.png" title="Nerd Mode" alt="Nerd Mode"/>
+            <img v-if="!radMode" @click="radMode = !radMode" class="rad-mode" src="/assets/images/rad-mode.png" title="Rad Mode" alt="Rad Mode!"/>
+            
+    
         </div>
         <div class="uc-message" @click="toggleNoneSense">
             <span>🚧 Under Construction 🚧</span>
@@ -79,7 +83,7 @@
             </div>
         </div>
     </nav>
-    <main>
+    <main :class="{'professional-mode': !radMode}">
         <Home @show-birdle="toggleShowBirdle" @show-chat="toggleShowChat" @scrolling="scrolling = true"/>
         <BirdleContainer v-if="showBirdle" @fullscreen="handleFullscreen" @remove-hash="removeHash"/>
         <ChatContainer v-if="showChat" @fullscreen="handleFullscreen" @remove-hash="removeHash"/>
@@ -92,6 +96,9 @@
             <span>Circuit board animation by<a href="https://codepen.io/Temmer/full/ExjNJog" target="_blank">Temmer Péter</a></span>
             <span>Synthwave Grid by<a href="https://codepen.io/pierredarrieutort/pen/Vwaoqqe" target="_blank">Pierre Darrieutort</a></span>
             <span>Glitch text by<a href="https://codepen.io/lbebber/pen/nqwBKK" target="_blank">Lucas Bebber</a></span>
+            <span>Nerd glasses by<a href="https://thenounproject.com/icon/nerd-glasses-2947841/" target="_blank">Peter Chilton</a></span>
+            <span>Sunglasses by<a href="https://thenounproject.com/icon/sunglasses-2820549/" target="_blank">tulpahn</a></span>
+
         </div>
         <div class="footer__right">
             <h4>Contact</h4>

@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "postbuild": "cp CNAME build/ &&  cp -r favicon build/",
+        "postbuild": "cp CNAME build/ && cp -r favicon build/ && cp -r public build/",
         "dev": "vite --host",
         "build:prod": "vite build --mode production",
         "preview": "vite preview",
