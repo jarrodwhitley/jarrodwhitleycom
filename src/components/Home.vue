@@ -25,11 +25,11 @@
             <h2 class="skillset">My Skillset</h2>
             <div class="language-card-wrapper">
                 <LanguageCard :icon="'vuejs'" :text="'Vue'"></LanguageCard>
-                <LanguageCard :icon="'react'" :text="'React'"></LanguageCard>
-                <LanguageCard :icon="'flutter'" :text="'Flutter/Dart'"></LanguageCard>
-                <LanguageCard :icon="'node'" :text="'Node.js'"></LanguageCard>
+                <LanguageCard link="https://bamazon.jarrodwhitley.com" :icon="'react'" :text="'React'"></LanguageCard>
+                <LanguageCard link="https://github.com/jarrodwhitley/flutter_m_e" :icon="'flutter'" :text="'Flutter/Dart'"></LanguageCard>
+                <LanguageCard link="https://bamazon.jarrodwhitley.com" :icon="'node'" :text="'Node.js'"></LanguageCard>
                 <LanguageCard image="../assets/images/nativescript-vue.png" :text="'Nativescript'"></LanguageCard>
-                <LanguageCard image="../assets/images/rails.png" :text="'Ruby on Rails'"></LanguageCard>
+                <LanguageCard link="https://ruby.jarrodwhitley.com" image="../assets/images/rails.png" :text="'Ruby on Rails'"></LanguageCard>
             </div>
             <!-- 
             <div class="skill-chart-wrapper">

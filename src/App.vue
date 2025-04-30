@@ -5,15 +5,16 @@
         </div>
         <div class="nav-title" v-text="navHeaderText"></div>
         <div class="links animate__animated" :class="{'show': showMobileMenu}" v-if="!fullscreen">
-            <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio">
+            <!-- <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio">
                 <i class="fa-brands fa-sketch"></i>
             </a>
-            <span class="divider">|</span>
+            <span class="divider">|</span> -->
             <a title="This app is built with Vue3!"><i class="fa-brands fa-vuejs"></i></a>
             <a href="https://bamazon.jarrodwhitley.com" title="Visit react project"><i class="fa-brands fa-react"></i></a>
+            <a href="https://ruby.jarrodwhitley.com" title="Visit Ruby Projects"><i class="fa-brands fa-sketch"></i></a>
             <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
-            <a href="/jarrod_whitley_resume_2025.pdf" title="Download my resume"><i class="fa-solid fa-file-arrow-down"></i></a>
+            <a href="/assets/jarrod_whitley_resume_2025.pdf" title="Download my resume"><i class="fa-solid fa-file-arrow-down"></i></a>
         </div>
         <div class="uc-message" @click="toggleNoneSense">
             <span>🚧 Under Construction 🚧</span>

@@ -1,15 +1,20 @@
 <template>
-    <div class="language-card glow-container">
+    <a :href="link" class="language-card glow-container">
         <i v-if="icon" :class="'language-icon fab fa-' + icon + ' fa-3x'"></i>
         <img v-else class="language-image" :src="image" alt="Placeholder" />
         <div v-text="text" class="language-name"></div>
-    </div>
+    </a>
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
 
 const props = defineProps({
+    link: {
+        type: String,
+        default: '',
+        required: true
+    },
     text: {
         type: String,
         default: '',
@@ -67,10 +72,10 @@ onMounted(() => {
     // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
 
-    // &:hover {
-    //     transform: scale(1.05);
-    //     cursor: pointer;
-    // }
+    &:hover {
+         transform: scale(1.05);
+         cursor: pointer;
+     }
 
     .language-icon {
         grid-column: 1;

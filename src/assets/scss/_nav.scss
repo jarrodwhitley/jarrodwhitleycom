@@ -265,7 +265,8 @@ nav {
         font-size: 30px;
 
         &:hover {
-            color: #F7B500;
+            // ruby on rails red
+            color: #C72C41;
         }
     }
 
@@ -359,7 +360,7 @@ nav {
             padding: 2px;
 
             .mos9-window__tool--1,
-            .mos9-window__tool--2, {
+            .mos9-window__tool--2 {
                 &:after {
                     content: '';
                     display: block;
