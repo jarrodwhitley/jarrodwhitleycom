@@ -26,7 +26,7 @@
                   d="M48.91,15l-0.12,0A1,1,0,0,0,48,16v6a1,1,0,1,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H48.91Z"/>
         </svg>
         <audio style="visibility: hidden" loop>
-            <source src="/src/assets/audio/sunset_drive.mp3" title="Sunset Drive" type="audio/mpeg">
+            <source src="/public/assets/audio/sunset_drive.mp3" title="Sunset Drive" type="audio/mpeg">
             Your browser is old as dirt. Please upgrade.
         </audio>
     </div>
