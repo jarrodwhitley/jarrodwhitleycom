@@ -14,16 +14,16 @@
             <a href="https://ruby.jarrodwhitley.com" title="Visit Ruby Projects"><i class="fa-brands fa-sketch"></i></a>
             <a href="https://linkedin.com/in/jarrodwhitley"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/jarrodwhitley"><i class="fa-brands fa-github"></i></a>
-            <a href="/assets/jarrod_whitley_resume_2025.pdf" title="Download my resume"><i class="fa-solid fa-file-arrow-down"></i></a>
+            <!-- <a href="/assets/jarrod_whitley_resume_2025.pdf" title="Download my resume"><i class="fa-solid fa-file-arrow-down"></i></a> -->
         </div>
-        <div class="uc-message" @click="toggleNoneSense">
+        <!-- <div class="uc-message" @click="toggleNoneSense">
             <span>🚧 Under Construction 🚧</span>
             <div class="slide-down" :class="{'show': showNonsense}">
                 <figure>
                     <img src="/src/assets/images/sweaty-speedrunner.gif" alt="Under Construction"/>
                 </figure>
             </div>
-        </div>
+        </div> -->
         <div class="mobile-menu-btn" @click="toggleMobileMenu" v-if="isMobile && !fullscreen">
             <i v-if="!showMobileMenu" class="fa-solid fa-bars"></i>
             <i v-else class="fa-solid fa-times"></i>
@@ -97,7 +97,7 @@
             <h4>Contact</h4>
             <a href="mailto:hello@jarrodwhitley"><i class="fa-solid fa-envelope"></i>hello@jarrodwhitley</a>
             <span>For free web development work click <a href="https://youtu.be/oHg5SJYRHA0?feature=shared" target="_blank">here</a></span>
-            <span>© 2024 Jarrod Whitley</span>
+            <span>© 2025 Jarrod Whitley</span>
         </div>
     </footer>
 </template>
