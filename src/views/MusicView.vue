@@ -112,8 +112,8 @@
                                     <span>{{ release.type }}</span>
                                     <span>{{ release.year }}</span>
                                 </div>
-                                <h3>{{ release.title }}</h3>
-                                <p>{{ artist.name }}</p>
+                                <span><h3>{{ release.title }}</h3>
+                                <p>{{ artist.name }}</p></span>
                                 <div class="listen-links">
                                     <a
                                         v-for="link in normalizedLinks(release.links)"

@@ -356,7 +356,7 @@ export default {
 section {
     padding: 3rem 0;
     width: 100%;
-    max-width: 100vw;
+    max-width: 100%;
     height: 100%;
 }
 
@@ -402,6 +402,7 @@ h3 {
     align-items: center;
     position: relative;
     padding: 0;
+    overflow: hidden;
 
     .text, .grid-bg {
         grid-row: 1;
@@ -575,6 +576,7 @@ h3 {
     display: grid;
     grid: auto / 1fr 1fr;
     grid-column-gap: 1rem;
+    overflow-x: clip;
 
     @include breakpoint(lg) {
         padding: 7rem 2rem;
@@ -680,15 +682,20 @@ h3 {
     .app-scroll-container {
         grid-column: 1 / -1;
         display: flex;
-        overflow-x: scroll;
+        overflow-x: hidden;
         overflow-y: hidden;
-        scroll-snap-type: x mandatory;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 1rem;
         margin-top: 1rem;
+        width: 100%;
+        padding: 0 1rem;
 
         @include breakpoint(lg) {
             overflow: auto;
+            flex-wrap: nowrap;
             justify-content: center;
+            scroll-snap-type: x mandatory;
             gap: 2rem;
         }
     }
@@ -767,7 +774,7 @@ h3 {
         }
 
         figure.app-wrap {
-            width: 20rem;
+            width: min(20rem, calc(100vw - 3rem));
             aspect-ratio: 1 / 1.2;
             box-shadow: 0 3px 3px black;
             margin: 0;
