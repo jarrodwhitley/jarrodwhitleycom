@@ -5,11 +5,11 @@
         </div>
         <div class="nav-title" v-text="navHeaderText"></div>
         <div class="links animate__animated" :class="{'show': showMobileMenu}" v-if="!fullscreen">
-            <RouterLink class="route-link" to="/">
+            <RouterLink class="route-link" to="/" aria-label="Home" title="Home">
                 <i class="fa-solid fa-house nav-icon" aria-hidden="true"></i>
                 <span class="nav-label">Home</span>
             </RouterLink>
-            <RouterLink class="route-link" to="/music">
+            <RouterLink class="route-link" to="/music" aria-label="Music" title="Music">
                 <i class="fa-solid fa-music nav-icon" aria-hidden="true"></i>
                 <span class="nav-label">Music</span>
             </RouterLink>

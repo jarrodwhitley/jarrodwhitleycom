@@ -127,7 +127,7 @@ nav {
     font-size: 1.5rem;
 
     @include breakpoint(lg) {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 }
 
@@ -162,21 +162,25 @@ nav {
     .route-link {
         display: inline-flex;
         align-items: center;
-        gap: 0.45rem;
-        font-size: 0.78rem;
-        text-transform: uppercase;
-        letter-spacing: 0.2rem;
-        padding: 0.35rem 0;
+        justify-content: center;
+        gap: 0;
+        font-size: 1.6rem;
+        text-transform: none;
+        letter-spacing: 0;
+        padding: 0;
         border-bottom: 2px solid transparent;
         color: rgba(255, 255, 255, 0.76);
 
         .nav-icon {
-            display: none;
-            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            width: 1em;
         }
 
         .nav-label {
-            display: inline;
+            display: none;
             line-height: 1;
         }
 
@@ -217,7 +221,7 @@ nav {
         }
 
         .route-link {
-            font-size: 0.95rem;
+            font-size: 1.8rem;
             justify-content: center;
             padding-left: 0;
             border-bottom: 0;
@@ -227,7 +231,7 @@ nav {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 1.4rem;
+                font-size: 1.8rem;
                 width: 1.5rem;
             }
 
