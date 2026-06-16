@@ -5,8 +5,14 @@
         </div>
         <div class="nav-title" v-text="navHeaderText"></div>
         <div class="links animate__animated" :class="{'show': showMobileMenu}" v-if="!fullscreen">
-            <RouterLink class="route-link" to="/">Home</RouterLink>
-            <RouterLink class="route-link" to="/music">Music</RouterLink>
+            <RouterLink class="route-link" to="/">
+                <i class="fa-solid fa-house nav-icon" aria-hidden="true"></i>
+                <span class="nav-label">Home</span>
+            </RouterLink>
+            <RouterLink class="route-link" to="/music">
+                <i class="fa-solid fa-music nav-icon" aria-hidden="true"></i>
+                <span class="nav-label">Music</span>
+            </RouterLink>
             <!-- <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio">
                 <i class="fa-brands fa-sketch"></i>
             </a>

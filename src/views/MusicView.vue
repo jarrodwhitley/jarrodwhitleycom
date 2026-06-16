@@ -401,6 +401,8 @@ export default {
     grid-auto-columns: minmax(13rem, 1fr);
     gap: 0.75rem;
     overflow-x: auto;
+    overflow-y: visible;
+    padding-top: 0.25rem;
     padding-bottom: 0.25rem;
 
     @include breakpoint(lg) {
@@ -431,13 +433,22 @@ export default {
         color: $white;
         border-color: rgba($andes, 0.4);
         background: linear-gradient(135deg, rgba($andes, 0.18) 0%, rgba($neon, 0.18) 100%);
-        transform: translateY(-2px);
+        transform: none;
     }
 
     .section-index {
         font-size: 0.75rem;
         color: rgba(255, 255, 255, 0.42);
         letter-spacing: 0.18rem;
+    }
+}
+
+@include breakpoint(lg) {
+    .section-link {
+        &:hover,
+        &.active {
+            transform: translateY(-2px);
+        }
     }
 }
 
