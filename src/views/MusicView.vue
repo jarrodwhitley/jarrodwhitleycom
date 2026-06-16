@@ -1,0 +1,675 @@
+<template>
+    <div class="music-page">
+        <section class="music-hero">
+            <div class="hero-copy">
+                <!-- <p class="eyebrow">Music</p> -->
+                <h1>Jarrod Whitley and MTNfox</h1>
+                <p class="lede">
+                    The home of all my music releases. Enjoy!
+                </p>
+            </div>
+            <div class="hero-summary">
+                <span class="summary-label">Now featured</span>
+                <strong>{{ featuredRelease.title }}</strong>
+                <span>{{ featuredRelease.artistName }} · {{ featuredRelease.type }}</span>
+            </div>
+        </section>
+
+        <div class="music-layout">
+            <aside class="music-sidebar">
+                <div class="sidebar-shell">
+                    <p class="sidebar-label">Jump to</p>
+                    <nav class="section-nav" aria-label="Music sections">
+                        <button
+                            v-for="section in musicSections"
+                            :key="section.id"
+                            type="button"
+                            class="section-link"
+                            :class="{ active: activeSection === section.id }"
+                            @click="jumpToSection(section.id)"
+                        >
+                            <span class="section-index">{{ sectionIndex(section.id) }}</span>
+                            <span>{{ section.label }}</span>
+                        </button>
+                    </nav>
+                </div>
+            </aside>
+
+            <div class="music-content">
+                <section id="featured" class="music-section featured-release" data-music-section>
+                    <div class="section-heading">
+                        <p class="section-kicker">Most Recent Release</p>
+                        <h2>{{ featuredRelease.title }}</h2>
+                    </div>
+
+                    <article class="featured-card">
+                        <figure class="featured-art">
+                            <img :src="featuredRelease.art" :alt="`${featuredRelease.title} album art`"/>
+                        </figure>
+
+                        <div class="featured-copy">
+                            <div class="featured-meta">
+                                <span>{{ featuredRelease.artistName }}</span>
+                                <span>{{ featuredRelease.year }}</span>
+                                <span>{{ featuredRelease.type }}</span>
+                            </div>
+                            <p class="featured-accent">{{ featuredRelease.accent }}</p>
+                            <p class="featured-blurb">{{ featuredRelease.blurb }}</p>
+                            <div class="listen-links featured-links">
+                                <a
+                                    v-for="link in normalizedLinks(featuredRelease.links)"
+                                    :key="link.label"
+                                    class="listen-link"
+                                    :href="link.url"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <i :class="link.icon"></i>
+                                    <span>{{ link.label }}</span>
+                                </a>
+                                <span v-if="isComingSoon(featuredRelease.links)" class="listen-link is-disabled">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>Coming Soon</span>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <section
+                    v-for="artist in musicArtists"
+                    :id="artist.id"
+                    :key="artist.id"
+                    class="music-section artist-section"
+                    data-music-section
+                >
+                    <div class="section-heading artist-heading">
+                        <div class="artist-title-row">
+                            <h2>{{ artist.name }}</h2>
+                            <a
+                                v-if="artist.instagramUrl"
+                                class="artist-social-link"
+                                :href="artist.instagramUrl"
+                                target="_blank"
+                                rel="noreferrer"
+                                :aria-label="`Open Instagram profile for ${artist.name}`"
+                                :title="artist.instagramHandle || 'Instagram'"
+                            >
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </div>
+                        <p class="section-kicker">{{ artist.eyebrow }}</p>
+                        <!-- <p class="section-intro">{{ artist.intro }}</p> -->
+                    </div>
+
+                    <div class="release-grid">
+                        <article v-for="release in artist.releases" :key="release.id" class="release-card">
+                            <figure class="release-art">
+                                <img :src="release.art" :alt="`${release.title} album art`"/>
+                            </figure>
+                            <div class="release-copy">
+                                <div class="release-topline">
+                                    <span>{{ release.type }}</span>
+                                    <span>{{ release.year }}</span>
+                                </div>
+                                <h3>{{ release.title }}</h3>
+                                <p>{{ artist.name }}</p>
+                                <div class="listen-links">
+                                    <a
+                                        v-for="link in normalizedLinks(release.links)"
+                                        :key="`${release.id}-${link.label}`"
+                                        class="listen-link"
+                                        :href="link.url"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        <i :class="link.icon"></i>
+                                        <span>{{ link.label }}</span>
+                                    </a>
+                                    <span v-if="isComingSoon(release.links)" class="listen-link is-disabled">
+                                        <i class="fa-solid fa-clock"></i>
+                                        <span>Coming Soon</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import { featuredRelease, musicArtists, musicSections } from '../data/music'
+
+export default {
+    name: 'MusicView',
+    data() {
+        return {
+            activeSection: 'featured',
+            featuredRelease,
+            musicArtists,
+            musicSections,
+            sectionObserver: null,
+        }
+    },
+    mounted() {
+        this.sectionObserver = new IntersectionObserver(
+            (entries) => {
+                const visibleSection = entries
+                    .filter((entry) => entry.isIntersecting)
+                    .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0]
+
+                if (visibleSection?.target?.id) {
+                    this.activeSection = visibleSection.target.id
+                }
+            },
+            {
+                rootMargin: '-20% 0px -45% 0px',
+                threshold: [0.2, 0.35, 0.5, 0.7],
+            }
+        )
+
+        this.$nextTick(() => {
+            this.observeSections()
+
+            if (this.$route.hash) {
+                this.activeSection = this.$route.hash.replace('#', '')
+            }
+        })
+    },
+    beforeUnmount() {
+        this.sectionObserver?.disconnect()
+    },
+    methods: {
+        getScrollOffset() {
+            const nav = document.querySelector('.site-nav')
+            const navHeight = nav ? Math.ceil(nav.getBoundingClientRect().height) : 0
+            return navHeight + 20
+        },
+        observeSections() {
+            const sections = this.$el.querySelectorAll('[data-music-section]')
+            sections.forEach((section) => this.sectionObserver?.observe(section))
+        },
+        sectionIndex(sectionId) {
+            const index = this.musicSections.findIndex((section) => section.id === sectionId)
+            return String(index + 1).padStart(2, '0')
+        },
+        jumpToSection(sectionId) {
+            const sectionElement = document.getElementById(sectionId)
+
+            if (!sectionElement) {
+                return
+            }
+
+            this.activeSection = sectionId
+
+            const targetY = sectionElement.getBoundingClientRect().top + window.scrollY - this.getScrollOffset()
+            window.scrollTo({
+                top: Math.max(targetY, 0),
+                behavior: 'smooth',
+            })
+
+            if (this.$route.hash !== `#${sectionId}`) {
+                this.$router.replace({
+                    name: 'music',
+                    hash: `#${sectionId}`,
+                })
+            }
+        },
+        normalizedLinks(rawLinks) {
+            if (Array.isArray(rawLinks)) {
+                return rawLinks
+                    .filter((link) => link?.url && String(link.url).trim())
+                    .map((link) => ({
+                        label: link.label,
+                        icon: link.icon,
+                        url: String(link.url).trim(),
+                    }))
+            }
+
+            if (!rawLinks || typeof rawLinks !== 'object') {
+                return []
+            }
+
+            const sources = [
+                {
+                    key: 'spotify',
+                    label: 'Spotify',
+                    icon: 'fa-brands fa-spotify',
+                },
+                {
+                    key: 'appleMusic',
+                    label: 'Apple Music',
+                    icon: 'fa-brands fa-apple',
+                },
+            ]
+
+            return sources
+                .map((source) => {
+                    const url = rawLinks[source.key]
+                    if (!url || !String(url).trim()) {
+                        return null
+                    }
+
+                    return {
+                        label: source.label,
+                        icon: source.icon,
+                        url: String(url).trim(),
+                    }
+                })
+                .filter(Boolean)
+        },
+        isComingSoon(rawLinks) {
+            return this.normalizedLinks(rawLinks).length === 0
+        },
+    },
+}
+</script>
+
+<style scoped lang="scss">
+@import '../assets/scss/colors';
+@import '../assets/scss/breakpoints';
+
+:global(#app) {
+    overflow-x: visible;
+}
+
+.music-page {
+    min-height: 100vh;
+    padding: 7rem 1.25rem 4rem;
+    background:
+        radial-gradient(circle at top, rgba($andes, 0.2), transparent 25%),
+        radial-gradient(circle at right top, rgba($neon, 0.14), transparent 30%),
+        linear-gradient(180deg, $darkNight 0%, $darkestNight 55%, darken($darkestNight, 2%) 100%);
+    color: $white;
+
+    @include breakpoint(md) {
+        padding: 8rem 1.5rem 5rem;
+    }
+}
+
+.music-hero {
+    max-width: 78rem;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+
+    @include breakpoint(lg) {
+        grid-template-columns: minmax(0, 1.6fr) minmax(18rem, 0.8fr);
+        align-items: end;
+    }
+
+    .hero-summary {
+        padding: 1.25rem;
+        border: 1px solid rgba($andes, 0.3);
+        border-radius: 1.5rem;
+        background: linear-gradient(180deg, rgba($darkerNight, 0.92) 0%, rgba($darkestNight, 0.9) 100%);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+        display: grid;
+        gap: 0.35rem;
+
+        .summary-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25rem;
+            color: $andes;
+        }
+
+        strong {
+            font-size: 1.5rem;
+        }
+
+        span:last-child {
+            color: rgba(255, 255, 255, 0.66);
+        }
+    }
+
+    .eyebrow {
+        margin: 0 0 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.4rem;
+        color: $andes;
+        font-size: 0.75rem;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        line-height: 0.95;
+    }
+
+    .lede {
+        max-width: 36rem;
+        margin: 1.5rem 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 1.125rem;
+    }
+}
+
+.music-layout {
+    max-width: 78rem;
+    margin: 3rem auto 0;
+    display: grid;
+    gap: 2rem;
+    overflow: visible;
+
+    @include breakpoint(lg) {
+        display: flex;
+        align-items: start;
+    }
+}
+
+.music-sidebar {
+    @include breakpoint(lg) {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 7.5rem;
+        align-self: start;
+        flex: 0 0 17rem;
+        max-width: 17rem;
+    }
+
+    .sidebar-shell {
+        display: grid;
+        gap: 0.9rem;
+    }
+
+    .sidebar-label {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.25rem;
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.55);
+    }
+}
+
+.section-nav {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    height: auto;
+    padding: 0;
+    z-index: auto;
+    align-items: stretch;
+    transition: none;
+    display: grid;
+    grid: auto / 1fr;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(13rem, 1fr);
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+
+    @include breakpoint(lg) {
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
+        overflow: visible;
+    }
+}
+
+.section-link {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.85rem;
+    align-items: center;
+    padding: 0.95rem 1rem;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba($darkestNight, 0.7);
+    color: rgba(255, 255, 255, 0.74);
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+
+    &:hover,
+    &.active {
+        color: $white;
+        border-color: rgba($andes, 0.4);
+        background: linear-gradient(135deg, rgba($andes, 0.18) 0%, rgba($neon, 0.18) 100%);
+        transform: translateY(-2px);
+    }
+
+    .section-index {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.42);
+        letter-spacing: 0.18rem;
+    }
+}
+
+.music-content {
+    display: grid;
+    gap: 2rem;
+
+    @include breakpoint(lg) {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+}
+
+.music-section {
+    padding: 1.5rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba($darkerNight, 0.94) 0%, rgba($darkestNight, 0.92) 100%);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+    scroll-margin-top: 7rem;
+
+    @include breakpoint(md) {
+        padding: 2rem;
+    }
+}
+
+.section-heading {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 0.95;
+        text-align: left;
+        justify-self: start;
+    }
+
+    .section-kicker {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.25rem;
+        font-size: 0.8rem;
+        color: $andes;
+    }
+
+    .section-intro {
+        margin: 0;
+        max-width: 40rem;
+        color: rgba(255, 255, 255, 0.68);
+    }
+}
+
+.artist-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+}
+
+.artist-social-link {
+    width: 2.4rem;
+    height: 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba($neon, 0.38);
+    color: rgba(255, 255, 255, 0.86);
+    background: rgba($neon, 0.1);
+    flex: 0 0 auto;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+
+    &:hover {
+        color: $white;
+        border-color: rgba($neon, 0.62);
+        background: rgba($neon, 0.2);
+    }
+}
+
+.featured-card {
+    display: grid;
+    gap: 1.5rem;
+
+    @include breakpoint(lg) {
+        grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
+        align-items: center;
+    }
+}
+
+.featured-art,
+.release-art {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba($darkestNight, 0.8);
+    aspect-ratio: 1;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+.featured-copy {
+    display: grid;
+    gap: 1rem;
+}
+
+.featured-meta,
+.release-topline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+
+    span {
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.85rem;
+    }
+}
+
+.featured-accent {
+    margin: 0;
+    color: $andes;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.coming-soon-pill {
+    width: fit-content;
+    margin: 0;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    border: 1px solid rgba($neon, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba($neon, 0.2);
+}
+
+.featured-blurb {
+    margin: 0;
+    max-width: 40rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1rem;
+}
+
+.release-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+    gap: 1.25rem;
+}
+
+.release-card {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    background: linear-gradient(180deg, rgba($darkNight, 0.6) 0%, rgba($darkestNight, 0.8) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        border-color: rgba($neon, 0.28);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 1.35rem;
+    }
+
+    p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.66);
+    }
+}
+
+.release-copy {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+}
+
+.listen-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.listen-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-width: 9.5rem;
+    padding: 0.85rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba($andes, 0.28);
+    background: rgba($darkestNight, 0.7);
+    color: $white;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+
+    &:hover {
+        border-color: rgba($andes, 0.5);
+        background: rgba($andes, 0.12);
+        transform: translateY(-2px);
+    }
+
+    &.is-disabled {
+        border-color: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.7);
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+.featured-links .listen-link {
+    min-width: 10.5rem;
+}
+</style>

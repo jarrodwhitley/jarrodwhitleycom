@@ -1,10 +1,12 @@
 <template>
-    <nav :class="[{'mobile': isMobile},{'hide': showChat && isMobile},{'fill': scrolling && !fullscreen},{'professional-mode': !radMode}]">
-        <div class="logo" @click="exitFullscreen">
+    <nav class="site-nav" :class="[{'mobile': isMobile},{'hide': isHomeRoute && showChat && isMobile},{'fill': scrolling && !fullscreen},{'professional-mode': !radMode}]">
+        <div class="logo" @click="handleLogoClick">
             <img src="/src/assets/images/jw-logo.svg" alt="Jarrod Whitley"/>
         </div>
         <div class="nav-title" v-text="navHeaderText"></div>
         <div class="links animate__animated" :class="{'show': showMobileMenu}" v-if="!fullscreen">
+            <RouterLink class="route-link" to="/">Home</RouterLink>
+            <RouterLink class="route-link" to="/music">Music</RouterLink>
             <!-- <a class="portfolio" @click="togglePortfolioModal" title="See UI/UX portfolio">
                 <i class="fa-brands fa-sketch"></i>
             </a>
@@ -80,9 +82,11 @@
         </div>
     </nav>
     <main>
-        <Home @show-birdle="toggleShowBirdle" @show-chat="toggleShowChat" @scrolling="scrolling = true"/>
-        <BirdleContainer v-if="showBirdle" @fullscreen="handleFullscreen" @remove-hash="removeHash"/>
-        <ChatContainer v-if="showChat" @fullscreen="handleFullscreen" @remove-hash="removeHash"/>
+        <RouterView v-slot="{ Component }">
+            <component :is="Component" @show-birdle="toggleShowBirdle" @show-chat="toggleShowChat" @scrolling="scrolling = true"/>
+        </RouterView>
+        <BirdleContainer v-if="isHomeRoute && showBirdle" @fullscreen="handleFullscreen" @remove-hash="removeHash"/>
+        <ChatContainer v-if="isHomeRoute && showChat" @fullscreen="handleFullscreen" @remove-hash="removeHash"/>
         <!-- <AudioPlayer v-if="radMode" :audio-scroll-stop="audioScrollStop" :scroll-shrink="scrollPos > 10"/> -->
     </main>
     <footer>
@@ -103,13 +107,11 @@
 </template>
 
 <script>
-import Home from "./components/Home.vue";
-import AudioPlayer from "./components/AudioPlayer.vue";
 import BirdleContainer from "./components/BirdleContainer.vue";
 import ChatContainer from "./components/ChatContainer.vue";
 
 export default {
-    components: {BirdleContainer, Home, AudioPlayer, ChatContainer},
+    components: {BirdleContainer, ChatContainer},
     data() {
         return {
             isMobile: window.innerWidth < 768,
@@ -128,7 +130,26 @@ export default {
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
     },
+    watch: {
+        '$route.name'(routeName) {
+            this.showMobileMenu = false;
+
+            if (routeName !== 'home') {
+                this.exitFullscreen();
+            }
+        }
+    },
     methods: {
+        handleLogoClick() {
+            if (this.fullscreen) {
+                this.exitFullscreen();
+                return;
+            }
+
+            if (!this.isHomeRoute) {
+                this.$router.push('/');
+            }
+        },
         toggleMobileMenu() {
             this.showMobileMenu = !this.showMobileMenu;
         },
@@ -175,8 +196,15 @@ export default {
         }
     },
     computed: {
+        isHomeRoute() {
+            return this.$route.name === 'home';
+        },
         navHeaderText() {
-            return this.showBirdle ? 'Birdle' : '';
+            if (this.showBirdle) {
+                return 'Birdle';
+            }
+
+            return '';
         }
     }
 }
