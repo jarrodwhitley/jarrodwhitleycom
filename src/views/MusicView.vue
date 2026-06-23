@@ -1,19 +1,5 @@
 <template>
     <div class="music-page">
-        <section class="music-hero">
-            <div class="hero-copy">
-                <!-- <p class="eyebrow">Music</p> -->
-                <h1>Jarrod Whitley and MTNfox</h1>
-                <p class="lede">
-                    The home of all my music releases. Enjoy!
-                </p>
-            </div>
-            <div class="hero-summary">
-                <span class="summary-label">Now featured</span>
-                <strong>{{ featuredRelease.title }}</strong>
-                <span>{{ featuredRelease.artistName }} · {{ featuredRelease.type }}</span>
-            </div>
-        </section>
 
         <div class="music-layout">
             <aside class="music-sidebar">

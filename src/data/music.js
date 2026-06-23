@@ -42,22 +42,6 @@ function createRelease(release) {
     }
 }
 
-export const featuredRelease = {
-    id: getReleaseId('Going Through It'),
-    artistId: 'mtnfox',
-    artistName: 'MTNfox',
-    title: 'Going Through It',
-    releaseDate: '1/1/2026',
-    type: 'Single',
-    blurb: 'Listen at the links below.',
-    art: getAlbumArt('going_through_it.jpg'),
-    accent: 'Melancholy unchained for your enjoyment.',
-    links: {
-        spotify: 'https://open.spotify.com/album/60nbSmtqtpgGOleKsxHPSm',
-        appleMusic: 'https://music.apple.com/us/album/going-through-it-single/6775697658'
-    },
-}
-
 export const musicArtists = [
     {
         id: 'jarrod-whitley',
@@ -158,6 +142,71 @@ export const musicArtists = [
         ],
     },
 ]
+
+function parseDateValue(releaseDate) {
+    const rawDate = String(releaseDate || '').trim()
+    const match = rawDate.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/)
+
+    if (!match) {
+        return Number.NEGATIVE_INFINITY
+    }
+
+    const month = Number(match[1])
+    const day = Number(match[2])
+    let year = Number(match[3])
+
+    if (match[3].length === 2) {
+        year += year >= 70 ? 1900 : 2000
+    }
+
+    const date = new Date(year, month - 1, day)
+    return Number.isNaN(date.getTime()) ? Number.NEGATIVE_INFINITY : date.getTime()
+}
+
+function getMostRecentRelease() {
+    const now = Date.now()
+    let mostRecent = null
+    let mostRecentTime = Number.NEGATIVE_INFINITY
+
+    musicArtists.forEach((artist) => {
+        if (!artist.releases || !Array.isArray(artist.releases)) {
+            return
+        }
+
+        artist.releases.forEach((release) => {
+            const releaseTime = parseDateValue(release.releaseDate)
+            const hasSpotify = release.links?.spotify && String(release.links.spotify).trim()
+            const hasAppleMusic = release.links?.appleMusic && String(release.links.appleMusic).trim()
+            const isReleased = releaseTime <= now
+
+            if (isReleased && hasSpotify && hasAppleMusic && releaseTime > mostRecentTime) {
+                mostRecentTime = releaseTime
+                mostRecent = {
+                    ...release,
+                    artistId: artist.id,
+                    artistName: artist.name,
+                    blurb: 'Listen at the links below.',
+                    accent: 'Most recently released.',
+                }
+            }
+        })
+    })
+
+    return mostRecent || {
+        id: 'placeholder',
+        artistId: 'unknown',
+        artistName: 'Unknown',
+        title: 'No releases yet',
+        releaseDate: '1/1/2024',
+        type: 'Single',
+        blurb: 'Listen at the links below.',
+        accent: 'Coming soon.',
+        art: '',
+        links: {},
+    }
+}
+
+export const featuredRelease = getMostRecentRelease()
 
 export const musicSections = [
     {
