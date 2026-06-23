@@ -186,7 +186,7 @@ function getMostRecentRelease() {
                     artistId: artist.id,
                     artistName: artist.name,
                     blurb: 'Listen at the links below.',
-                    accent: 'Most recently released.',
+                    accent: 'Musical nostalgia with a hint of melancholy.',
                 }
             }
         })
