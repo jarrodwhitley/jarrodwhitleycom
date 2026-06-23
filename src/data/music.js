@@ -1,20 +1,56 @@
-import jesusYoureEnoughArt from '../assets/images/album_art/jarrodwhitley/jesus_youre_enough.png'
-import riversInTheDesertArt from '../assets/images/album_art/jarrodwhitley/rivers_in_the_desert.png'
-import allThingsConsideredArt from '../assets/images/album_art/mtnfox/all_things_considered.jpg'
-import goingThroughItArt from '../assets/images/album_art/mtnfox/going_through_it.jpg'
-import goodbyeArt from '../assets/images/album_art/mtnfox/goodbye.jpg'
-import mtnfoxEpArt from '../assets/images/album_art/mtnfox/mtnfox_ep.jpg'
-import familiarPlacesArt from '../assets/images/album_art/mtnfox/mtnfox_familiar_places.png'
+const albumArtFiles = import.meta.glob('../assets/images/album_art/**/*.{png,jpg,jpeg,webp,avif,gif}', {
+    eager: true,
+    import: 'default',
+})
+
+const albumArtByFileName = Object.entries(albumArtFiles).reduce((result, [path, url]) => {
+    const fileName = path.split('/').pop()
+    if (fileName) {
+        result[fileName.toLowerCase()] = url
+    }
+    return result
+}, {})
+
+export function getAlbumArt(fileName) {
+    const normalizedFileName = String(fileName || '').trim().toLowerCase()
+    if (!normalizedFileName) {
+        return ''
+    }
+
+    if (albumArtByFileName[normalizedFileName]) {
+        return albumArtByFileName[normalizedFileName]
+    }
+
+    const baseName = normalizedFileName.replace(/\.[^.]+$/, '')
+    const fallbackKey = Object.keys(albumArtByFileName).find((key) => key.startsWith(`${baseName}.`))
+
+    return fallbackKey ? albumArtByFileName[fallbackKey] : ''
+}
+
+export function getReleaseId(title) {
+    return String(title || '')
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+}
+
+function createRelease(release) {
+    return {
+        ...release,
+        id: getReleaseId(release.title),
+    }
+}
 
 export const featuredRelease = {
-    id: 'going-through-it',
+    id: getReleaseId('Going Through It'),
     artistId: 'mtnfox',
     artistName: 'MTNfox',
     title: 'Going Through It',
-    year: '2026',
+    releaseDate: '1/1/2026',
     type: 'Single',
     blurb: 'Listen at the links below.',
-    art: goingThroughItArt,
+    art: getAlbumArt('going_through_it.jpg'),
     accent: 'Melancholy unchained for your enjoyment.',
     links: {
         spotify: 'https://open.spotify.com/album/60nbSmtqtpgGOleKsxHPSm',
@@ -29,28 +65,26 @@ export const musicArtists = [
         eyebrow: 'Storytelling and liturgy',
         intro: 'Original songs released under Jarrod Whitley, presented with full artwork and quick streaming links.',
         releases: [
-            {
-                id: 'jesus-youre-enough',
+            createRelease({
                 title: "Jesus You're Enough",
-                year: '2025',
+                releaseDate: '1/1/2025',
                 type: 'Single',
-                art: jesusYoureEnoughArt,
+                art: getAlbumArt('jesus_youre_enough.png'),
                 links: {
                     spotify: 'https://open.spotify.com/album/0OD8xrGcLbRfiUIYfTDsRZ',
                     appleMusic: 'https://music.apple.com/us/album/jesus-youre-enough-single/1812727402'
                 }
-            },
-            {
-                id: 'rivers-in-the-desert',
+            }),
+            createRelease({
                 title: 'Rivers in the Desert',
-                year: '2024',
+                releaseDate: '1/1/2024',
                 type: 'Single',
-                art: riversInTheDesertArt,
+                art: getAlbumArt('rivers_in_the_desert.png'),
                 links: {
                     spotify: 'https://open.spotify.com/album/4WetOSdI9G4Ulz1ZlSlefv',
                     appleMusic: 'https://music.apple.com/us/album/rivers-in-the-desert-single/1786815055'
                 }
-            },
+            }),
         ],
     },
     {
@@ -61,61 +95,66 @@ export const musicArtists = [
         instagramHandle: '@mtnfoxmusic',
         instagramUrl: 'https://instagram.com/mtnfoxmusic',
         releases: [
-            {
-                id: 'going-through-it',
-                title: 'Going Through It',
-                year: '2026',
+            createRelease({
+                title: 'Satogokoro',
                 type: 'Single',
-                art: goingThroughItArt,
+                releaseDate: '8/1/26',
+                art: getAlbumArt('satogokoro.jpg'),
+                links: {
+                    spotify: '',
+                    appleMusic: ''
+                },
+            }),
+            createRelease({
+                title: 'Going Through It',
+                releaseDate: '1/1/2026',
+                type: 'Single',
+                art: getAlbumArt('going_through_it.jpg'),
                 links: {
                     spotify: 'https://open.spotify.com/album/60nbSmtqtpgGOleKsxHPSm',
                     appleMusic: 'https://music.apple.com/us/album/going-through-it-single/6775697658'
                 },
-            },
-            {
-                id: 'goodbye',
+            }),
+            createRelease({
                 title: 'Goodbye',
-                year: '2026',
+                releaseDate: '1/1/2026',
                 type: 'Single',
-                art: goodbyeArt,
+                art: getAlbumArt('goodbye.jpg'),
                 links: {
                     spotify: 'https://open.spotify.com/album/1PR3lYZrfJs5LF5EtsafkL',
                     appleMusic: 'https://music.apple.com/us/album/goodbye-single/1895506176'
                 },
-            },
-            {
-                id: 'all-things-considered',
+            }),
+            createRelease({
                 title: 'All Things Considered',
-                year: '2026',
                 type: 'Single',
-                art: allThingsConsideredArt,
+                releaseDate: '7/1/26',
+                art: getAlbumArt('all_things_considered.jpg'),
                 links: {
                     spotify: '',
                     appleMusic: ''
                 }
-            },
-            {
-                id: 'familiar-places',
+            }),
+            createRelease({
                 title: 'Familiar Places',
-                year: '2024',
-                type: 'Single',
-                art: familiarPlacesArt,
+                releaseDate: '1/1/2024',
+                type: 'Album',
+                art: getAlbumArt('mtnfox_familiar_places.png'),
                 links: {
                     spotify: 'https://open.spotify.com/album/6XOZcBRxzXvR8l82OFjpNv',
                     appleMusic: 'https://music.apple.com/us/album/familiar-places/1751160488'
                 }
-            },
-            {
-                id: 'mtnfox-ep',
+            }),
+            createRelease({
                 title: 'MTNfox EP',
-                year: '2024',
+                releaseDate: '1/1/2024',
                 type: 'EP',
-                art: mtnfoxEpArt,
+                art: getAlbumArt('mtnfox_ep.jpg'),
                 links: {
                     spotify: 'https://open.spotify.com/album/6IxOjK9RlAHqvX5wROcs84',
                     appleMusic: 'https://music.apple.com/us/album/mtnfox-ep/1732933633'
                 }
-            },
+            }),
         ],
     },
 ]

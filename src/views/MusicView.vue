@@ -50,7 +50,7 @@
                         <div class="featured-copy">
                             <div class="featured-meta">
                                 <span>{{ featuredRelease.artistName }}</span>
-                                <span>{{ featuredRelease.year }}</span>
+                                <span>{{ releaseYear(featuredRelease) }}</span>
                                 <span>{{ featuredRelease.type }}</span>
                             </div>
                             <p class="featured-accent">{{ featuredRelease.accent }}</p>
@@ -69,7 +69,7 @@
                                 </a>
                                 <span v-if="isComingSoon(featuredRelease.links)" class="listen-link is-disabled">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span>Coming Soon</span>
+                                    <span>{{ upcomingReleaseLabel(featuredRelease) }}</span>
                                 </span>
                             </div>
                         </div>
@@ -103,14 +103,14 @@
                     </div>
 
                     <div class="release-grid">
-                        <article v-for="release in artist.releases" :key="release.id" class="release-card">
+                        <article v-for="release in sortedReleasesForArtist(artist)" :key="release.id" class="release-card">
                             <figure class="release-art">
                                 <img :src="release.art" :alt="`${release.title} album art`"/>
                             </figure>
                             <div class="release-copy">
                                 <div class="release-topline">
                                     <span>{{ release.type }}</span>
-                                    <span>{{ release.year }}</span>
+                                    <span>{{ releaseYear(release) }}</span>
                                 </div>
                                 <span><h3>{{ release.title }}</h3>
                                 <p>{{ artist.name }}</p></span>
@@ -128,7 +128,7 @@
                                     </a>
                                     <span v-if="isComingSoon(release.links)" class="listen-link is-disabled">
                                         <i class="fa-solid fa-clock"></i>
-                                        <span>Coming Soon</span>
+                                        <span>{{ upcomingReleaseLabel(release) }}</span>
                                     </span>
                                 </div>
                             </div>
@@ -263,6 +263,55 @@ export default {
         },
         isComingSoon(rawLinks) {
             return this.normalizedLinks(rawLinks).length === 0
+        },
+        parseReleaseDateParts(releaseDate) {
+            const rawDate = String(releaseDate || '').trim()
+            const match = rawDate.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/)
+
+            if (!match) {
+                return null
+            }
+
+            const month = Number(match[1])
+            const day = Number(match[2])
+            let year = Number(match[3])
+
+            if (match[3].length === 2) {
+                year += year >= 70 ? 1900 : 2000
+            }
+
+            return { month, day, year }
+        },
+        parseReleaseDateValue(release) {
+            const parts = this.parseReleaseDateParts(release?.releaseDate)
+            if (parts) {
+                const parsedDate = new Date(parts.year, parts.month - 1, parts.day)
+                if (!Number.isNaN(parsedDate.getTime())) {
+                    return parsedDate.getTime()
+                }
+            }
+
+            return Number.NEGATIVE_INFINITY
+        },
+        releaseYear(release) {
+            const parts = this.parseReleaseDateParts(release?.releaseDate)
+            return parts ? String(parts.year) : 'TBD'
+        },
+        sortedReleasesForArtist(artist) {
+            if (!artist?.releases || !Array.isArray(artist.releases)) {
+                return []
+            }
+
+            return [...artist.releases].sort((left, right) => {
+                return this.parseReleaseDateValue(right) - this.parseReleaseDateValue(left)
+            })
+        },
+        upcomingReleaseLabel(release) {
+            if (release?.releaseDate && String(release.releaseDate).trim()) {
+                return `Release Date ${String(release.releaseDate).trim()}`
+            }
+
+            return 'Coming Soon'
         },
     },
 }
