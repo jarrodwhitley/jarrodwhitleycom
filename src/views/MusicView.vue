@@ -121,13 +121,111 @@
                         </article>
                     </div>
                 </section>
+
+                <section id="contact" class="music-section contact-section" data-music-section>
+                    <div class="section-heading">
+                        <p class="section-kicker">Contact</p>
+                        <h2>Get in Touch</h2>
+                        <p class="section-intro">Send a message about bookings, features, or collaborations.</p>
+                    </div>
+
+                    <form class="contact-form" @submit.prevent="submitContactForm">
+                        <div class="form-field">
+                            <label for="contact-artist">Artist</label>
+                            <select
+                                id="contact-artist"
+                                v-model="contactForm.artist"
+                                name="artist"
+                                required
+                            >
+                                <option disabled value="">Choose an artist</option>
+                                <option value="Jarrod Whitley">Jarrod Whitley</option>
+                                <option value="MTNfox">MTNfox</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="contact-name">Name</label>
+                            <input id="contact-name" v-model="contactForm.name" name="name" type="text" required />
+                        </div>
+
+                        <div class="form-field">
+                            <label for="contact-email">Email</label>
+                            <input id="contact-email" v-model="contactForm.email" name="email" type="email" required />
+                        </div>
+
+                        <div class="form-field">
+                            <label for="contact-message">Message</label>
+                            <textarea
+                                id="contact-message"
+                                v-model="contactForm.message"
+                                name="message"
+                                rows="5"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="captcha-wrap" aria-live="polite">
+                            <div ref="recaptchaContainer" class="recaptcha-container"></div>
+                        </div>
+
+                        <button type="submit" class="contact-submit" :disabled="isSubmitting">
+                            {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+                        </button>
+                        <p v-if="contactError" class="contact-error">{{ contactError }}</p>
+                        <p v-if="contactSuccess" class="contact-success">Thanks for reaching out. Your message has been sent.</p>
+                    </form>
+                </section>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import emailjs from '@emailjs/browser'
 import { featuredRelease, musicArtists, musicSections } from '../data/music'
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY
+
+let recaptchaScriptPromise = null
+
+function loadRecaptchaScript() {
+    if (typeof window === 'undefined') {
+        return Promise.reject(new Error('reCAPTCHA requires a browser environment.'))
+    }
+
+    if (window.grecaptcha?.render) {
+        return Promise.resolve(window.grecaptcha)
+    }
+
+    if (recaptchaScriptPromise) {
+        return recaptchaScriptPromise
+    }
+
+    recaptchaScriptPromise = new Promise((resolve, reject) => {
+        const existingScript = document.querySelector('script[data-recaptcha="true"]')
+
+        if (existingScript) {
+            existingScript.addEventListener('load', () => resolve(window.grecaptcha), { once: true })
+            existingScript.addEventListener('error', () => reject(new Error('Could not load reCAPTCHA.')), { once: true })
+            return
+        }
+
+        const script = document.createElement('script')
+        script.src = 'https://www.google.com/recaptcha/api.js?render=explicit'
+        script.async = true
+        script.defer = true
+        script.dataset.recaptcha = 'true'
+        script.onload = () => resolve(window.grecaptcha)
+        script.onerror = () => reject(new Error('Could not load reCAPTCHA.'))
+        document.head.appendChild(script)
+    })
+
+    return recaptchaScriptPromise
+}
 
 export default {
     name: 'MusicView',
@@ -138,6 +236,18 @@ export default {
             musicArtists,
             musicSections,
             sectionObserver: null,
+            isSubmitting: false,
+            contactError: '',
+            contactSuccess: false,
+            recaptchaToken: '',
+            recaptchaWidgetId: null,
+            recaptchaReady: false,
+            contactForm: {
+                artist: '',
+                name: '',
+                email: '',
+                message: '',
+            },
         }
     },
     mounted() {
@@ -163,6 +273,8 @@ export default {
             if (this.$route.hash) {
                 this.activeSection = this.$route.hash.replace('#', '')
             }
+
+            this.setupRecaptcha()
         })
     },
     beforeUnmount() {
@@ -298,6 +410,108 @@ export default {
             }
 
             return 'Coming Soon'
+        },
+        async setupRecaptcha() {
+            if (!RECAPTCHA_SITE_KEY || !this.$refs.recaptchaContainer) {
+                return
+            }
+
+            try {
+                const grecaptcha = await loadRecaptchaScript()
+
+                if (!grecaptcha || this.recaptchaWidgetId !== null) {
+                    return
+                }
+
+                this.recaptchaWidgetId = grecaptcha.render(this.$refs.recaptchaContainer, {
+                    sitekey: RECAPTCHA_SITE_KEY,
+                    callback: (token) => {
+                        this.recaptchaToken = token
+                        this.contactError = ''
+                    },
+                    'expired-callback': () => {
+                        this.recaptchaToken = ''
+                    },
+                    'error-callback': () => {
+                        this.recaptchaToken = ''
+                        this.contactError = 'Captcha failed to load. Please refresh and try again.'
+                    },
+                })
+
+                this.recaptchaReady = true
+            } catch (error) {
+                this.contactError = 'Captcha could not be initialized. Please refresh and try again.'
+                console.error('reCAPTCHA setup failed', error)
+            }
+        },
+        resetRecaptcha() {
+            if (typeof window === 'undefined') {
+                return
+            }
+
+            if (window.grecaptcha && this.recaptchaWidgetId !== null) {
+                window.grecaptcha.reset(this.recaptchaWidgetId)
+            }
+
+            this.recaptchaToken = ''
+        },
+        async submitContactForm() {
+            this.contactError = ''
+            this.contactSuccess = false
+
+            if (!RECAPTCHA_SITE_KEY) {
+                this.contactError = 'Captcha is not configured yet. Please set the reCAPTCHA site key.'
+                return
+            }
+
+            if (!this.recaptchaReady || !this.recaptchaToken) {
+                this.contactError = 'Please complete the captcha checkbox before sending.'
+                return
+            }
+
+            if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+                this.contactError = 'Email service is not configured yet. Please set EmailJS environment variables.'
+                return
+            }
+
+            this.isSubmitting = true
+
+            try {
+                const submittedAt = new Date().toLocaleString('en-US', {
+                    dateStyle: 'medium',
+                    timeStyle: 'short',
+                })
+
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID,
+                    {
+                        title: `Contact Us: ${this.contactForm.artist}`,
+                        name: this.contactForm.name,
+                        email: this.contactForm.email,
+                        time: submittedAt,
+                        artist: this.contactForm.artist,
+                        from_name: this.contactForm.name,
+                        reply_to: this.contactForm.email,
+                        message: this.contactForm.message,
+                    },
+                    EMAILJS_PUBLIC_KEY
+                )
+
+                this.contactSuccess = true
+                this.contactForm = {
+                    artist: '',
+                    name: '',
+                    email: '',
+                    message: '',
+                }
+                this.resetRecaptcha()
+            } catch (error) {
+                this.contactError = 'Could not send right now. Please try again in a moment.'
+                console.error('EmailJS send failed', error)
+            } finally {
+                this.isSubmitting = false
+            }
         },
     },
 }
@@ -717,5 +931,102 @@ export default {
 
 .featured-links .listen-link {
     min-width: 10.5rem;
+}
+
+.contact-section {
+    .contact-form {
+        display: grid;
+        gap: 1rem;
+        max-width: 42rem;
+    }
+
+    .form-field {
+        display: grid;
+        gap: 0.45rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+        letter-spacing: 0.04rem;
+        color: rgba(255, 255, 255, 0.82);
+    }
+
+    input,
+    textarea,
+    select {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.85rem;
+        background: rgba($darkestNight, 0.72);
+        color: $white;
+        height: 2.75rem;
+        padding: 0.65rem 0.95rem;
+        font: inherit;
+    }
+
+    select {
+        box-sizing: border-box;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border-radius: 0.85rem;
+        padding-right: 2.6rem;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%23d7d8e2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.9rem center;
+        background-size: 1rem;
+    }
+
+    textarea {
+        min-height: 2.75rem;
+        resize: vertical;
+    }
+
+    .contact-submit {
+        width: fit-content;
+        border: 1px solid rgba($andes, 0.45);
+        border-radius: 999px;
+        background: rgba($andes, 0.16);
+        color: $white;
+        font: inherit;
+        font-weight: 600;
+        letter-spacing: 0.06rem;
+        text-transform: uppercase;
+        padding: 0.8rem 1.25rem;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            background: rgba($andes, 0.24);
+            border-color: rgba($andes, 0.7);
+            transform: translateY(-1px);
+        }
+
+        &:disabled {
+            opacity: 0.7;
+            cursor: wait;
+            transform: none;
+        }
+    }
+
+    .captcha-wrap {
+        display: grid;
+        justify-content: start;
+    }
+
+    .recaptcha-container {
+        min-height: 78px;
+    }
+
+    .contact-error {
+        margin: 0;
+        color: #ff9c9c;
+        font-size: 0.95rem;
+    }
+
+    .contact-success {
+        margin: 0;
+        color: rgba($neon, 0.9);
+        font-size: 0.95rem;
+    }
 }
 </style>

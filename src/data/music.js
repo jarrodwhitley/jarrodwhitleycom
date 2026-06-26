@@ -221,4 +221,8 @@ export const musicSections = [
         id: 'mtnfox',
         label: 'MTNfox',
     },
+    {
+        id: 'contact',
+        label: 'Contact',
+    },
 ]
