@@ -24,7 +24,7 @@
             <div class="music-content">
                 <section id="featured" class="music-section featured-release" data-music-section>
                     <div class="section-heading">
-                        <p class="section-kicker">Most Recent Release</p>
+                        <p class="section-kicker">1 Most Recent Release</p>
                         <h2>{{ featuredRelease.title }}</h2>
                     </div>
 
@@ -189,6 +189,7 @@ import { featuredRelease, musicArtists, musicSections } from '../data/music'
 const CONTACT_API_BASE_URL = import.meta.env.VITE_CONTACT_API_BASE_URL
 const DEFAULT_RECAPTCHA_SITE_KEY = '6LcttjYtAAAAAPzKs2pNieTgajSFXvhRIy7uTy0f'
 const RECAPTCHA_SITE_KEY = String(import.meta.env.VITE_RECAPTCHA_SITE_KEY || DEFAULT_RECAPTCHA_SITE_KEY).trim()
+const EMAILJS_PUBLIC_KEY = String(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '').trim()
 const EMAILJS_SERVICE_ID = String(import.meta.env.VITE_EMAILJS_SERVICE_ID || '').trim()
 const EMAILJS_TEMPLATE_ID = String(import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '').trim()
 const EMAILJS_TO_EMAIL = String(import.meta.env.VITE_EMAILJS_TO_EMAIL || '').trim()
@@ -231,7 +232,7 @@ function getContactErrorMessage(error) {
 }
 
 function isEmailJsConfigured() {
-    return Boolean(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_TO_EMAIL)
+    return Boolean(EMAILJS_PUBLIC_KEY && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_TO_EMAIL)
 }
 
 let recaptchaScriptPromise = null
