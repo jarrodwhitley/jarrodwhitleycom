@@ -8,8 +8,7 @@
         "dev": "vite --host",
         "build:prod": "vite build --mode production",
         "preview": "vite preview",
-        "deploy": "npm run build:prod && npm run postbuild",
-        "gh-pages-deploy": "npm run deploy"
+        "deploy": "npm run build:prod && npm run postbuild"
     },
     "dependencies": {
         "@emailjs/browser": "^4.4.1",
@@ -27,7 +26,6 @@
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^4.2.3",
-        "gh-pages": "^6.2.0",
         "sass": "^1.69.0",
         "vite": "^4.4.5"
     }
