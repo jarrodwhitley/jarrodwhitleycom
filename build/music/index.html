@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        // Ensure direct hits to /music reach the SPA entry on static hosts without rewrites.
+        var l = window.location;
+        var target = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/?/music' + l.hash;
+        l.replace(target);
+    </script>
+</head>
+<body></body>
+</html>
