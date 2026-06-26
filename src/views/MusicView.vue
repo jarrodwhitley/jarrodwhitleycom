@@ -24,7 +24,7 @@
             <div class="music-content">
                 <section id="featured" class="music-section featured-release" data-music-section>
                     <div class="section-heading">
-                        <p class="section-kicker">2 Most Recent Release</p>
+                        <p class="section-kicker">Most Recent Release</p>
                         <h2>{{ featuredRelease.title }}</h2>
                     </div>
 
