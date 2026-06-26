@@ -531,6 +531,7 @@ export default {
             this.recaptchaToken = ''
         },
         async submitContactForm() {
+            console.warn('[Music contact] submit started')
             this.contactError = ''
             this.contactSuccess = false
 
@@ -568,12 +569,20 @@ export default {
                     if (!response?.data?.success) {
                         throw new Error(response?.data?.message || 'Captcha verification failed. Please try again.')
                     }
+
+                    console.warn('[Music contact] captcha validation passed')
                 } catch (error) {
                     this.contactError = getContactErrorMessage(error)
+                    console.error('[Music contact] captcha validation failed', error)
                     return
                 }
 
                 try {
+                    console.warn('[Music contact] sending via EmailJS', {
+                        serviceId: EMAILJS_SERVICE_ID,
+                        templateId: EMAILJS_TEMPLATE_ID,
+                    })
+
                     const emailResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                         ...formPayload,
                         to_email: EMAILJS_TO_EMAIL,
@@ -585,15 +594,21 @@ export default {
                         return
                     }
 
-                    console.info('EmailJS send succeeded', {
+                    console.warn('[Music contact] EmailJS send succeeded', {
                         serviceId: EMAILJS_SERVICE_ID,
                         templateId: EMAILJS_TEMPLATE_ID,
                         status: emailResult.status,
                         text: emailResult.text,
                     })
                 } catch (error) {
+                    const errorStatus = error?.status || error?.response?.status
+                    const errorText = error?.text || error?.message
                     this.contactError = 'Could not send email. Please try again later.'
-                    console.error('EmailJS send failed', error)
+                    console.error('[Music contact] EmailJS send failed', {
+                        status: errorStatus,
+                        text: errorText,
+                        raw: error,
+                    })
                     return
                 }
 
