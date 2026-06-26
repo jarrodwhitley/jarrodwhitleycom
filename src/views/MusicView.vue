@@ -183,10 +183,15 @@
 
 <script>
 import axios from 'axios'
+import emailjs from '@emailjs/browser'
 import { featuredRelease, musicArtists, musicSections } from '../data/music'
 
 const CONTACT_API_BASE_URL = import.meta.env.VITE_CONTACT_API_BASE_URL
-const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY
+const DEFAULT_RECAPTCHA_SITE_KEY = '6LcttjYtAAAAAPzKs2pNieTgajSFXvhRIy7uTy0f'
+const RECAPTCHA_SITE_KEY = String(import.meta.env.VITE_RECAPTCHA_SITE_KEY || DEFAULT_RECAPTCHA_SITE_KEY).trim()
+const EMAILJS_SERVICE_ID = String(import.meta.env.VITE_EMAILJS_SERVICE_ID || '').trim()
+const EMAILJS_TEMPLATE_ID = String(import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '').trim()
+const EMAILJS_TO_EMAIL = String(import.meta.env.VITE_EMAILJS_TO_EMAIL || '').trim()
 
 function buildContactApiUrl() {
     const baseUrl = String(CONTACT_API_BASE_URL || '').trim()
@@ -223,6 +228,10 @@ function getContactErrorMessage(error) {
     }
 
     return 'Could not send right now. Please try again in a moment.'
+}
+
+function isEmailJsConfigured() {
+    return Boolean(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_TO_EMAIL)
 }
 
 let recaptchaScriptPromise = null
@@ -526,7 +535,7 @@ export default {
             this.contactSuccess = false
 
             if (!RECAPTCHA_SITE_KEY) {
-                this.contactError = 'Captcha is not configured yet. Please set the reCAPTCHA site key.'
+                this.contactError = 'Captcha is not configured yet. Please refresh and try again.'
                 return
             }
 
@@ -535,19 +544,44 @@ export default {
                 return
             }
 
+            if (!isEmailJsConfigured()) {
+                this.contactError = 'Email delivery is not configured yet. Please try again later.'
+                return
+            }
+
             this.isSubmitting = true
 
             try {
-                const response = await axios.post(buildContactApiUrl(), {
+                const formPayload = {
                     artist: this.contactForm.artist,
                     name: this.contactForm.name,
                     email: this.contactForm.email,
                     message: this.contactForm.message,
-                    captchaToken: this.recaptchaToken,
-                })
+                }
 
-                if (!response?.data?.success) {
-                    throw new Error(response?.data?.message || 'Could not send right now. Please try again in a moment.')
+                try {
+                    const response = await axios.post(buildContactApiUrl(), {
+                        ...formPayload,
+                        captchaToken: this.recaptchaToken,
+                    })
+
+                    if (!response?.data?.success) {
+                        throw new Error(response?.data?.message || 'Captcha verification failed. Please try again.')
+                    }
+                } catch (error) {
+                    this.contactError = getContactErrorMessage(error)
+                    return
+                }
+
+                try {
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                        ...formPayload,
+                        to_email: EMAILJS_TO_EMAIL,
+                    })
+                } catch (error) {
+                    this.contactError = 'Could not send email. Please try again later.'
+                    console.error('EmailJS send failed', error)
+                    return
                 }
 
                 this.contactSuccess = true
@@ -559,7 +593,7 @@ export default {
                 }
                 this.resetRecaptcha()
             } catch (error) {
-                this.contactError = getContactErrorMessage(error)
+                this.contactError = 'Could not send right now. Please try again in a moment.'
                 console.error('Contact form submission failed', error)
             } finally {
                 this.isSubmitting = false
