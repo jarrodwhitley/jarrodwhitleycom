@@ -6,16 +6,15 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## EmailJS Setup
+## Contact Form Setup
 
-The Music page contact form sends email with EmailJS.
+The Music page contact form posts to the backend contact API and uses Google reCAPTCHA v2.
 
 Create a local `.env` file and add:
 
-- `VITE_EMAILJS_SERVICE_ID=your_service_id`
-- `VITE_EMAILJS_TEMPLATE_ID=your_template_id`
-- `VITE_EMAILJS_PUBLIC_KEY=your_public_key`
 - `VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key`
+- `VITE_CONTACT_API_BASE_URL=https://your-backend-host.example`
+- `VITE_CONTACT_API_PROXY_TARGET=http://localhost:3001`
 
-You can copy values from your EmailJS dashboard after creating a service and template.
-Create a Google reCAPTCHA v2 checkbox site key and add it to `VITE_RECAPTCHA_SITE_KEY`.
+Leave `VITE_CONTACT_API_BASE_URL` empty if the frontend and backend are served from the same origin.
+Set `VITE_CONTACT_API_PROXY_TARGET` when running the frontend locally against a separate backend so `/api/contact` is proxied in Vite dev.

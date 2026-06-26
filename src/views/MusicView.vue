@@ -182,13 +182,48 @@
 </template>
 
 <script>
-import emailjs from '@emailjs/browser'
+import axios from 'axios'
 import { featuredRelease, musicArtists, musicSections } from '../data/music'
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+const CONTACT_API_BASE_URL = import.meta.env.VITE_CONTACT_API_BASE_URL
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY
+
+function buildContactApiUrl() {
+    const baseUrl = String(CONTACT_API_BASE_URL || '').trim()
+
+    if (!baseUrl) {
+        return '/api/contact'
+    }
+
+    return new URL('/api/contact', baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`).toString()
+}
+
+function getContactErrorMessage(error) {
+    if (axios.isAxiosError(error)) {
+        const serverMessage = error.response?.data?.message
+        if (serverMessage && String(serverMessage).trim()) {
+            return String(serverMessage).trim()
+        }
+
+        if (error.response?.status === 429) {
+            return 'Too many requests. Please wait a moment and try again.'
+        }
+
+        if (error.response?.status === 403) {
+            return 'Captcha verification failed. Please try again.'
+        }
+
+        if (error.response?.status && error.response.status >= 500) {
+            return 'The contact service is unavailable right now. Please try again later.'
+        }
+
+        if (error.request) {
+            return 'Could not reach the contact service. Please try again in a moment.'
+        }
+    }
+
+    return 'Could not send right now. Please try again in a moment.'
+}
 
 let recaptchaScriptPromise = null
 const RECAPTCHA_SCRIPT_ID = 'music-page-recaptcha-script'
@@ -500,34 +535,20 @@ export default {
                 return
             }
 
-            if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-                this.contactError = 'Email service is not configured yet. Please set EmailJS environment variables.'
-                return
-            }
-
             this.isSubmitting = true
 
             try {
-                const submittedAt = new Date().toLocaleString('en-US', {
-                    dateStyle: 'medium',
-                    timeStyle: 'short',
+                const response = await axios.post(buildContactApiUrl(), {
+                    artist: this.contactForm.artist,
+                    name: this.contactForm.name,
+                    email: this.contactForm.email,
+                    message: this.contactForm.message,
+                    captchaToken: this.recaptchaToken,
                 })
 
-                await emailjs.send(
-                    EMAILJS_SERVICE_ID,
-                    EMAILJS_TEMPLATE_ID,
-                    {
-                        title: `Contact Us: ${this.contactForm.artist}`,
-                        name: this.contactForm.name,
-                        email: this.contactForm.email,
-                        time: submittedAt,
-                        artist: this.contactForm.artist,
-                        from_name: this.contactForm.name,
-                        reply_to: this.contactForm.email,
-                        message: this.contactForm.message,
-                    },
-                    EMAILJS_PUBLIC_KEY
-                )
+                if (!response?.data?.success) {
+                    throw new Error(response?.data?.message || 'Could not send right now. Please try again in a moment.')
+                }
 
                 this.contactSuccess = true
                 this.contactForm = {
@@ -538,8 +559,8 @@ export default {
                 }
                 this.resetRecaptcha()
             } catch (error) {
-                this.contactError = 'Could not send right now. Please try again in a moment.'
-                console.error('EmailJS send failed', error)
+                this.contactError = getContactErrorMessage(error)
+                console.error('Contact form submission failed', error)
             } finally {
                 this.isSubmitting = false
             }
