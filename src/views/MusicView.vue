@@ -574,9 +574,22 @@ export default {
                 }
 
                 try {
-                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                    const emailResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                         ...formPayload,
                         to_email: EMAILJS_TO_EMAIL,
+                    })
+
+                    if (!emailResult || emailResult.status !== 200) {
+                        this.contactError = 'Could not send email. Please try again later.'
+                        console.error('EmailJS unexpected response', emailResult)
+                        return
+                    }
+
+                    console.info('EmailJS send succeeded', {
+                        serviceId: EMAILJS_SERVICE_ID,
+                        templateId: EMAILJS_TEMPLATE_ID,
+                        status: emailResult.status,
+                        text: emailResult.text,
                     })
                 } catch (error) {
                     this.contactError = 'Could not send email. Please try again later.'
