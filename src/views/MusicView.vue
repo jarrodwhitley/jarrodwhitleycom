@@ -191,6 +191,8 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY
 
 let recaptchaScriptPromise = null
+const RECAPTCHA_SCRIPT_ID = 'music-page-recaptcha-script'
+const RECAPTCHA_ONLOAD_CALLBACK = '__musicPageRecaptchaOnload'
 
 function resolveRecaptchaApi(grecaptchaGlobal) {
     if (!grecaptchaGlobal) {
@@ -208,28 +210,6 @@ function resolveRecaptchaApi(grecaptchaGlobal) {
     return null
 }
 
-function waitForRecaptchaApi(timeoutMs = 7000) {
-    return new Promise((resolve, reject) => {
-        const startedAt = Date.now()
-
-        const check = () => {
-            if (resolveRecaptchaApi(window.grecaptcha)) {
-                resolve(window.grecaptcha)
-                return
-            }
-
-            if (Date.now() - startedAt >= timeoutMs) {
-                reject(new Error('reCAPTCHA API was not ready in time.'))
-                return
-            }
-
-            window.setTimeout(check, 50)
-        }
-
-        check()
-    })
-}
-
 function loadRecaptchaScript() {
     if (typeof window === 'undefined') {
         return Promise.reject(new Error('reCAPTCHA requires a browser environment.'))
@@ -244,21 +224,25 @@ function loadRecaptchaScript() {
     }
 
     recaptchaScriptPromise = new Promise((resolve, reject) => {
-        const existingScript = document.querySelector('script[data-recaptcha="true"]')
-
+        const existingScript = document.getElementById(RECAPTCHA_SCRIPT_ID)
         if (existingScript) {
-            waitForRecaptchaApi().then(resolve).catch(reject)
-            return
+            existingScript.remove()
+        }
+
+        window[RECAPTCHA_ONLOAD_CALLBACK] = () => {
+            if (resolveRecaptchaApi(window.grecaptcha)) {
+                resolve(window.grecaptcha)
+            } else {
+                reject(new Error('reCAPTCHA loaded but render API was unavailable.'))
+            }
         }
 
         const script = document.createElement('script')
-        script.src = 'https://www.google.com/recaptcha/api.js?render=explicit'
+        script.id = RECAPTCHA_SCRIPT_ID
+        script.src = `https://www.google.com/recaptcha/api.js?onload=${RECAPTCHA_ONLOAD_CALLBACK}&render=explicit`
         script.async = true
         script.defer = true
         script.dataset.recaptcha = 'true'
-        script.onload = () => {
-            waitForRecaptchaApi().then(resolve).catch(reject)
-        }
         script.onerror = () => reject(new Error('Could not load reCAPTCHA.'))
         document.head.appendChild(script)
     })
@@ -280,6 +264,7 @@ export default {
             contactSuccess: false,
             recaptchaToken: '',
             recaptchaWidgetId: null,
+            recaptchaApi: null,
             recaptchaReady: false,
             contactForm: {
                 artist: '',
@@ -458,12 +443,18 @@ export default {
             try {
                 const grecaptchaGlobal = await loadRecaptchaScript()
                 const recaptchaApi = resolveRecaptchaApi(grecaptchaGlobal)
+                const renderFn = recaptchaApi?.render
 
-                if (!recaptchaApi || this.recaptchaWidgetId !== null) {
+                if (this.recaptchaWidgetId !== null) {
                     return
                 }
 
-                this.recaptchaWidgetId = recaptchaApi.render(this.$refs.recaptchaContainer, {
+                if (typeof renderFn !== 'function') {
+                    throw new Error('reCAPTCHA render function is unavailable.')
+                }
+
+                this.recaptchaApi = recaptchaApi
+                this.recaptchaWidgetId = renderFn.call(recaptchaApi, this.$refs.recaptchaContainer, {
                     sitekey: RECAPTCHA_SITE_KEY,
                     callback: (token) => {
                         this.recaptchaToken = token
@@ -489,10 +480,8 @@ export default {
                 return
             }
 
-            const recaptchaApi = resolveRecaptchaApi(window.grecaptcha)
-
-            if (recaptchaApi && this.recaptchaWidgetId !== null && typeof recaptchaApi.reset === 'function') {
-                recaptchaApi.reset(this.recaptchaWidgetId)
+            if (this.recaptchaApi && this.recaptchaWidgetId !== null && typeof this.recaptchaApi.reset === 'function') {
+                this.recaptchaApi.reset(this.recaptchaWidgetId)
             }
 
             this.recaptchaToken = ''
