@@ -74,7 +74,7 @@ export const musicArtists = [
     {
         id: 'mtnfox',
         name: 'MTNfox',
-        eyebrow: 'From the Appalachian foothills to your ears',
+        eyebrow: 'From the Appalachian mountains to your ears',
         intro: 'Lofi and instrumental releases',
         instagramHandle: '@mtnfoxmusic',
         instagramUrl: 'https://instagram.com/mtnfoxmusic',
