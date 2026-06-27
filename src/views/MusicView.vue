@@ -9,6 +9,7 @@
                         <button
                             v-for="section in musicSections"
                             :key="section.id"
+                            v-show="section.id !== 'contact'"
                             type="button"
                             class="section-link"
                             :class="{ active: activeSection === section.id }"
@@ -122,7 +123,7 @@
                     </div>
                 </section>
 
-                <section id="contact" class="music-section contact-section" data-music-section>
+                <section id="contact" class="music-section contact-section" data-music-section v-show="false">
                     <div class="section-heading">
                         <p class="section-kicker">Contact</p>
                         <h2>Get in Touch</h2>
@@ -131,7 +132,7 @@
 
                     Email me at <a href="mailto:info@jarrodwhitley.com">info@jarrodwhitley.com</a>
 
-                    <!-- <form class="contact-form" @submit.prevent="submitContactForm">
+                    <form class="contact-form" @submit.prevent="submitContactForm">
                         <div class="form-field">
                             <label for="contact-artist">Artist</label>
                             <select
@@ -176,7 +177,7 @@
                         </button>
                         <p v-if="contactError" class="contact-error">{{ contactError }}</p>
                         <p v-if="contactSuccess" class="contact-success">Thanks for reaching out. Your message has been sent.</p>
-                    </form> -->
+                    </form>
                 </section>
             </div>
         </div>
