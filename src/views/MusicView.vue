@@ -122,14 +122,16 @@
                     </div>
                 </section>
 
-                <!-- <section id="contact" class="music-section contact-section" data-music-section>
+                <section id="contact" class="music-section contact-section" data-music-section>
                     <div class="section-heading">
                         <p class="section-kicker">Contact</p>
                         <h2>Get in Touch</h2>
                         <p class="section-intro">Send a message about bookings, features, or collaborations.</p>
                     </div>
 
-                    <form class="contact-form" @submit.prevent="submitContactForm">
+                    Email me at <a href="mailto:info@jarrodwhitley.com">info@jarrodwhitley.com</a>
+
+                    <!-- <form class="contact-form" @submit.prevent="submitContactForm">
                         <div class="form-field">
                             <label for="contact-artist">Artist</label>
                             <select
@@ -174,8 +176,8 @@
                         </button>
                         <p v-if="contactError" class="contact-error">{{ contactError }}</p>
                         <p v-if="contactSuccess" class="contact-success">Thanks for reaching out. Your message has been sent.</p>
-                    </form>
-                </section> -->
+                    </form> -->
+                </section>
             </div>
         </div>
     </div>
