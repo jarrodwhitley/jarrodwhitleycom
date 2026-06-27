@@ -122,7 +122,7 @@
                     </div>
                 </section>
 
-                <section id="contact" class="music-section contact-section" data-music-section>
+                <!-- <section id="contact" class="music-section contact-section" data-music-section>
                     <div class="section-heading">
                         <p class="section-kicker">Contact</p>
                         <h2>Get in Touch</h2>
@@ -175,7 +175,7 @@
                         <p v-if="contactError" class="contact-error">{{ contactError }}</p>
                         <p v-if="contactSuccess" class="contact-success">Thanks for reaching out. Your message has been sent.</p>
                     </form>
-                </section>
+                </section> -->
             </div>
         </div>
     </div>
