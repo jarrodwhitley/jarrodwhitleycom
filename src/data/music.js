@@ -115,8 +115,8 @@ export const musicArtists = [
                 releaseDate: '7/1/26',
                 art: getAlbumArt('all_things_considered.jpg'),
                 links: {
-                    spotify: '',
-                    appleMusic: ''
+                    spotify: 'https://open.spotify.com/album/03CfYHLeRwa0QAHpypeJdu?si=3iI4m7mATKa72HRjNrPn5g',
+                    appleMusic: 'https://music.apple.com/us/album/all-things-considered/6773197276?i=6773197277'
                 }
             }),
             createRelease({
