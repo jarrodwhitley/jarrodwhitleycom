@@ -51,11 +51,11 @@ export const musicArtists = [
         releases: [
             createRelease({
                 title: "Me As A Painting",
-                releaseDate: '',
+                releaseDate: '7/2/2026',
                 type: 'Single',
                 art: getAlbumArt('me_as_a_painting.jpg'),
                 links: {
-                    spotify: '',
+                    spotify: 'https://open.spotify.com/track/0lr37FyvKQk6rlE0kK2T1c?si=eb39f544682d49e9',
                     appleMusic: ''
                 }
             }),
