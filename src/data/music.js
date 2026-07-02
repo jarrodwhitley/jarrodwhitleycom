@@ -50,6 +50,16 @@ export const musicArtists = [
         intro: 'Original songs released under Jarrod Whitley, presented with full artwork and quick streaming links.',
         releases: [
             createRelease({
+                title: "Me As A Painting",
+                releaseDate: '',
+                type: 'Single',
+                art: getAlbumArt('me_as_a_painting.jpg'),
+                links: {
+                    spotify: '',
+                    appleMusic: ''
+                }
+            }),
+            createRelease({
                 title: "Jesus You're Enough",
                 releaseDate: '1/1/2025',
                 type: 'Single',
