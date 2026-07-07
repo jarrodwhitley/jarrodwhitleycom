@@ -56,7 +56,7 @@ export const musicArtists = [
                 art: getAlbumArt('me_as_a_painting.jpg'),
                 links: {
                     spotify: 'https://open.spotify.com/track/0lr37FyvKQk6rlE0kK2T1c?si=eb39f544682d49e9',
-                    appleMusic: ''
+                    appleMusic: 'https://music.apple.com/us/album/me-as-a-painting/6786721217?i=6786721218'
                 }
             }),
             createRelease({
