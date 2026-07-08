@@ -90,9 +90,19 @@ export const musicArtists = [
         instagramUrl: 'https://instagram.com/mtnfoxmusic',
         releases: [
             createRelease({
+                title: 'Together Again',
+                type: 'Album',
+                releaseDate: '8/1/26',
+                art: getAlbumArt('together_again_web.jpg'),
+                links: {
+                    spotify: '',
+                    appleMusic: ''
+                },
+            }),
+            createRelease({
                 title: 'Satogokoro',
                 type: 'Single',
-                releaseDate: '8/1/26',
+                releaseDate: '9/1/26',
                 art: getAlbumArt('satogokoro.jpg'),
                 links: {
                     spotify: '',
