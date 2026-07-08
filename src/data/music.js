@@ -48,6 +48,9 @@ export const musicArtists = [
         name: 'Jarrod Whitley',
         eyebrow: 'Storytelling and liturgy',
         intro: 'Original songs released under Jarrod Whitley, presented with full artwork and quick streaming links.',
+        instagramHandle: '@jarrodwhitleymusic',
+        instagramUrl: 'https://www.instagram.com/jarrodwhitleymusic/',
+        youtubeUrl: 'https://youtube.com/@jarrodwhitley?si=F29W6R2QNzdmeaY1',
         releases: [
             createRelease({
                 title: "Me As A Painting",
@@ -88,6 +91,7 @@ export const musicArtists = [
         intro: 'Lofi and instrumental releases',
         instagramHandle: '@mtnfoxmusic',
         instagramUrl: 'https://instagram.com/mtnfoxmusic',
+        youtubeUrl: 'https://youtube.com/@mtnfoxmusic?si=1mGITSD5lcXOnbpt',
         releases: [
             createRelease({
                 title: 'Together Again',

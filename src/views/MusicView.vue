@@ -73,17 +73,20 @@
                     <div class="section-heading artist-heading">
                         <div class="artist-title-row">
                             <h2>{{ artist.name }}</h2>
-                            <a
-                                v-if="artist.instagramUrl"
-                                class="artist-social-link"
-                                :href="artist.instagramUrl"
-                                target="_blank"
-                                rel="noreferrer"
-                                :aria-label="`Open Instagram profile for ${artist.name}`"
-                                :title="artist.instagramHandle || 'Instagram'"
-                            >
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
+                            <div v-if="artistSocialLinks(artist).length" class="artist-social-links">
+                                <a
+                                    v-for="link in artistSocialLinks(artist)"
+                                    :key="`${artist.id}-${link.label}`"
+                                    class="artist-social-link"
+                                    :href="link.url"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    :aria-label="`Open ${link.label} profile for ${artist.name}`"
+                                    :title="link.title"
+                                >
+                                    <i :class="link.icon"></i>
+                                </a>
+                            </div>
                         </div>
                         <p class="section-kicker">{{ artist.eyebrow }}</p>
                         <!-- <p class="section-intro">{{ artist.intro }}</p> -->
@@ -215,6 +218,16 @@ function getContactErrorMessage(error) {
         }
 
         if (error.response?.status === 429) {
+
+        function buildInstagramProfileUrl(handle) {
+            const normalizedHandle = String(handle || '').trim().replace(/^@+/, '')
+
+            if (!normalizedHandle) {
+                return ''
+            }
+
+            return `https://instagram.com/${normalizedHandle}`
+        }
             return 'Too many requests. Please wait a moment and try again.'
         }
 
@@ -430,6 +443,41 @@ export default {
                     }
                 })
                 .filter(Boolean)
+        },
+        artistSocialLinks(artist) {
+            if (Array.isArray(artist?.socialLinks)) {
+                return artist.socialLinks
+                    .filter((link) => link?.url && String(link.url).trim())
+                    .map((link) => ({
+                        label: String(link.label || '').trim() || 'Link',
+                        title: String(link.title || link.label || '').trim() || 'Link',
+                        icon: String(link.icon || '').trim() || 'fa-solid fa-link',
+                        url: String(link.url).trim(),
+                    }))
+            }
+
+            const instagramUrl = artist?.instagramUrl || buildInstagramProfileUrl(artist?.instagramHandle)
+
+            const sources = [
+                instagramUrl
+                    ? {
+                        label: 'Instagram',
+                        title: artist.instagramHandle || 'Instagram',
+                        icon: 'fa-brands fa-instagram',
+                        url: instagramUrl,
+                    }
+                    : null,
+                artist?.youtubeUrl
+                    ? {
+                        label: 'YouTube',
+                        title: artist.youtubeHandle || 'YouTube',
+                        icon: 'fa-brands fa-youtube',
+                        url: artist.youtubeUrl,
+                    }
+                    : null,
+            ]
+
+            return sources.filter(Boolean)
         },
         isComingSoon(rawLinks) {
             return this.normalizedLinks(rawLinks).length === 0
@@ -875,6 +923,12 @@ export default {
     align-items: center;
     gap: 0.75rem;
     flex-wrap: nowrap;
+}
+
+.artist-social-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .artist-social-link {
